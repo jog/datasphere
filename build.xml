@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir="." default="jar" name="answertree-server-library">
+	
+	<description>Builds a specific Datasphere Catalog application jar</description>
+	
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties" />
+	<property file="build.override.properties" description="User overrides for build properties" />
+	<property file="build.properties" description="Build properties"  />
+
+	<tstamp />
+	<buildnumber/>
+	<property name="build.version" value="${target.dist.version}.${build.number}" /> 
+
+	<!--=============================================================================-->
+					
+	<target name="jar"> 
+		<antcall target="initialize" />
+		<antcall target="install_dependencies" />
+		<antcall target="compile_source" />
+		<antcall target="create_readme" />		
+		<antcall target="create_jar" />
+	</target>
+	
+	<!--=============================================================================-->
+	
+	<target name="initialize">
+		<!-- setup required directories -->
+		<trycatch>
+			<try><delete dir="${dist.dir}" /></try>
+			<catch></catch>
+		</trycatch>
+		<mkdir dir="${dist.dir}" />
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${build.dir}/classes" />		
+	</target>
+	
+	<!--=============================================================================-->
+	
+	<target name="install_dependencies">
+		<!-- install required dependencies -->
+		<foreach list="${target.dependencies}" param="dependency" target="copy_dependency" />		
+	</target>
+		
+	<!--=============================================================================-->
+		
+	<target name="copy_dependency">
+		<!--rebuild the jar we're dependent on if required -->
+		<if>
+			<equals arg1="${target.dependency.rebuild}" arg2="true" />
+		 		<then>
+		 			<echo>attempting to rebuild dependency: ${dependency}...</echo>
+		 			<ant 
+		 				antfile="${target.dependency.base}/${dependency}/build.xml" 
+		 				inheritall="false" 
+		 				target="jar" />
+		 			<echo>successfully rebuilt dependency: ${dependency}...</echo>
+			
+				<!-- copy the jar we're dependent on to the lib directory -->
+				<copy todir="${lib.dir}" overwrite="true">
+					<fileset dir="${target.dependency.base}/${dependency}/dist">		
+						<include name="*" />
+					</fileset>
+				</copy>
+				<echo>successfully copied files for ${dependency}...</echo>
+			 </then>		 			
+		</if>
+	</target>
+	
+	<!--=============================================================================-->
+		
+	<target name="compile_source">
+		<!-- compile source code  -->
+		<javac 
+		srcdir="${src.dir}" 
+		destdir="${build.dir}/classes" 
+		target="${target.java.version}" 
+		debug="${target.java.debug}" >
+		<classpath>
+			<fileset dir="${lib.dir}" includes="*.jar" />
+		</classpath>
+		</javac>
+		<echo>successfully compiled source files...</echo>		
+	</target>
+		
+	<!--=============================================================================-->
+		
+	<target name="create_jar">	
+		<!-- create the jar file and manifest --> 
+		<!-- jar destfile="${dist.dir}/${target.jar.name}-${build.version}.jar" -->
+		<jar destfile="${dist.dir}/${target.jar.name}.jar">	
+			<zipgroupfileset dir="lib" includes="*.jar" /> 
+			<fileset dir="${build.dir}/classes" />
+			<fileset dir="${src.dir}">
+				<include name="**/*" />
+				<exclude name="**/*.java" />
+			</fileset>
+			<manifest>
+				<attribute name="Created-By" value="${target.author}" />	
+				<attribute name="Main-Class" value="${target.main.class}" />
+			</manifest>
+		</jar>
+		<echo>successfully created executable jar file...</echo>
+	</target>
+	
+	<!--=============================================================================-->
+		
+	<target name="create_readme">
+		<echo file="${build.dir}/classes/version.info">
+version: ${build.version}
+build-time:   ${TODAY} at ${TSTAMP}
+java-version: ${target.java.version}
+debug:        ${target.java.debug}
+compiled-by:  ${target.author}			
+		</echo>
+		<echo>successfully created readme...</echo>		
+	</target>
+	
+	<!--=============================================================================-->
+		
+	<target name="clean" description="Returns the build directory to a clean state">
+		<delete dir="${build.dir}" />
+		<delete dir="${dist.dir}" />
+	</target>
+
+</project>
+
