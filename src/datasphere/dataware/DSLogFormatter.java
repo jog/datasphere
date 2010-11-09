@@ -17,29 +17,27 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Formatter;
+import java.util.logging.LogRecord;
+
 /**
- * Generic Datasphere exception class, indicating that an error has
- * been thrown somewhere within the framework. 
+ * A simple formatter used in all Datasphere logging. 
  * 
  * @author James Goulding
- * @version 2010-03-11
+ * @version 2010-11-03
  */
-public class DSException 
-extends Exception
+public final class DSLogFormatter extends Formatter 
 {
-	private static final long serialVersionUID = 1014530909804487992L;
-
-	public DSException( String s ) {
-		super( s );
-	}
+	private SimpleDateFormat fmt = new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss" );
 	
-	public DSException( Exception e ) {
-		super( e );
-	}
-
-	public DSException() {
-		super();
-	}
+	public String format( LogRecord record ) {
+		
+		String level = String.format("%1$-9s", "[" + record.getLevel() + "]"); 
+		return fmt.format( new Date() ) + 
+			" " + level +
+			" " + record.getMessage() + 
+			"\n";
+	} 
 }
-
-// End ///////////////////////////////////////////////////////////////

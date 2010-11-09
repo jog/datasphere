@@ -1,5 +1,21 @@
 package datasphere.dataware;
 
+/*
+Copyright (C) 2010 J.Goulding, R. Mortier 
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -44,10 +60,10 @@ public class DSUpdate {
 	private Coordinate loc;
 	
 	//-- create / read / update / delete
-	private String action;
+	private String crud;
 
 	//-- a short textual summary of the update
-	private String desc;
+	private String description;
 
 	//-- the total number of items represented by this item type
 	private long total;
@@ -55,17 +71,17 @@ public class DSUpdate {
 	//-- other data associated with the update, specific to its type
 	private HashMap< String, String > meta;
 
-	public DSUpdate( String source, String type, String action ) 
+	public DSUpdate( String source, String type, String crud ) 
 	throws IOException {
 		setSource( source );
-		setAction( action );
+		setCrud( crud );
 		setType( type );
 	}
 	
 	public DSUpdate( String source, String type )
 	throws IOException {
 		setSource( source );
-		setAction( "create" );
+		setCrud( "create" );
 		setType( type );
 	}
 
@@ -79,31 +95,52 @@ public class DSUpdate {
 	public ArrayList< String > getTags() 	{ return this.tags; }
 	public long getMtime() 					{ return this.mtime; }
 	public Coordinate getLocation() 		{ return this.loc; }
-	public String getAction() 				{ return this.action; }
-	public String getDesc() 				{ return this.desc; }
+	public String getCrud() 				{ return this.crud; }
+	public String getDesc() 				{ return this.description; }
 	public long getTotal() 					{ return this.total; }
-	public HashMap< String, String > getMetadata() 	{ return this.meta; }
+	public HashMap< String, String > getMeta() 	{ return this.meta; }
 
-	public DSUpdate setSource( String source ) 			{ this.source = source; return this; }
-	public DSUpdate setType( String type ) 				{ this.type = type; return this; }
-	public DSUpdate setTags( ArrayList< String > tags ) { this.tags = tags; return this; }
-	public DSUpdate setMtime( long mtime ) 				{ this.mtime = mtime; return this; }
-	public DSUpdate setLocation( Coordinate location ) 	{ this.loc = location; return this; }
-	public DSUpdate setDesc( String desc ) 				{ this.desc = desc; return this; }
-	public DSUpdate setTotal( long total ) 				{ this.total = total; return this; }
+	public DSUpdate setSource( String source ) 			 { this.source = source; return this; }
+	public DSUpdate setType( String type ) 				 { this.type = type; return this; }
+	public DSUpdate setTags( ArrayList< String > tags )  { this.tags = tags; return this; }
+	public DSUpdate setMtime( long mtime ) 				 { this.mtime = mtime; return this; }
+	public DSUpdate setLocation( Coordinate location ) 	 { this.loc = location; return this; }
+	public DSUpdate setDescription( String description ) { this.description = description; return this; }
+	public DSUpdate setTotal( long total ) 				 { this.total = total; return this; }
 	
 	public DSUpdate setLocation( double lat, double lon ) { 
 		this.loc = new Coordinate( lat, lon );
 		return this; 
+	}	
+
+	public String getTagsJSON() {
+		if ( tags == null ) return null;
+		JSONArray j = new JSONArray( tags );
+		return j.toString();
 	}
 	
-	public DSUpdate setAction( String action )
+	public String getMetaJSON() {
+		if ( meta == null ) return null;
+		JSONObject j = null;
+		j = new JSONObject( meta );
+		return j.toString();
+	}
+	
+	public String getLocationJSON() {
+		if ( loc == null ) return null;
+		JSONObject j = null;
+		j = new JSONObject( loc );
+		return j.toString();
+	}
+	
+	
+	public DSUpdate setCrud( String action )
 	throws IOException { 
 		if ( action.equals( "create" ) || 
 			 action.equals( "read" )   || 
 			 action.equals( "update" ) || 
 			 action.equals( "delete" ) ) {
-			this.action = action; 
+			this.crud = action; 
 			return this;	
 		}
 		else {
@@ -152,11 +189,11 @@ public class DSUpdate {
 		//-- mandatory fields
 		this.source = j.getString( "source" );
 		this.type = j.getString( "type" );
-		this.action = j.getString( "action" );
+		this.crud = j.getString( "crud" );
 		this.mtime = j.getLong( "mtime" );
 		
 		//-- optional fields
-		this.desc = j.has( "desc" ) ? j.getString( "desc" ) : "no description";
+		this.description = j.has( "description" ) ? j.getString( "description" ) : "no description";
 		this.total =  j.has( "total" ) ? j.getLong( "total" ) : 0;
 		
 		if ( j.has( "meta") ) {
@@ -217,8 +254,8 @@ public class DSUpdate {
 			"<DSUpdate>" + 
 				"<source>" + source + "</source>" +
 				"<type>" + type + "</type>" +
-				"<desc>" + desc + "</desc>" +
-				"<action>" + action + "</action>" +
+				"<description>" + description + "</description>" +
+				"<crud>" + crud + "</crud>" +
 				"<mtime>" + mtime + "</mtime>" +
 				"<total>" + total + "</total>" +
 				locString +

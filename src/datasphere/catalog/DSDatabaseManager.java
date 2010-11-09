@@ -1,19 +1,20 @@
 package datasphere.catalog;
 
 /*
-Copyright (c) 2010 J.Goulding 
+Copyright (C) 2010 J.Goulding, R. Mortier 
 
-Licensed under the Apache License, Version 2.0 (the "License"); 
-you may not use this file except in compliance with the License. 
-You may obtain a copy of the License at
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
 
-http://www.apache.org/licenses/LICENSE-2.0.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
 
-Unless required by applicable law or agreed to in writing, software 
-distributed under the License is distributed on an "AS IS" BASIS, 
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
-See the License for the specific language governing permissions and 
-limitations under the License. 
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 import java.sql.Connection;
@@ -30,6 +31,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import datasphere.dataware.DSException;
+import datasphere.dataware.DSUpdate;
 
 /**
  * DSDatabaseManager objects handle interaction with the catalog server's persistence
@@ -37,7 +39,7 @@ import datasphere.dataware.DSException;
  * service state. The class' interface provides both standard database functionality
  * such as connectivity management and query statement access, as well as providing 
  * utility functions such as checking the integrity of required datasphere system tables, 
- * detecting jid clashes and simplifying common gqueries. <br/>
+ * detecting jid clashes and simplifying common queries. <br/>
  * <br/>
  * Importantly the class also provides three utility methods that return the names of
  * essential system tables: {@link #getConnectionsTable()}, {@link #getUsersTable()}
@@ -58,9 +60,14 @@ public class DSDatabaseManager {
 	private String password;
 	private Driver driver;
 	
-	private static final String CONNECTIONS_TABLE 	= "DS_SYS_CONNECTIONS";
-	private static final String USERS_TABLE			= "DS_SYS_USERS";
-	private static final String UPDATES_TABLE		= "DS_SYS_UPDATES";
+	private static final String CONNECTIONS_TABLE 	= "ds_sys_connections";
+	private static final String USERS_TABLE			= "ds_sys_users";
+	private static final String UPDATES_TABLE		= "ds_sys_updates";
+	private static final String DATAWARE_TABLE		= "ds_sys_dataware";
+	
+	private static final String DEFAULT_LOGIN = "dsadmin";
+	private static final String DEFAULT_SYS_DB = "datasphere"; 
+	private static final String DEFAULT_PASSWORD = "YOUR_PASSWORD_HERE";
 	
 	//////////////////////////////////
 	
@@ -72,14 +79,18 @@ public class DSDatabaseManager {
 	 */
 	public DSDatabaseManager( 
 		String address, 
-		String login, 
-		String password,
-		Driver driver) {
+		Driver driver ) {
 		
 		this.address = address;
-		this.login = login;
-		this.password = password;
 		this.driver = driver;
+		this.login = DEFAULT_LOGIN;
+		this.password = DEFAULT_PASSWORD;
+	}
+
+	//////////////////////////////////
+	public void setPassword( String password ) {
+		this.password = password;
+		logger.info( "admin password has been specified as " + password );
 	}
 	
 	//////////////////////////////////
@@ -161,11 +172,14 @@ public class DSDatabaseManager {
 			DatabaseMetaData meta = conn.getMetaData();
 			ArrayList< String > missing = new ArrayList< String >();
 			
+			res = meta.getTables( null, null, USERS_TABLE, null );
+			if ( !res.next() ) missing.add( USERS_TABLE );
+			
 			res = meta.getTables( null, null, CONNECTIONS_TABLE, null );
 			if ( !res.next() ) missing.add( CONNECTIONS_TABLE );
 
-			res = meta.getTables(null, null, USERS_TABLE, null );
-			if ( !res.next() ) missing.add( USERS_TABLE );
+			res = meta.getTables( null, null, DATAWARE_TABLE, null );
+			if ( !res.next() ) missing.add( DATAWARE_TABLE );
 					
 			res = meta.getTables(null, null, UPDATES_TABLE, null );
 			if ( !res.next() ) missing.add( UPDATES_TABLE );
@@ -177,10 +191,9 @@ public class DSDatabaseManager {
 				for ( String s : missing ) { 
 					logger.info( ">>> [" + s + "] table missing" );
 				}
-				throw new DSException( "Required System tables are missing.\n" +
+				throw new DSException( "Required System tables are missing. " +
 						"You might want to try the '--create' flag if this is " +
-						"your first server run.\n" +
-						"Please see --help for more details." );
+						"your first server run. Please see --help for more details." );
 			}
 			
 		} catch ( SQLException e ) {
@@ -205,50 +218,72 @@ public class DSDatabaseManager {
 	 */
 	public void createSystemTables() 
 	throws DSException {
-		
+
 		try {
+			
 			Statement stmt = createStatement();
 			
 			String connectionsTableQuery = 
-				"CREATE TABLE " + CONNECTIONS_TABLE + " (" +
-				"	CONNECTIONID NUMBER NOT NULL ENABLE, " +
-				"   IPADDRESS VARCHAR2(256 BYTE) NOT NULL ENABLE, " + 
-				"   PORT NUMBER NOT NULL ENABLE, " +
-				"   TIMESTAMP NUMBER " +
+				"CREATE TABLE  `datasphere`.`" + CONNECTIONS_TABLE + "` (" +
+				"`jid` varchar(256) NOT NULL," +
+				"`ctime` bigint(20) unsigned NOT NULL," +
+				"`atime` bigint(20) unsigned NOT NULL," +
+				" PRIMARY KEY (`jid`) " +
 				")";
 			
-			String devicesTableQuery = 
-				"CREATE TABLE " + USERS_TABLE + " (" +
-				"   CONNECTIONID NUMBER NOT NULL ENABLE, " +
-				"   DEVICEID VARCHAR2(256 BYTE) NOT NULL ENABLE, " +
-				"   DEVICEID_TYPE VARCHAR2(128 BYTE) NOT NULL ENABLE, " + 
-				"   TIMESTAMP VARCHAR2(4000 BYTE) " +
+			String updatesTableQuery = 
+				"CREATE TABLE  `datasphere`.`" + USERS_TABLE + "` (" +
+				"`jid` varchar(256) NOT NULL," +
+				"`source` varchar(256) NOT NULL," +
+				"`loc` varchar(45) NOT NULL," +
+				"`description` varchar(1024) NOT NULL," +
+				"`crud` varchar(8) NOT NULL," +
+				"`total` bigint(20) unsigned NOT NULL," +
+				"`meta` text NOT NULL," +
+				"`tags` text NOT NULL," +
+				"`ctime` bigint(20) unsigned NOT NULL," +
+				"`rtime` bigint(20) unsigned NOT NULL," +
+				"`sender` varchar(256) NOT NULL," +
+				"PRIMARY KEY (`jid`)" +
 				")";
 			
-			String positionsTableQuery = 
-				"CREATE TABLE " + UPDATES_TABLE + " (" + 
-				"   DEVICEID VARCHAR2(256 BYTE) NOT NULL ENABLE, " + 
-				"   LONGITUDE NUMBER NOT NULL ENABLE, " +
-				"   LATITUDE NUMBER NOT NULL ENABLE, " +
-				"   PROVIDER VARCHAR2(128 BYTE), " +
-				"   ACCURACY NUMBER, " +
-				"   SPEED NUMBER, " +
-				"   CONDITION VARCHAR2(32 BYTE), " + 
-				"   TIMESTAMP VARCHAR2(4000 BYTE) " +
+			String usersTableQuery = 
+				"CREATE TABLE  `datasphere`.`" + UPDATES_TABLE + "` (" +
+				"`jid` varchar(256) NOT NULL," +
+				"`firstname` varchar(256) NOT NULL," +
+				"`lastname` varchar(256) NOT NULL," +
+				"`email` varchar(256) NOT NULL," +
+				"`ctime` bigint(20) unsigned NOT NULL," +
+				"`atime` bigint(20) unsigned NOT NULL," +
+				"`host` varchar(256) NOT NULL," +
+				"`service` varchar(256) NOT NULL," +
+				"`user` varchar(256) NOT NULL," +
+				"`pass` varchar(256) NOT NULL," +
+				"PRIMARY KEY (`jid`)" +
 				")";
+			
+			String datawareTableQuery = 
+				"CREATE TABLE `datasphere`.`" + DATAWARE_TABLE + "` (" +
+				"`dwid` varchar(256) NOT NULL," +
+				"`jid` varchar(256) NOT NULL," +
+				"`subscriptionStatus` varchar(16) NOT NULL," +
+				"`ctime` bigint(20) unsigned NOT NULL," +
+				"`mtime` bigint(20) unsigned NOT NULL," +
+				"PRIMARY KEY (`sid`,`jid`)" +
+				") ENGINE=InnoDB DEFAULT CHARSET=latin1";
 			
 			stmt.addBatch( connectionsTableQuery );
-			stmt.addBatch( devicesTableQuery );
-			stmt.addBatch( positionsTableQuery );
+			stmt.addBatch( usersTableQuery );
+			stmt.addBatch( updatesTableQuery );
+			stmt.addBatch( datawareTableQuery );
 			stmt.executeBatch();
 			logger.info( "Creating System Tables... [SUCCESS]" );
 			
 		} catch ( SQLException e ) {
-			logger.info( "Creating System Tables... [FAILED]" );
+			logger.severe( "Creating System Tables... [FAILED]" );
 			throw new DSException( e );
 		}
 	}
-
 	
 	//////////////////////////////////
 	
@@ -265,6 +300,7 @@ public class DSDatabaseManager {
 			stmt.addBatch( "DELETE FROM " + USERS_TABLE );
 			stmt.addBatch( "DELETE FROM " + CONNECTIONS_TABLE );
 			stmt.addBatch( "DELETE FROM " + UPDATES_TABLE );
+			stmt.addBatch( "DELETE FROM " + DATAWARE_TABLE );
 			stmt.executeBatch();
 			logger.info( "Wiping System Tables of old data... [SUCCESS]" );
 			
@@ -345,33 +381,138 @@ public class DSDatabaseManager {
 	/**
 	 * 
 	 * @return
+	 * @throws SQLException 
 	 */
-	public Map< String, DSClientBot > fetchClients() {
+	public Map< String, DSClientBot > fetchClients() 
+	throws SQLException {
 		
 		Map< String, DSClientBot > clients = new HashMap< String, DSClientBot >();
+				
+		Statement stmt = createStatement();
+		String query = "SELECT jid, user, host, service, pass FROM datasphere." + USERS_TABLE;
+		ResultSet rs = stmt.executeQuery( query );
 		
-		DSClientBot xc1 = new DSClientBot( 
-			new DSClient( 
-				"james.goulding@gmail.com",
-				"james.goulding@gmail.com",
-				"talk.google.com", 
-				"gmail.com",
-				"jim1nez" )
-			 );
-
-		DSClientBot xc2 = new DSClientBot( 
-			new DSClient( 
-				"testreceiver@jabber.org",
-				"testreceiver",
-				"jabber.org", 
-				"jabber.org",
-				"jim1nez" )
-		);
-
+		while ( rs.next() ) {
+			
+			DSClient c = new DSClient( 
+				rs.getString( "jid" ),
+				rs.getString( "user" ),
+				rs.getString( "host" ), 
+				rs.getString( "service" ),
+				rs.getString( "pass" ) );
+			 
+			clients.put( 
+				rs.getString( "jid" ),
+				new DSClientBot( c )	
+			);
+		}
 		
-		clients.put( "james.goulding@gmail.com", xc1 ); 
-		clients.put( "testreceiver@jabber.org", xc2 ); 
-
 		return clients;
-	}	
+	}
+	
+	//////////////////////////////////
+	
+	public void insertUpdate( String jid, String from, DSUpdate d ) 
+	throws DSException {
+
+		try {
+			Statement stmt = createStatement();
+			
+			String insert = "insert into datasphere." + UPDATES_TABLE + " " +
+				"( jid, source, description, crud, total, ctime, rtime, meta, tags, loc, sender ) " +
+				"values ( " +
+				"'" + jid + "'," +
+				"'" + d.getSource() + "'," +
+				"'" + d.getDesc().replace( "\'", "\\\'" ) + "'," +
+				"'" + d.getCrud() + "'," +
+				""  + d.getTotal() + "," +
+				""  + d.getMtime() + "," +
+				""  + System.currentTimeMillis() + ","; 
+		
+			if ( d.getMetaJSON() == null ) insert += "null,";
+			else insert += "'"  + d.getMetaJSON() + "',";
+						
+			if ( d.getTagsJSON() == null ) insert += "null,";
+			else insert += "'"  + d.getTagsJSON() + "',";
+		
+			if ( d.getLocationJSON() == null ) insert += "null,";
+			else insert += "'" + d.getLocationJSON() + "',";	
+			
+			insert += "'" + from + "')";
+ 
+			stmt.addBatch( insert );
+			stmt.executeBatch();
+			
+		} catch ( SQLException e ) {
+			logger.severe( "--- DSDatabaseManager: attempt to update failed..." );
+			throw new DSException( e );
+		}
+	}
+
+	//////////////////////////////////
+	
+	public String getSubscriptionStatus( String dwid ) {
+
+		String subscriptionStatus = null;
+		try {
+			Statement stmt = createStatement();
+			String query = "SELECT subscriptionStatus FROM " 
+				+ DATAWARE_TABLE + " WHERE dwid='" + dwid + "'";
+
+			ResultSet rs = stmt.executeQuery( query );
+			
+			if ( rs.next() ) 
+				subscriptionStatus = rs.getString( "subscriptionStatus" );
+
+		} catch ( SQLException e ) {
+			logger.log( Level.SEVERE, "+++ Database Manager: SQL Meltdown - ", e );
+		}
+		
+		return subscriptionStatus; 
+		
+	}
+	
+	//////////////////////////////////
+	
+	public void setSubscriptionStatus( 
+		String jid, 
+		String dwid, 
+		String subscriptionStatus ) 
+	{
+		try {
+			Statement stmt = createStatement();
+			String query = 
+					"UPDATE " + DATAWARE_TABLE + " " + 
+					"SET subscriptionStatus='" + subscriptionStatus + "' " +
+					"WHERE dwid='" + dwid + "' AND jid='" + jid + "'";
+			stmt.executeUpdate( query );
+
+		} catch ( SQLException e ) {
+			logger.log( Level.SEVERE, "+++ Database Manager: SQL Meltdown - ", e );
+		} 
+	}
+	
+	//////////////////////////////////
+	
+	public void insertDataware( 
+		String jid, 
+		String dwid, 
+		String subscriptionStatus) 
+	{
+		try {
+			Statement stmt = createStatement();
+			String query = 
+					"INSERT INTO " + DATAWARE_TABLE + " VALUES (" + 
+					"'" + dwid + "'," + 
+					"'" + jid  + "'," + 
+					"'" + subscriptionStatus + "'," +
+					System.currentTimeMillis() + "," +
+					System.currentTimeMillis() + ")";
+			System.out.println( query ); 			//*********************************
+			stmt.executeUpdate( query );
+
+		} catch ( SQLException e ) {
+			logger.log( Level.SEVERE, "+++ Database Manager: SQL Meltdown - ", e );
+		} 
+	}
 }

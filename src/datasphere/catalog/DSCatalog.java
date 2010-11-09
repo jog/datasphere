@@ -1,23 +1,25 @@
 package datasphere.catalog;
 
 /*
-Copyright (c) 2010 J.Goulding 
+Copyright (C) 2010 J.Goulding, R. Mortier 
 
-Licensed under the Apache License, Version 2.0 (the "License"); 
-you may not use this file except in compliance with the License. 
-You may obtain a copy of the License at
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
 
-http://www.apache.org/licenses/LICENSE-2.0.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
 
-Unless required by applicable law or agreed to in writing, software 
-distributed under the License is distributed on an "AS IS" BASIS, 
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
-See the License for the specific language governing permissions and 
-limitations under the License. 
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
@@ -37,7 +39,7 @@ import org.jivesoftware.smack.XMPPConnection;
 import org.jivesoftware.smack.XMPPException;
 
 import datasphere.dataware.DSException;
-import datasphere.dataware.HPLogFormatter;
+import datasphere.dataware.DSLogFormatter;
 
 
 public final class DSCatalog {
@@ -45,11 +47,11 @@ public final class DSCatalog {
 	
 	private static Logger logger = Logger.getLogger( DSCatalog.class.getName() );
 	private static Handler handler = new ConsoleHandler();   
+	public static DSDatabaseManager db = null;
 	
     private Integer serverPort = null;    
     private boolean systemWipe = false;
     private boolean systemCreate = false;
-    private DSDatabaseManager db = null;
     private boolean startable = true;
     
     private Map< String, DSClientBot > clients = 
@@ -67,17 +69,17 @@ public final class DSCatalog {
 	 */
 	public DSCatalog( 
 		Integer port, 
-		DSDatabaseManager databaseManager) 
+		DSDatabaseManager databaseManager ) 
 	{
 		//-- setup log formatting
-	    handler.setFormatter( new HPLogFormatter() );
+	    handler.setFormatter( new DSLogFormatter() );
 	    handler.setLevel( Level.FINER );
 	    logger.addHandler( handler );
 	    logger.setUseParentHandlers( false );
 	    logger.setLevel( Level.ALL );
 	    
 	    //-- initialization
-	    this.db = databaseManager;
+	    db = databaseManager;
 	    this.serverPort = port;
 	}
 	
@@ -117,15 +119,23 @@ public final class DSCatalog {
 	
 	/**
 	 * 
+	 * @throws DSException 
 	 * @throws DSException
 	 */
-	private void setupConnections() {
+	private void setupConnections() 
+	throws DSException {
 		
-		clients = db.fetchClients();
-		logger.info( "Attempting to create bots for " + clients.size() + " clients..." );
-		
-		for( Entry< String, DSClientBot > e : clients.entrySet() ) {
-			e.getValue().connect();
+		try {
+			clients = db.fetchClients();
+			
+			logger.info( "Attempting to create bots for " + clients.size() + " clients..." );
+			for( Entry< String, DSClientBot > e : clients.entrySet() ) {
+				e.getValue().connect();
+			}
+		}
+		catch ( SQLException e ) {
+			logger.info( "Attempting to retrieve data for bot creation... [FAILED]" );
+			throw new DSException( e );
 		}
 	}
 	
@@ -139,7 +149,8 @@ public final class DSCatalog {
 	throws DSException {
 		
 		//-- if no port has been supplied use the default
-		if ( this.serverPort == null ) 	this.serverPort = DEFAULT_SERVER_PORT;
+		if ( this.serverPort == null ) 	
+			this.serverPort = DEFAULT_SERVER_PORT;
 		DSClientBot.setPort( serverPort );
 		logger.info( "Setting Datasphere to communicate on port " + this.serverPort + "... [SUCCESS]" );
 		
@@ -150,9 +161,12 @@ public final class DSCatalog {
 				"A DSDatabaseManager object must be supplied" );
 		}
 				
-		/*//-- check that the database exists
+		//-- check that the database exists
 		logger.info( "Attempting to establish database connection..." );
 		db.connect();
+		
+		//-- attempt to clear the system tables if requested
+		if ( systemWipe == true ) db.clearSystemTables();
 		
 		//-- attempt system table creation if requested
 		if  ( systemCreate == true ) {
@@ -161,11 +175,6 @@ public final class DSCatalog {
 		
 		//-- check to see that table integrity is ok 
 		db.checkSystemTables();
-		
-		//-- attempt to clear the system tables if requested
-		if ( systemWipe == true ) db.clearSystemTables();
-		*/
-	
 	}
 
 	///////////////////////////////
@@ -200,7 +209,8 @@ public final class DSCatalog {
 			Options options = new Options();
 			options.addOption( "w", "wipe", false, "clears the system databases on startup" );
 			options.addOption( "d", "debug", false, "pulls up a debugger window for each XMPP connection" );
-			options.addOption( "p", "port", true, "specify the port the server listens on");
+			options.addOption( "t", "port", true, "specify the port the server listens on");
+			options.addOption( "p", "password", true, "specify the admin password for the system");
 			options.addOption( "l", "log-level", true, "specify the log level (0-1000) to display");
 			options.addOption( "c", "create", false, "Automatically generates required system tables");			
 			options.addOption( "h", "help", false, "prints this message");
@@ -228,9 +238,9 @@ public final class DSCatalog {
 			}
 			
 			//-- determine if user is attempting to create the system database
-			if ( cmd.hasOption( "debug" ) ) {
+			//if ( cmd.hasOption( "debug" ) ) {
 				XMPPConnection.DEBUG_ENABLED = true;
-			}
+			//}
 			
 			//-- check the validity of any log-level supplied
 			if ( cmd.hasOption( "log-level" ) ) {
@@ -249,9 +259,10 @@ public final class DSCatalog {
 			}
 			
 			//-- determine if a port number is being specified
-			if ( cmd.hasOption( "port" ) ) {
+			if ( cmd.hasOption( "password" ) ) {
 				try {
-					serverPort = Integer.parseInt( cmd.getOptionValue( "p" ) );
+					String password = cmd.getOptionValue( "p" );
+					db.setPassword( password );
 				}
 				catch ( NumberFormatException e ) {
 					throw new ParseException( "Invalid Port Number specified");
@@ -259,6 +270,16 @@ public final class DSCatalog {
 			}
 			
 			//-- determine if a port number is being specified
+			if ( cmd.hasOption( "port" ) ) {
+				try {
+					serverPort = Integer.parseInt( cmd.getOptionValue( "t" ) );
+				}
+				catch ( NumberFormatException e ) {
+					throw new ParseException( "Invalid Port Number specified");
+				}
+			}
+			
+			//-- determine if version information is being asked for
 			if ( cmd.hasOption( "version" ) || cmd.hasOption( "version-full" ) ) {
 				
 				//-- load config file for the server
@@ -304,14 +325,24 @@ public final class DSCatalog {
 	 * @param args 
 	 * @throws XMPPException 
 	 * @throws IOException 
+	 * @throws SQLException 
 	 */
 	public static void main( String[] args ) 
-	throws XMPPException, IOException, DSException {
+	throws XMPPException, IOException, DSException, SQLException {
+
+		//-- create a database connection
+		DSDatabaseManager dbm = new DSDatabaseManager( 
+			"jdbc:mysql://127.0.0.1:3306/datasphere", 
+			new com.mysql.jdbc.Driver() );
 		
-		DSDatabaseManager dbm = new DSDatabaseManager( null, null, null, null ); 
+		
+		//-- create an instance of the catalog
 		DSCatalog c = new DSCatalog( 5222, dbm );
 		c.setArgs( args );
+		
+		//-- and initialize the catalog if required
 		c.start();
+		
 	}
 
 }
