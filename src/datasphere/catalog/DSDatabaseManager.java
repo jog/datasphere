@@ -508,7 +508,6 @@ public class DSDatabaseManager {
 					"'" + subscriptionStatus + "'," +
 					System.currentTimeMillis() + "," +
 					System.currentTimeMillis() + ")";
-			System.out.println( query ); 			//*********************************
 			stmt.executeUpdate( query );
 
 		} catch ( SQLException e ) {
