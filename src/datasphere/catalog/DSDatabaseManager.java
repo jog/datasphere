@@ -269,7 +269,7 @@ public class DSDatabaseManager {
 				"`subscriptionStatus` varchar(16) NOT NULL," +
 				"`ctime` bigint(20) unsigned NOT NULL," +
 				"`mtime` bigint(20) unsigned NOT NULL," +
-				"PRIMARY KEY (`sid`,`jid`)" +
+				"PRIMARY KEY (`dwid`,`jid`)" +
 				") ENGINE=InnoDB DEFAULT CHARSET=latin1";
 			
 			stmt.addBatch( connectionsTableQuery );
