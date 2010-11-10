@@ -37,6 +37,8 @@ public class DSClientBot {
 			DSCatalog.class.getName() );
 	
 	private static int port = 5222;
+	private static String resource = "datasphere";
+	
 	private DSClient clientJID = null;
 	private XMPPConnection connection = null; 
 
@@ -51,11 +53,12 @@ public class DSClientBot {
 	public void connect() {
 
 		try {
+	        
 			ConnectionConfiguration connConfig = new ConnectionConfiguration( 
     		clientJID.getHost(), port, clientJID.getService() );
     		connection = new XMPPConnection( connConfig );
     		connection.connect();
-    		connection.login( clientJID.getUser(), clientJID.getPass() );
+    		connection.login( clientJID.getUser(), clientJID.getPass(), resource );
       		
 			//-- register that we manually subscribe to subscription requests
     		Roster.setDefaultSubscriptionMode( Roster.SubscriptionMode.manual );
@@ -69,7 +72,7 @@ public class DSClientBot {
 			//-- registers update listener (for dataware update messages)
 	        connection.addPacketListener( 
 	            	new DSUpdateListener( this ), 
-	            	new MessageTypeFilter( Message.Type.chat ) );
+	            	new PacketTypeFilter( Message.class ) );
 	         
 	        //-- registers iq listener (for dataware requests).
 	        connection.addPacketListener( 

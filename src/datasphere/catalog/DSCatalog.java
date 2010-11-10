@@ -49,7 +49,8 @@ public final class DSCatalog {
 	private static Handler handler = new ConsoleHandler();   
 	public static DSDatabaseManager db = null;
 	
-    private Integer serverPort = null;    
+	private Properties config = null;
+	private Integer serverPort = null;    
     private boolean systemWipe = false;
     private boolean systemCreate = false;
     private boolean startable = true;
@@ -81,6 +82,26 @@ public final class DSCatalog {
 	    //-- initialization
 	    db = databaseManager;
 	    this.serverPort = port;
+	    
+	    /*
+	    //-- load config file for the server
+		config = new Properties();
+		InputStream configStream = getClass()
+								   .getClassLoader()
+								   .getResourceAsStream( "ramp/ramp.cfg" );
+			
+	    //-- if it exists extract the properties contained within		
+		if ( configStream != null ) {
+			try {
+				config.load( configStream );
+		 		configStream.close();	
+	            RAMPMain.logger.config( "RAMP Config File - successfully loaded"); 		 		
+			} catch ( IOException e ) {
+				RAMPMain.logger.warning( "RAMP Config File - failure: INVALID SYNTAX" ); 					
+			}
+		} else {
+			RAMPMain.logger.warning( "RAMP Config File - failure: MISSING FILE" );
+		}*/
 	}
 	
 	///////////////////////////////
