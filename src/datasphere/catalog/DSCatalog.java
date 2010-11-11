@@ -83,25 +83,26 @@ public final class DSCatalog {
 	    db = databaseManager;
 	    this.serverPort = port;
 	    
-	    /*
+	
 	    //-- load config file for the server
 		config = new Properties();
 		InputStream configStream = getClass()
 								   .getClassLoader()
-								   .getResourceAsStream( "ramp/ramp.cfg" );
+								   .getResourceAsStream( "datasphere/catalog/ds.cfg" );
 			
 	    //-- if it exists extract the properties contained within		
 		if ( configStream != null ) {
 			try {
 				config.load( configStream );
 		 		configStream.close();	
-	            RAMPMain.logger.config( "RAMP Config File - successfully loaded"); 		 		
+	            logger.config( "loading configuration file... [SUCCESS]"); 		 		
 			} catch ( IOException e ) {
-				RAMPMain.logger.warning( "RAMP Config File - failure: INVALID SYNTAX" ); 					
+				logger.config( "loading configuration file... [FAILED]");
+				logger.warning( "config file has invalid syntax. continuing with defaults." ); 					
 			}
 		} else {
-			RAMPMain.logger.warning( "RAMP Config File - failure: MISSING FILE" );
-		}*/
+			logger.config( "no configuration file detected. continuing with defaults... [SUCCESS]");
+		}
 	}
 	
 	///////////////////////////////
@@ -244,7 +245,7 @@ public final class DSCatalog {
 			//-- automatically generate the help statement
 			if ( cmd.hasOption( "help" ) ) {
 				HelpFormatter formatter = new HelpFormatter();
-				formatter.printHelp( "hyperplace.server", options );
+				formatter.printHelp( "DSCatalog.jar", options );
 				startable = false;
 			}
 			
@@ -286,7 +287,7 @@ public final class DSCatalog {
 					db.setPassword( password );
 				}
 				catch ( NumberFormatException e ) {
-					throw new ParseException( "Invalid Port Number specified");
+					throw new ParseException( "Invalid password specified");
 				}
 			}
 			
