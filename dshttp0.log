@@ -1,0 +1,2 @@
+2010-11-24 18:56:08 [INFO]    Starting the internal HTTP server on port 80
+2010-11-24 18:56:14 [INFO]    2010-11-24	18:56:14	127.0.0.1	-	-	80	GET	/source_history	jid=james.goulding@gmail.com&ns=ds:facebook	200	9563	0	297	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=testsender

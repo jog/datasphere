@@ -19,11 +19,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Properties;
-import java.util.Map.Entry;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Handler;
 import java.util.logging.Level;
@@ -36,73 +32,90 @@ import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 import org.apache.commons.cli.PosixParser;
 import org.jivesoftware.smack.XMPPConnection;
-import org.jivesoftware.smack.XMPPException;
 
+import datasphere.catalog.http.DSWebServer;
+import datasphere.catalog.xmpp.DSChatServer;
 import datasphere.dataware.DSException;
 import datasphere.dataware.DSLogFormatter;
 
 
 public final class DSCatalog {
 
+	public static final int XMPP = 0;
+	public static final int HTTP = 1;
+	public static final int ALL_PROTOCOLS = 2;
 	
 	private static Logger logger = Logger.getLogger( DSCatalog.class.getName() );
 	private static Handler handler = new ConsoleHandler();   
-	public static DSDatabaseManager db = null;
 	
+	public static DSDataManager db = null;
 	private Properties config = null;
-	private Integer serverPort = null;    
+	
+	private Integer httpPort = null;
+	private Integer xmppPort = null;
+	
+	private boolean httpStartable = true;
+    private boolean xmppStartable = true;
+    
+    private DSWebServer httpServer = null;
+    private DSChatServer xmppServer = null;
+	
     private boolean systemWipe = false;
     private boolean systemCreate = false;
-    private boolean startable = true;
-    
-    private Map< String, DSClientBot > clients = 
-    	new HashMap< String, DSClientBot >();
 
+    ///////////////////////////////
 	
-	private int DEFAULT_SERVER_PORT = 5222;
+	/**
+	 * @param databaseManager The database object which manages persistence for the game.
+	 */
+	public DSCatalog( DSDataManager databaseManager ) {
+	    db = databaseManager;
+	    setupLogging();
+	    setupConfiguration();
+	}
 	
 	///////////////////////////////
 	
 	/**
-	 * @param port The port that the server will be listening on (default is 7474).
-	 * @param databaseManager The database object which manages persistence for the game.
-	 * @exception BadPortAddress thrown if the arguments are of an incorrect format.		 
+	 * setup log formatting
 	 */
-	public DSCatalog( 
-		Integer port, 
-		DSDatabaseManager databaseManager ) 
-	{
-		//-- setup log formatting
+	public void setupLogging() {
+
 	    handler.setFormatter( new DSLogFormatter() );
 	    handler.setLevel( Level.FINER );
 	    logger.addHandler( handler );
 	    logger.setUseParentHandlers( false );
-	    logger.setLevel( Level.ALL );
-	    
-	    //-- initialization
-	    db = databaseManager;
-	    this.serverPort = port;
-	    
+	    logger.setLevel( Level.FINER );
+	}
 	
-	    //-- load config file for the server
+	///////////////////////////////
+	
+	/**
+	 * load config file for the server
+	 */
+	public void setupConfiguration() {   
+		
 		config = new Properties();
 		InputStream configStream = getClass()
-								   .getClassLoader()
-								   .getResourceAsStream( "datasphere/catalog/ds.cfg" );
+			 .getClassLoader()
+			.getResourceAsStream( "datasphere/catalog/ds.cfg" );
 			
 	    //-- if it exists extract the properties contained within		
+		
 		if ( configStream != null ) {
+			
 			try {
 				config.load( configStream );
 		 		configStream.close();	
-	            logger.config( "loading configuration file... [SUCCESS]"); 		 		
+	            logger.config( "--- DSCatalog: loading configuration file... [SUCCESS]"); 		
+	            
 			} catch ( IOException e ) {
-				logger.config( "loading configuration file... [FAILED]");
-				logger.warning( "config file has invalid syntax. continuing with defaults." ); 					
+				logger.config( "--- DSCatalog: loading configuration file... [FAILED]");
+				logger.warning( "--- DSCatalog: config file has invalid syntax. continuing with defaults." ); 		
+		
 			}
-		} else {
+		} else 
 			logger.config( "no configuration file detected. continuing with defaults... [SUCCESS]");
-		}
 	}
 	
 	///////////////////////////////
@@ -120,85 +133,92 @@ public final class DSCatalog {
 	public void start() 
 	throws DSException {
 		
-		if ( startable ) {
-		
-			try {
-				initialize();
-				setupConnections();
-				
-				//-- main loop
-				logger.info( "Datasphere setup and ready for service..." );
-				for(;;);
-				
-			} catch ( DSException e ) {
-				logger.severe( "Datasphere System Initialization... [FAILED]" );
-				throw e;
-			}
-		}
-	}
-
-	///////////////////////////////
-	
-	/**
-	 * 
-	 * @throws DSException 
-	 * @throws DSException
-	 */
-	private void setupConnections() 
-	throws DSException {
-		
-		try {
-			clients = db.fetchClients();
-			
-			logger.info( "Attempting to create bots for " + clients.size() + " clients..." );
-			for( Entry< String, DSClientBot > e : clients.entrySet() ) {
-				e.getValue().connect();
-			}
-		}
-		catch ( SQLException e ) {
-			logger.info( "Attempting to retrieve data for bot creation... [FAILED]" );
-			throw new DSException( e );
-		}
-	}
-	
-	///////////////////////////////
-	
-	/**
-	 * 
-	 * @throws DSException
-	 */
-	private void initialize() 
-	throws DSException {
-		
-		//-- if no port has been supplied use the default
-		if ( this.serverPort == null ) 	
-			this.serverPort = DEFAULT_SERVER_PORT;
-		DSClientBot.setPort( serverPort );
-		logger.info( "Setting Datasphere to communicate on port " + this.serverPort + "... [SUCCESS]" );
-		
 		//-- check that the server has been supplied with a persistence layer
 		if ( db == null ) {
-			logger.severe( "Checking persistence layer... [FAILED]" );
+			logger.severe( "--- DSCatalog: Checking persistence layer... [FAILED]" );
 			throw new DSException("Insufficient parameters - " +
 				"A DSDatabaseManager object must be supplied" );
 		}
 				
 		//-- check that the database exists
-		logger.info( "Attempting to establish database connection..." );
+		logger.info( "--- DSCatalog: Establishing database connection and consistency..." );
 		db.connect();
 		
 		//-- attempt to clear the system tables if requested
-		if ( systemWipe == true ) db.clearSystemTables();
+		if ( systemWipe == true ) 
+			db.clearSystemTables();
 		
 		//-- attempt system table creation if requested
-		if  ( systemCreate == true ) {
+		if  ( systemCreate == true ) 
 			db.createSystemTables();
-		} 
 		
 		//-- check to see that table integrity is ok 
 		db.checkSystemTables();
-	}
 
+		//-- start the servers up and running
+		logger.info( "--- DSCatalog: Attempting to start server components..." );
+		startHTTP();
+		startXMPP();
+		
+		//-- announce success
+		if ( xmppServer != null && httpServer != null ) { 
+			logger.info( "Datasphere setup and ready for FULL service..." );
+		}
+		else if ( xmppServer != null || httpServer != null ) {
+			logger.info( "Datasphere setup and ready for \"partial\" service..." );
+		}
+		else if ( xmppServer != null || httpServer != null ) {
+			logger.info( "Datasphere setup failed. No service is available." );
+		}
+	}
+	
+	///////////////////////////////
+	
+	/**
+	 * create an instance of the http server
+	 * @throws DSException
+	 */
+	public void startHTTP() 
+	throws DSException {
+
+		if ( httpStartable ) {
+			try {
+				httpServer = new DSWebServer( httpPort );
+				httpServer.start();
+				logger.info( "--- DSCatalog: HTTP server setup...[SUCCESS]" );
+				
+			} catch( Exception e ) {
+				logger.severe( "--- DSCatalog: HTTP server setup...[FAILED]" );
+				e.printStackTrace();
+				httpServer = null;
+			}
+		}
+	}
+	
+	///////////////////////////////
+	
+	/**
+	 * create an instance of the xmpp server
+	 * @throws DSException
+	 */
+	public void startXMPP() 
+	throws DSException {
+
+		if ( xmppStartable ) {
+			try {
+				xmppServer = new DSChatServer( xmppPort );
+				xmppServer.start();
+				logger.info( "--- DSCatalog: XMPP server setup...[SUCCESS]" );
+				
+			} catch ( DSException e ) {
+				logger.severe( "--- DSCatalog: XMPP server setup...[FAILED]" );
+				e.printStackTrace();
+				xmppServer = null;
+			}
+
+		}
+	}
+	
 	///////////////////////////////
 	
 	/**
@@ -208,14 +228,32 @@ public final class DSCatalog {
 	 * @param level The minimum level for which log messages will be displayed. 
 	 */
 	public void setLoggingLevel( Level level ) {
-		
 		handler.setLevel( level );
 	    logger.setLevel( level );
 	}
 	
-	
 	///////////////////////////////
 	
+	/**
+	 * 
+	 */
+	public void setStartable( int protocol ) {
+
+		if ( protocol == XMPP ) {
+			xmppStartable = true;
+			httpStartable = false;
+		}
+		else if ( protocol == HTTP ) {
+			xmppStartable = false;
+			httpStartable = true;
+		}
+		else if ( protocol == ALL_PROTOCOLS ) {
+			xmppStartable = true;
+			httpStartable = true;
+		}
+	}
+	
+	///////////////////////////////
 	
 	/**
 	 * Allows command line arguments to be passed into the framework - any parameters 
@@ -231,7 +269,8 @@ public final class DSCatalog {
 			Options options = new Options();
 			options.addOption( "w", "wipe", false, "clears the system databases on startup" );
 			options.addOption( "d", "debug", false, "pulls up a debugger window for each XMPP connection" );
-			options.addOption( "t", "port", true, "specify the port the server listens on");
+			options.addOption( "x", "xmpp", true, "specify the port the xmpp server listens on. default is 5222");
+			options.addOption( "t", "http", true, "specify the port the http server listens on. default is 80");
 			options.addOption( "p", "password", true, "specify the admin password for the system");
 			options.addOption( "l", "log-level", true, "specify the log level (0-1000) to display");
 			options.addOption( "c", "create", false, "Automatically generates required system tables");			
@@ -246,7 +285,8 @@ public final class DSCatalog {
 			if ( cmd.hasOption( "help" ) ) {
 				HelpFormatter formatter = new HelpFormatter();
 				formatter.printHelp( "DSCatalog.jar", options );
-				startable = false;
+				xmppStartable = false;
+				httpStartable = false;
 			}
 			
 			//-- determine if system databases should be cleaned
@@ -291,13 +331,24 @@ public final class DSCatalog {
 				}
 			}
 			
-			//-- determine if a port number is being specified
-			if ( cmd.hasOption( "port" ) ) {
+			//-- determine if an xmpp port number is being specified
+			if ( cmd.hasOption( "xmpp" ) ) {
 				try {
-					serverPort = Integer.parseInt( cmd.getOptionValue( "t" ) );
+					xmppPort = Integer.parseInt( cmd.getOptionValue( "x" ) );
 				}
 				catch ( NumberFormatException e ) {
-					throw new ParseException( "Invalid Port Number specified");
+					throw new ParseException( "Invalid XMPP Port Number specified");
+				}
+			}
+			
+			
+			//-- determine if an xmpp port number is being specified
+			if ( cmd.hasOption( "http" ) ) {
+				try {
+					httpPort = Integer.parseInt( cmd.getOptionValue( "t" ) );
+				}
+				catch ( NumberFormatException e ) {
+					throw new ParseException( "Invalid HTTP Port Number specified");
 				}
 			}
 			
@@ -328,7 +379,8 @@ public final class DSCatalog {
 					System.out.println( "version: information cannot be found" );
 				}
 				
-				startable = false;
+				xmppStartable = false;
+				httpStartable = false;
 			}
 			
 		} catch ( ParseException e ) {
@@ -338,33 +390,4 @@ public final class DSCatalog {
 				"Try '--help' for more information" );
 		}
 	}
-	
-	
-	
-	///////////////////////////////
-	
-	/**
-	 * @param args 
-	 * @throws XMPPException 
-	 * @throws IOException 
-	 * @throws SQLException 
-	 */
-	public static void main( String[] args ) 
-	throws XMPPException, IOException, DSException, SQLException {
-
-		//-- create a database connection
-		DSDatabaseManager dbm = new DSDatabaseManager( 
-			"jdbc:mysql://127.0.0.1:3306/datasphere", 
-			new com.mysql.jdbc.Driver() );
-		
-		
-		//-- create an instance of the catalog
-		DSCatalog c = new DSCatalog( 5222, dbm );
-		c.setArgs( args );
-		
-		//-- and initialize the catalog if required
-		c.start();
-		
-	}
-
 }

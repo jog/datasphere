@@ -19,63 +19,102 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 public class DSClient {
 
-	private String JID;
-	private String user;
-	private String service;
-	private String pass;
+	private String jid;
+	private String firstname; 
+	private String lastname; 
+	private String email; 
+	private long ctime; 
+	private long atime;
 	private String host;
+	private String service; 
+	private String user;
+	private String password;
 	
 	///////////////////////////////
 	
-	public DSClient( 
-		String JID, 
-		String user, 
-		String host, 
-		String service, 
-		String pass ) 
-	{
-		this.JID = JID;
-		this.user = user;
-		this.host = host;
-		this.service = service;
-		this.pass = pass;
+	public String getJid() {
+		return jid;
 	}
-	
+
 	///////////////////////////////
 	
-	public String getService() {
-		return service;
+	public String getFirstname() {
+		return firstname;
 	}
-	
+
 	///////////////////////////////
 	
-	public String getUser() {
-		return user;
+	public String getLastname() {
+		return lastname;
 	}
-	
+
 	///////////////////////////////
 	
-	public String getJID() {
-		return JID;
+	public String getEmail() {
+		return email;
 	}
-	
+
 	///////////////////////////////
 	
-	public String getPass() {
-		return pass;
+	public long getCtime() {
+		return ctime;
 	}
+
+	///////////////////////////////
 	
+	public long getAtime() {
+		return atime;
+	}
+
 	///////////////////////////////
 	
 	public String getHost() {
 		return host;
 	}
-	
-	///////////////////////////////
 
-	@Override
-	public String toString() {
-		return "DSClient [JID=" + JID + ", host=" + host + ", pass=" + pass
-				+ ", service=" + service + ", user=" + user + "]";
-	}	
+	///////////////////////////////
+	
+	public String getService() {
+		return service;
+	}
+
+	///////////////////////////////
+	
+	public String getUser() {
+		return user;
+	}
+
+	///////////////////////////////
+	
+	public String getPassword() {
+		return password;
+	}
+
+	///////////////////////////////
+	
+	public DSClient( 
+		String jid, 
+		String firstname, 
+		String lastname, 
+		String email, 
+		long ctime, 
+		long atime, 
+		String host, 
+		String service, 
+		String user, 
+		String password ) 
+	{
+		this.jid = jid; 
+		this.firstname = firstname;  
+		this.lastname = lastname;  
+		this.email = email;  
+		this.ctime = ctime;  
+		this.atime = atime;  
+		this.host = host;  
+		this.service = service;  
+		this.user = user;  
+		this.password = password; 
+	}
+	
+
 }

@@ -9,5 +9,8 @@
 	<classpathentry kind="lib" path="lib/smackx-debug.jar"/>
 	<classpathentry kind="lib" path="lib/commons-cli-1.2.jar"/>
 	<classpathentry kind="lib" path="lib/mysql-connector-java-5.1.13-bin.jar"/>
+	<classpathentry kind="lib" path="lib/org.restlet.jar"/>
+	<classpathentry kind="lib" path="lib/freemarker.jar"/>
+	<classpathentry kind="lib" path="lib/org.restlet.ext.json.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
