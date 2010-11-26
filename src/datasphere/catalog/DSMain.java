@@ -20,7 +20,7 @@ public class DSMain {
 		catalog.setStartable( DSCatalog.ALL_PROTOCOLS );
 		catalog.setArgs( args );
 		
-		//-- and initialize the catalog if required
+		//-- and finally start it running
 		catalog.start();
 	}	
 }

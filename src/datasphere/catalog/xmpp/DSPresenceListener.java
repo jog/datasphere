@@ -95,7 +95,7 @@ implements PacketListener {
 		try {
 			//-- obtain the namespace of the source from the presence "nickname"
 			DSNickname ex = (DSNickname) p.getExtension( "http://jabber.org/protocol/nick" );
-			String nick = ( ex != null ) ? ex.getNick() : null;
+			String nick = ( ex != null ) ? ex.getNick() : "ds:facebook";
 			
 			//-- if none has been supplied we reject the request.
 			if ( nick == null ) 
@@ -142,7 +142,7 @@ implements PacketListener {
 		} catch ( DSFormatException e ) {
 			logger.fine( "--- DSPresenceListener: " +
 				"[" + parent.getJid() + "] " +
-				"Rejecting dataware subscription due missing namespace. " +
+				"Rejecting dataware subscription due to missing namespace. " +
 				"(" + p.getFrom() + ") ");
 			rejectSubscription( p.getFrom() );
 		}

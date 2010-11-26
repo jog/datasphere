@@ -543,7 +543,7 @@ public class DSDataManager {
 		
 		Statement stmt = createStatement();
 		String query = "SELECT * FROM " + DEFAULT_SYS_DB + "." + 
-			USERS_TABLE + " " +	"WHERE user='" + jid + "'";
+			USERS_TABLE + " " +	"WHERE jid='" + jid + "'";
 		ResultSet rs = stmt.executeQuery( query );
 		
 		if ( rs.next() ) {

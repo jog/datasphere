@@ -20,7 +20,7 @@
 		</div>
 		<div class="box">
 			<#list activeSubs as activeSub>
-				<a href="http://localhost/source_history?jid=${ user.getJid() }&ns=${ activeSub.getNamespace() }">
+				<a href="/source_history?jid=${ user.getJid() }&ns=${ activeSub.getNamespace() }">
 				<img class="dwicon" src="/static/images/icons/${ activeSub.getIcon() }"/></a>
 			</#list>
 		</div>
@@ -33,7 +33,7 @@
 		</div>
 		<div class="box">
 			<#list pendingSubs as activeSub>
-				<a href="http://localhost/source_history?jid=${ user.getJid() }&ns=${ activeSub.getNamespace() }">
+				<a href="/source_history?jid=${ user.getJid() }&ns=${ activeSub.getNamespace() }">
 				<img class="dwicon" src="/static/images/icons/${ activeSub.getIcon() }"/></a>
 			</#list>
 		</div>
@@ -63,6 +63,9 @@
 			<img class="dwicon" src="/static/images/icons/gtalk.jpg"/>
 			<img class="dwicon" src="/static/images/icons/gowalla.jpg"/>
 			<img class="dwicon" src="/static/images/icons/foursquare.jpg"/>
+			<a href="http://data-chant.appspot.com/main">
+				<img class="dwicon" src="/static/images/icons/facebook.jpg"/>
+			</a>
 		</div>
 		<div class="more">
 			<a href="">see all...</a>

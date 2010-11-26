@@ -1,10 +1,7 @@
 package datasphere.catalog.http;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.logging.ConsoleHandler;
 import java.util.logging.FileHandler;
-import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -20,13 +17,6 @@ import freemarker.template.Template;
 public class DSWebServer extends Component {
 
 	private static Logger logger = Logger.getLogger( "org.restlet" );
-	private static String STATIC_DIR = 
-		"C:\\HyperPlace\\datasphere\\static\\resources\\";
-	
-	@SuppressWarnings("unused")
-	private static String IMAGES_DIR = STATIC_DIR + "images";
-	private static String TEMPLATES_DIR = STATIC_DIR + "templates";
-	
 	public static Configuration cfg = null;
 	private Integer serverPort;
 	private int DEFAULT_SERVER_PORT = 80;
@@ -42,11 +32,12 @@ public class DSWebServer extends Component {
 	    fileHandler.setFormatter( new DSLogFormatter() );
 	    logger.addHandler( fileHandler );
 	    
-	    Handler handler = new ConsoleHandler();
+	    /** 
+	    DEBUG  Handler handler = new ConsoleHandler();
 	    handler.setFormatter( new DSWebLogFormatter() );
 	    handler.setLevel( Level.FINER );
 	    logger.addHandler( handler );
-	    
+	    */
 	    logger.setUseParentHandlers( false );
 	    logger.setLevel( Level.INFO );
 	}
@@ -78,28 +69,27 @@ public class DSWebServer extends Component {
 		
 		//-- add a new server connector to the component
 		getServers().add( Protocol.HTTP, serverPort );
-		//getClients().add( Protocol.FILE ); 
 		getClients().add( Protocol.CLAP );
 		
 		//-- using the default virtual host, create url routing
 		getDefaultHost().attach( "/user_history", UserHistoryPage.class );
 		getDefaultHost().attach( "/source_history", SourceHistoryPage.class );
 		getDefaultHost().attach( "/subscription", SetSourceSubscription.class );
+		getDefaultHost().attach( "/static/", new Directory( 
+			getContext().createChildContext(), "clap://system/resources/" ) );
 		
-		getDefaultHost().attach( 
-			"/static/", 
-			new Directory( 
-				getContext().createChildContext(), 
-				"file:///" + STATIC_DIR
-			)
-		);
-		
-	    
 		//-- setup the freemarker configuration files
 		cfg = new Configuration();
-		//-- cfg.setClassForTemplateLoading(this.getClass(), "../../../resources/templates" );
-		cfg.setDirectoryForTemplateLoading(	new File( TEMPLATES_DIR ) );
+		cfg.setClassForTemplateLoading( this.getClass(), "/resources/templates" );
 		cfg.setObjectWrapper( new DefaultObjectWrapper() );  
+
+		//-- DEBUG (used on local machine) 
+		//-- getClients().add( Protocol.FILE ); 
+		//-- getDefaultHost().attach( "/static/", new Directory( 
+		//--	getContext().createChildContext(),
+		//--	"file:///C:\\HyperPlace\\datasphere\\static\\resources\\" )
+		//-- );
+		//-- cfg.setDirectoryForTemplateLoading(	new File( TEMPLATES_DIR ) );
 
 		//-- start the component proper
 		super.start();

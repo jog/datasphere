@@ -92,7 +92,7 @@
 		</div>			
 	</div>
 	
-	<#if status == "COMPLETED" >
+	<#if status == "COMPLETED" || status == "RESPONDED" >
 	<div style="height:20px; margin-top:12px; margin-bottom:-8px;">
 		<div style="float:right;"> 
 		${ paginator.generateHTML() }

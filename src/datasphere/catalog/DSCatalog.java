@@ -71,7 +71,6 @@ public final class DSCatalog {
 	public DSCatalog( DSDataManager databaseManager ) {
 	    db = databaseManager;
 	    setupLogging();
-	    setupConfiguration();
 	}
 	
 	///////////////////////////////
@@ -133,6 +132,13 @@ public final class DSCatalog {
 	public void start() 
 	throws DSException {
 		
+		//-- check that we actually have something to start up
+		if ( !( httpStartable || xmppStartable ) )
+			return;
+
+		//-- setup configuration files
+	    setupConfiguration();
+	    
 		//-- check that the server has been supplied with a persistence layer
 		if ( db == null ) {
 			logger.severe( "--- DSCatalog: Checking persistence layer... [FAILED]" );
@@ -140,7 +146,7 @@ public final class DSCatalog {
 				"A DSDatabaseManager object must be supplied" );
 		}
 				
-		//-- check that the database exists
+		//-- check whether that database actually exists
 		logger.info( "--- DSCatalog: Establishing database connection and consistency..." );
 		db.connect();
 		
@@ -157,8 +163,9 @@ public final class DSCatalog {
 
 		//-- start the servers up and running
 		logger.info( "--- DSCatalog: Attempting to start server components..." );
-		startHTTP();
-		startXMPP();
+		
+		if ( httpStartable ) startHTTP();
+		if ( xmppStartable ) startXMPP();
 		
 		//-- announce success
 		if ( xmppServer != null && httpServer != null ) { 
@@ -168,10 +175,10 @@ public final class DSCatalog {
 			logger.info( "Datasphere setup and ready for \"partial\" service..." );
 		}
 		else if ( xmppServer != null || httpServer != null ) {
-			logger.info( "Datasphere setup failed. No service is available." );
+			logger.info( "Datasphere startup failed. No service is available." );
 		}
 	}
-	
+
 	///////////////////////////////
 	
 	/**
@@ -287,6 +294,39 @@ public final class DSCatalog {
 				formatter.printHelp( "DSCatalog.jar", options );
 				xmppStartable = false;
 				httpStartable = false;
+				return;
+			}
+			
+			//-- determine if version information is being asked for
+			if ( cmd.hasOption( "version" ) || cmd.hasOption( "version-full" ) ) {
+				
+				//-- load config file for the server
+				Properties v = new Properties();
+				InputStream is = getClass().
+								 getClassLoader().
+								 getResourceAsStream( "version.info" );
+				
+				//-- if it exists extract the properties contained within		
+				if ( is != null ) {
+					try {
+						v.load( is );
+						is.close();	
+						System.out.println( "version:  datasphere.catalog " + v.getProperty("version") );
+						if ( cmd.hasOption( "version-full" ) ) {
+							System.out.println("compiler: " + v.getProperty("compiled-by") );
+							System.out.println("built:    " + v.getProperty("build-time") + "");
+							System.out.println("Java: 	  " + v.getProperty("java-version") );
+						}
+					} catch ( IOException e ) {
+						System.out.println( "version: information cannot be loaded" );						 					
+					}
+				} else {
+					System.out.println( "version: information cannot be found" );
+				}
+				
+				xmppStartable = false;
+				httpStartable = false;
+				return;
 			}
 			
 			//-- determine if system databases should be cleaned
@@ -300,9 +340,9 @@ public final class DSCatalog {
 			}
 			
 			//-- determine if user is attempting to create the system database
-			//if ( cmd.hasOption( "debug" ) ) {
+			if ( cmd.hasOption( "debug" ) ) {
 				XMPPConnection.DEBUG_ENABLED = true;
-			//}
+			}
 			
 			//-- check the validity of any log-level supplied
 			if ( cmd.hasOption( "log-level" ) ) {
@@ -350,37 +390,6 @@ public final class DSCatalog {
 				catch ( NumberFormatException e ) {
 					throw new ParseException( "Invalid HTTP Port Number specified");
 				}
-			}
-			
-			//-- determine if version information is being asked for
-			if ( cmd.hasOption( "version" ) || cmd.hasOption( "version-full" ) ) {
-				
-				//-- load config file for the server
-				Properties v = new Properties();
-				InputStream is = getClass().
-								 getClassLoader().
-								 getResourceAsStream( "version.info" );
-				
-				//-- if it exists extract the properties contained within		
-				if ( is != null ) {
-					try {
-						v.load( is );
-						is.close();	
-						System.out.println( "version:  datasphere.catalog " + v.getProperty("version") );
-						if ( cmd.hasOption( "version-full" ) ) {
-							System.out.println("compiler: " + v.getProperty("compiled-by") );
-							System.out.println("built:    " + v.getProperty("build-time") + "");
-							System.out.println("Java: 	  " + v.getProperty("java-version") );
-						}
-					} catch ( IOException e ) {
-						System.out.println( "version: information cannot be loaded" );						 					
-					}
-				} else {
-					System.out.println( "version: information cannot be found" );
-				}
-				
-				xmppStartable = false;
-				httpStartable = false;
 			}
 			
 		} catch ( ParseException e ) {

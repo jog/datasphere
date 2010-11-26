@@ -81,7 +81,7 @@ public class Paginator {
 		 		str += numberHTML( finalPage );
 		
 		 	if ( currentPage < finalPage )
-				str += "<li class='pageDir'><a href='?&page=" + (currentPage + 1) + "&" + parameters + "'>next &#187;</a></li>";
+				str += "<li class='pageDir'><a href='?page=" + (currentPage + 1) + "&" + parameters + "'>next &#187;</a></li>";
 		}
 		
 		str += "</ul>";

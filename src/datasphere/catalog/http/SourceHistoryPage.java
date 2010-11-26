@@ -96,7 +96,9 @@ extends DSServerResource {
 		
 		if ( 
 			subscription != null && 
-			subscription.hasStatus( DSSub.Status.COMPLETED ) ) 
+			( subscription.hasStatus( DSSub.Status.COMPLETED ) ||
+			  subscription.hasStatus( DSSub.Status.RESPONDED ) ) 
+			) 
 		{
 			int page = 0;
 			try { page = Integer.parseInt( form.getFirstValue( "page" ) );

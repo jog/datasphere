@@ -51,7 +51,8 @@ extends DSServerResource {
 			data.put( "activeSubs",  
 				DSCatalog.db.fetchSources( 
 					user.getJid(), 
-					DSSub.Status.COMPLETED 
+					DSSub.Status.COMPLETED ,
+					DSSub.Status.RESPONDED 
 				)
 			);
 			
@@ -59,7 +60,8 @@ extends DSServerResource {
 			data.put( "pendingSubs", 
 				DSCatalog.db.fetchSources( 
 					user.getJid(), 
-					DSSub.Status.RECEIVED
+					DSSub.Status.RECEIVED,
+					DSSub.Status.ACCEPTED
 				) 
 			);
 			
