@@ -32,6 +32,7 @@ import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 import org.apache.commons.cli.PosixParser;
 import org.jivesoftware.smack.XMPPConnection;
+import org.restlet.data.Protocol;
 
 import datasphere.catalog.http.DSWebServer;
 import datasphere.catalog.xmpp.DSChatServer;
@@ -51,8 +52,8 @@ public final class DSCatalog {
 	public static DSDataManager db = null;
 	private Properties config = null;
 	
-	private Integer httpPort = null;
-	private Integer xmppPort = null;
+	private Integer httpPort = 80;
+	private Integer xmppPort = 5222;
 	
 	private boolean httpStartable = true;
     private boolean xmppStartable = true;
@@ -62,7 +63,8 @@ public final class DSCatalog {
 	
     private boolean systemWipe = false;
     private boolean systemCreate = false;
-
+    private boolean isRunning = false;
+    
     ///////////////////////////////
 	
 	/**
@@ -96,11 +98,10 @@ public final class DSCatalog {
 		
 		config = new Properties();
 		InputStream configStream = getClass()
-			 .getClassLoader()
+			.getClassLoader()
 			.getResourceAsStream( "datasphere/catalog/ds.cfg" );
 			
 	    //-- if it exists extract the properties contained within		
-		
 		if ( configStream != null ) {
 			
 			try {
@@ -114,7 +115,7 @@ public final class DSCatalog {
 		
 			}
 		} else 
-			logger.config( "no configuration file detected. continuing with defaults... [SUCCESS]");
+			logger.config( "--- DSCatalog: no configuration file detected. continuing with defaults... [SUCCESS]");
 	}
 	
 	///////////////////////////////
@@ -135,20 +136,29 @@ public final class DSCatalog {
 		//-- check that we actually have something to start up
 		if ( !( httpStartable || xmppStartable ) )
 			return;
-
+		else 
+			this.isRunning = true;
+		
 		//-- setup configuration files
 	    setupConfiguration();
 	    
 		//-- check that the server has been supplied with a persistence layer
 		if ( db == null ) {
 			logger.severe( "--- DSCatalog: Checking persistence layer... [FAILED]" );
-			throw new DSException("Insufficient parameters - " +
+			throw new DSException( "Insufficient parameters - " +
 				"A DSDatabaseManager object must be supplied" );
 		}
 				
 		//-- check whether that database actually exists
-		logger.info( "--- DSCatalog: Establishing database connection and consistency..." );
-		db.connect();
+		try {
+			logger.info( "Establishing database connection and checking integrity..." );
+			db.connect();
+		} 
+		catch ( DSException e ) {
+			logger.info( "--- DSCatalog: Unable to connect to database. " +
+				"Make sure you have specified the correct password via -p or your config file." );
+			return;
+		}
 		
 		//-- attempt to clear the system tables if requested
 		if ( systemWipe == true ) 
@@ -162,7 +172,7 @@ public final class DSCatalog {
 		db.checkSystemTables();
 
 		//-- start the servers up and running
-		logger.info( "--- DSCatalog: Attempting to start server components..." );
+		logger.info( "Attempting to start server components..." );
 		
 		if ( httpStartable ) startHTTP();
 		if ( xmppStartable ) startXMPP();
@@ -177,6 +187,14 @@ public final class DSCatalog {
 		else if ( xmppServer != null || httpServer != null ) {
 			logger.info( "Datasphere startup failed. No service is available." );
 		}
+		
+		while ( isRunning );
+	}
+
+	///////////////////////////////
+	
+	public void pleaseStop() {
+		this.isRunning = false;
 	}
 
 	///////////////////////////////
@@ -191,9 +209,10 @@ public final class DSCatalog {
 		if ( httpStartable ) {
 			try {
 				httpServer = new DSWebServer( httpPort );
+				httpServer.useProtocol( Protocol.CLAP );
 				httpServer.start();
 				logger.info( "--- DSCatalog: HTTP server setup...[SUCCESS]" );
-				
+			
 			} catch( Exception e ) {
 				logger.severe( "--- DSCatalog: HTTP server setup...[FAILED]" );
 				e.printStackTrace();
@@ -283,6 +302,9 @@ public final class DSCatalog {
 			options.addOption( "c", "create", false, "Automatically generates required system tables");			
 			options.addOption( "h", "help", false, "prints this message");
 			options.addOption( "v", "version", false, "returns version information");
+			options.addOption( "b", "verbose", false, "posts all logger information to the console");
+			options.addOption( "bt", "verbose-http", false, "posts all http log information to the console");
+			options.addOption( "bx", "verbose-xmpp", false, "posts all xmpp log information to the console");
 			options.addOption( "vf", "version-full", false, "returns full version, build and authorship information.");	
 			
 			CommandLineParser parser = new PosixParser();
@@ -380,7 +402,6 @@ public final class DSCatalog {
 					throw new ParseException( "Invalid XMPP Port Number specified");
 				}
 			}
-			
 			
 			//-- determine if an xmpp port number is being specified
 			if ( cmd.hasOption( "http" ) ) {

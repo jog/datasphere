@@ -41,8 +41,8 @@ import datasphere.dataware.DSFormatException;
 import datasphere.dataware.DSUpdate;
 
 /**
- * DSDatabaseManager objects handle interaction with the catalog server's persistence
- * layer - all {@link DSCatalog} instances require an DSDatabaseManager object to manage 
+ * DSDataManager objects handle interaction with the catalog server's persistence
+ * layer - all {@link DSCatalog} instances require an DSDataManager object to manage 
  * service state. The class' interface provides both standard database functionality
  * such as connectivity management and query statement access, as well as providing 
  * utility functions such as checking the integrity of required datasphere system tables, 
@@ -97,7 +97,8 @@ public class DSDataManager {
 		String address, 
 		Driver driver ) {
 		
-		this.address = address;
+		this.address = address + "/" + DEFAULT_SYS_DB;
+		System.out.println( this.address );
 		this.driver = driver;
 		this.login = DEFAULT_LOGIN;
 		this.password = DEFAULT_PASSWORD;
@@ -154,9 +155,9 @@ public class DSDataManager {
 		try {
 			DriverManager.registerDriver ( driver );
 			conn = DriverManager.getConnection( address, login , password );
-			logger.info( "--- DSDatabaseManager: Connecting to database for persistence... [SUCCESS]" );
+			logger.info( "--- DSDataManager: Connecting to database for persistence... [SUCCESS]" );
 		} catch ( SQLException e ) {
-			logger.info( "--- DSDatabaseManager: Connecting to database for persistence... [FAILED]" );
+			logger.info( "--- DSDatabase: Connecting to database for persistence... [FAILED]" );
 			throw new DSException( e );
 		}
 	}
@@ -175,8 +176,8 @@ public class DSDataManager {
 		
 	/**
 	 * Method that checks the integrity of required system tables. Currently
-	 * this just checks the existence of the connections, users and updates
-	 * tables. N.b. that if tables do not exist they can be automatically 
+	 * this just checks the existence of the connections, users, subs, sources
+	 *  and updates tables. N.b. that if tables do not exist they can be automatically 
 	 * created via the {@link #createSystemTables()} method.
 	 * @throws DSException Thrown if there is a problem with table integrity.
 	 */
@@ -195,12 +196,15 @@ public class DSDataManager {
 			res = meta.getTables( null, null, CONNECTIONS_TABLE, null );
 			if ( !res.next() ) missing.add( CONNECTIONS_TABLE );
 
-			res = meta.getTables( null, null, SUBSCRIPTIONS_TABLE, null );
+			res = meta.getTables( null, null,SUBSCRIPTIONS_TABLE, null );
 			if ( !res.next() ) missing.add( SUBSCRIPTIONS_TABLE );
 					
 			res = meta.getTables(null, null, UPDATES_TABLE, null );
 			if ( !res.next() ) missing.add( UPDATES_TABLE );
 					
+			res = meta.getTables(null, null, SOURCES_TABLE, null );
+			if ( !res.next() ) missing.add( SOURCES_TABLE );
+			
 			if ( missing.isEmpty() ) {
 				logger.info( "--- DSDataManager: Checking System Table integrity... [SUCCESS]" );
 			} else {
@@ -249,8 +253,8 @@ public class DSDataManager {
 				")";
 			
 			String updatesTableQuery = 
-				"CREATE TABLE  `" + DEFAULT_SYS_DB + "`.`" + USERS_TABLE + "` (" +
-				"`jid` varchar(256) NOT NULL," +
+				"CREATE TABLE  `" + DEFAULT_SYS_DB + "`.`" + UPDATES_TABLE + "` (" +
+				" `jid` varchar(256) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL," +
 				"`namespace` varchar(256) NOT NULL," +
 				"`loc` varchar(45) NOT NULL," +
 				"`description` varchar(1024) NOT NULL," +
@@ -260,12 +264,15 @@ public class DSDataManager {
 				"`tags` text NOT NULL," +
 				"`ctime` bigint(20) unsigned NOT NULL," +
 				"`rtime` bigint(20) unsigned NOT NULL," +
-				"`sid` varchar(256) NOT NULL," +
-				"PRIMARY KEY (`jid`)" +
+				"`sid` varchar(256) NOT NULL," + 
+				"`primaryTag` varchar(256) NOT NULL DEFAULT 'ds:update'," +
+				"`ftime` bigint(20) unsigned NOT NULL," +
+				"PRIMARY KEY (`jid`,`namespace`,`rtime`)" +
 				")";
+
 			
 			String usersTableQuery = 
-				"CREATE TABLE  `" + DEFAULT_SYS_DB + "`.`" + UPDATES_TABLE + "` (" +
+				"CREATE TABLE  `" + DEFAULT_SYS_DB + "`.`" + USERS_TABLE + "` (" +
 				"`jid` varchar(256) NOT NULL," +
 				"`firstname` varchar(256) NOT NULL," +
 				"`lastname` varchar(256) NOT NULL," +
@@ -281,19 +288,49 @@ public class DSDataManager {
 			
 			String subscriptionsTableQuery = 
 				"CREATE TABLE `" + DEFAULT_SYS_DB + "`.`" + SUBSCRIPTIONS_TABLE + "` (" +
-				"`sid` varchar(256) NOT NULL," +
+				"`namespace` varchar(256) NOT NULL DEFAULT 'ds:unknown'," +
 				"`jid` varchar(256) NOT NULL," +
 				"`subscriptionStatus` varchar(16) NOT NULL," +
+				"`sid` varchar(256) NOT NULL," +				
 				"`ctime` bigint(20) unsigned NOT NULL," +
 				"`mtime` bigint(20) unsigned NOT NULL," +
-				"PRIMARY KEY (`sid`,`jid`)" +
-				") ENGINE=InnoDB DEFAULT CHARSET=latin1";
+				"PRIMARY KEY (`namespace`,`jid`)" +
+				")";
+ 
+			String sourcesTableQuery = 
+				"CREATE TABLE  `" + DEFAULT_SYS_DB + "`.`" + SOURCES_TABLE + "` (" +
+				"`namespace` varchar(256) NOT NULL," +
+				"`commonName` varchar(256) NOT NULL," +
+				"`url` varchar(512) NOT NULL, " +
+				"`icon` varchar(512) DEFAULT NULL," +
+				"PRIMARY KEY (`namespace`)" +
+				")";
 			
 			stmt.addBatch( connectionsTableQuery );
-			stmt.addBatch( usersTableQuery );
 			stmt.addBatch( updatesTableQuery );
 			stmt.addBatch( subscriptionsTableQuery );
+			stmt.addBatch( sourcesTableQuery );
+			stmt.addBatch( usersTableQuery );
 			stmt.executeBatch();
+			
+			String testAccountQuery = 
+				"INSERT INTO `" + DEFAULT_SYS_DB + "`.`" + USERS_TABLE + "` " +
+				"VALUES ( " +
+				"'mydatasphere@jabber.org',	" +
+				"'my'," +
+				"'datasphere'," +
+				"'mydatasphere@gmail.com'," +
+				System.currentTimeMillis() + "," +
+				System.currentTimeMillis() + "," +
+				"'jabber.org'," +
+				"'jabber.org'," +
+				"'mydatasphere'," +
+				"'mydatasphere'" +
+				")";
+			
+			stmt.execute( testAccountQuery );
+			
+			
 			logger.info( "--- DSDataManager: Creating System Tables... [SUCCESS]" );
 			
 		} catch ( SQLException e ) {
@@ -318,6 +355,7 @@ public class DSDataManager {
 			stmt.addBatch( "DELETE FROM " + CONNECTIONS_TABLE );
 			stmt.addBatch( "DELETE FROM " + UPDATES_TABLE );
 			stmt.addBatch( "DELETE FROM " + SUBSCRIPTIONS_TABLE );
+			stmt.addBatch( "DELETE FROM " + SOURCES_TABLE );
 			stmt.executeBatch();
 			logger.info( "--- DSDataManager: Wiping System Tables of old data... [SUCCESS]" );
 			

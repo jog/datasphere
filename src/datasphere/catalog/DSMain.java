@@ -11,7 +11,7 @@ public class DSMain {
 
 		//-- create a database connection
 		DSDataManager dbm = new DSDataManager( 
-			"jdbc:mysql://127.0.0.1:3306/datasphere", 
+			"jdbc:mysql://127.0.0.1:3306", 
 			new com.mysql.jdbc.Driver() 
 		);
 		
