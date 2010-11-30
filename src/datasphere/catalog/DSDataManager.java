@@ -60,8 +60,10 @@ import datasphere.dataware.DSUpdate;
 public class DSDataManager {
 
 	private static Logger logger = Logger.getLogger( DSCatalog.class.getName() );
+	
 	private static final String DEFAULT_SOURCE_URL = 
-		"http://www.cs.nott.ac.uk/~jog/mydatasphere.org/namespaces.html";
+		"http://www.cs.nott.ac.uk/~jog/datasphere/namespaces.html";
+	
 	private static final String DEFAULT_SOURCE_ICON = "blank.jpg";
 	
 	public enum SourceField {
@@ -74,11 +76,11 @@ public class DSDataManager {
 	private String password;
 	private Driver driver;
 	
-	private static final String CONNECTIONS_TABLE 	= "ds_sys_connections";
-	private static final String USERS_TABLE			= "ds_sys_users";
-	private static final String UPDATES_TABLE		= "ds_sys_updates";
+	private static final String CONNECTIONS_TABLE = "ds_sys_connections";
+	private static final String USERS_TABLE	= "ds_sys_users";
+	private static final String UPDATES_TABLE = "ds_sys_updates";
 	private static final String SUBSCRIPTIONS_TABLE	= "ds_sys_subscriptions";
-	private static final String SOURCES_TABLE 		= "ds_sys_sources";
+	private static final String SOURCES_TABLE = "ds_sys_sources";
 	
 	private static final String DEFAULT_LOGIN = "dsadmin";
 	private static final String DEFAULT_SYS_DB = "datasphere"; 
@@ -96,9 +98,8 @@ public class DSDataManager {
 	public DSDataManager( 
 		String address, 
 		Driver driver ) {
-		
+
 		this.address = address + "/" + DEFAULT_SYS_DB;
-		System.out.println( this.address );
 		this.driver = driver;
 		this.login = DEFAULT_LOGIN;
 		this.password = DEFAULT_PASSWORD;
@@ -107,8 +108,7 @@ public class DSDataManager {
 	//////////////////////////////////
 	public void setPassword( String password ) {
 		this.password = password;
-		logger.fine( "--- DSDataManager: admin password has been " +
-			"specified via the command line... [SUCCESS]" );
+		logger.fine( "--- DSDataManager: setting the DSAdmin password [" + password + "]... [SUCCESS]" );
 	}
 	
 	//////////////////////////////////
@@ -157,7 +157,8 @@ public class DSDataManager {
 			conn = DriverManager.getConnection( address, login , password );
 			logger.info( "--- DSDataManager: Connecting to database for persistence... [SUCCESS]" );
 		} catch ( SQLException e ) {
-			logger.info( "--- DSDatabase: Connecting to database for persistence... [FAILED]" );
+			logger.info( "--- DSDataManager: Connecting to database for persistence... [FAILED]" );
+			e.printStackTrace();
 			throw new DSException( e );
 		}
 	}

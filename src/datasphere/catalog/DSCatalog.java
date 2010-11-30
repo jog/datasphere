@@ -52,8 +52,10 @@ public final class DSCatalog {
 	public static DSDataManager db = null;
 	private Properties config = null;
 	
-	private Integer httpPort = 80;
-	private Integer xmppPort = 5222;
+	private Integer httpPort = null;
+	private Integer xmppPort = null;
+	private String password = null;
+	private boolean debug = false;
 	
 	private boolean httpStartable = true;
     private boolean xmppStartable = true;
@@ -107,8 +109,20 @@ public final class DSCatalog {
 			try {
 				config.load( configStream );
 		 		configStream.close();	
-	            logger.config( "--- DSCatalog: loading configuration file... [SUCCESS]"); 		
-	            
+	        
+		 		String xmpp = config.getProperty( "XMPP_PORT" );
+		 		if ( xmpp != null && xmppPort == null ) 
+		 			this.xmppPort = Integer.parseInt( xmpp );
+		 		
+		 		String http = config.getProperty( "HTTP_PORT" );
+		 		if ( http != null && httpPort == null ) 
+		 			this.httpPort = Integer.parseInt( http );
+		 		
+		 		if ( password == null ) 
+		 			this.password = config.getProperty( "DSADMIN_PASS" );
+		 		
+		 		logger.config( "--- DSCatalog: loading configuration file... [SUCCESS]");
+		 		
 			} catch ( IOException e ) {
 				logger.config( "--- DSCatalog: loading configuration file... [FAILED]");
 				logger.warning( "--- DSCatalog: config file has invalid syntax. continuing with defaults." ); 		
@@ -152,30 +166,30 @@ public final class DSCatalog {
 		//-- check whether that database actually exists
 		try {
 			logger.info( "Establishing database connection and checking integrity..." );
+			db.setPassword( this.password );
 			db.connect();
+			
+			//-- attempt to clear the system tables if requested
+			if ( systemWipe == true ) 
+				db.clearSystemTables();
+			
+			//-- attempt system table creation if requested
+			if  ( systemCreate == true ) 
+				db.createSystemTables();
+			
+			//-- check to see that table integrity is ok 
+			db.checkSystemTables();
+
+			//-- start the servers up and running
+			logger.info( "Attempting to start server components..." );
+			
+			if ( httpStartable ) startHTTP();
+			if ( xmppStartable ) startXMPP();
 		} 
 		catch ( DSException e ) {
 			logger.info( "--- DSCatalog: Unable to connect to database. " +
 				"Make sure you have specified the correct password via -p or your config file." );
-			return;
 		}
-		
-		//-- attempt to clear the system tables if requested
-		if ( systemWipe == true ) 
-			db.clearSystemTables();
-		
-		//-- attempt system table creation if requested
-		if  ( systemCreate == true ) 
-			db.createSystemTables();
-		
-		//-- check to see that table integrity is ok 
-		db.checkSystemTables();
-
-		//-- start the servers up and running
-		logger.info( "Attempting to start server components..." );
-		
-		if ( httpStartable ) startHTTP();
-		if ( xmppStartable ) startXMPP();
 		
 		//-- announce success
 		if ( xmppServer != null && httpServer != null ) { 
@@ -184,8 +198,9 @@ public final class DSCatalog {
 		else if ( xmppServer != null || httpServer != null ) {
 			logger.info( "Datasphere setup and ready for \"partial\" service..." );
 		}
-		else if ( xmppServer != null || httpServer != null ) {
+		else {
 			logger.info( "Datasphere startup failed. No service is available." );
+			return;
 		}
 		
 		while ( isRunning );
@@ -209,8 +224,15 @@ public final class DSCatalog {
 		if ( httpStartable ) {
 			try {
 				httpServer = new DSWebServer( httpPort );
-				httpServer.useProtocol( Protocol.CLAP );
+				
+				if ( debug ) {
+					httpServer.useProtocol( Protocol.FILE );
+				} else {
+					httpServer.useProtocol( Protocol.CLAP );
+				}
+				
 				httpServer.start();
+				
 				logger.info( "--- DSCatalog: HTTP server setup...[SUCCESS]" );
 			
 			} catch( Exception e ) {
@@ -231,7 +253,12 @@ public final class DSCatalog {
 	throws DSException {
 
 		if ( xmppStartable ) {
+			
 			try {
+				if ( debug ) {
+					XMPPConnection.DEBUG_ENABLED = true;
+				}
+				
 				xmppServer = new DSChatServer( xmppPort );
 				xmppServer.start();
 				logger.info( "--- DSCatalog: XMPP server setup...[SUCCESS]" );
@@ -295,8 +322,8 @@ public final class DSCatalog {
 			Options options = new Options();
 			options.addOption( "w", "wipe", false, "clears the system databases on startup" );
 			options.addOption( "d", "debug", false, "pulls up a debugger window for each XMPP connection" );
-			options.addOption( "x", "xmpp", true, "specify the port the xmpp server listens on. default is 5222");
-			options.addOption( "t", "http", true, "specify the port the http server listens on. default is 80");
+			options.addOption( "x", "xmpp", true, "specify the port the xmpp server listens on. default is " + DSChatServer.DEFAULT_SERVER_PORT );
+			options.addOption( "t", "http", true, "specify the port the http server listens on. default is " + DSWebServer.DEFAULT_SERVER_PORT );
 			options.addOption( "p", "password", true, "specify the admin password for the system");
 			options.addOption( "l", "log-level", true, "specify the log level (0-1000) to display");
 			options.addOption( "c", "create", false, "Automatically generates required system tables");			
@@ -305,7 +332,7 @@ public final class DSCatalog {
 			options.addOption( "b", "verbose", false, "posts all logger information to the console");
 			options.addOption( "bt", "verbose-http", false, "posts all http log information to the console");
 			options.addOption( "bx", "verbose-xmpp", false, "posts all xmpp log information to the console");
-			options.addOption( "vf", "version-full", false, "returns full version, build and authorship information.");	
+			options.addOption( "vf", "version-full", false, "returns full version, build and authorship information");	
 			
 			CommandLineParser parser = new PosixParser();
 			CommandLine cmd = parser.parse( options, args );
@@ -363,7 +390,7 @@ public final class DSCatalog {
 			
 			//-- determine if user is attempting to create the system database
 			if ( cmd.hasOption( "debug" ) ) {
-				XMPPConnection.DEBUG_ENABLED = true;
+				this.debug = true;
 			}
 			
 			//-- check the validity of any log-level supplied
@@ -385,8 +412,7 @@ public final class DSCatalog {
 			//-- determine if a port number is being specified
 			if ( cmd.hasOption( "password" ) ) {
 				try {
-					String password = cmd.getOptionValue( "p" );
-					db.setPassword( password );
+					this.password = cmd.getOptionValue( "p" );
 				}
 				catch ( NumberFormatException e ) {
 					throw new ParseException( "Invalid password specified");

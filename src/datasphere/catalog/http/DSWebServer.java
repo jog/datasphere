@@ -27,7 +27,7 @@ public class DSWebServer extends Component {
 	
 	public static Configuration cfg = null;
 	private Integer serverPort;
-	private int DEFAULT_SERVER_PORT = 80;
+	public final static int DEFAULT_SERVER_PORT = 80;
 	private Protocol protocol = Protocol.CLAP;
 	
 	///////////////////////////////
@@ -83,9 +83,9 @@ public class DSWebServer extends Component {
 		
 		//-- add a new server connector to the component
 		getServers().add( Protocol.HTTP, serverPort );
+		System.out.println( "adding " + protocol);
 		getClients().add( protocol );
 		
- 
 		//-- using the default virtual host, create appropriate url routing
 		String ref = ( protocol == Protocol.CLAP )  
 					 ? "clap://system/resources/"
@@ -104,11 +104,7 @@ public class DSWebServer extends Component {
 			cfg.setClassForTemplateLoading( getClass(), "/resources/templates" );	
 		} else {
 			cfg.setDirectoryForTemplateLoading(	
-				new File( "C:\\HyperPlace\\datasphere\\static\\resources\\templates\\" ) 
-			);
-			cfg.setTemplateLoader( 
-				new ClassTemplateLoader( getClass(), "datasphere/catalog/http/templates" ) 
-			);
+				new File( "C:\\HyperPlace\\datasphere\\static\\resources\\templates" ) );
 		}
 		
 		//-- start the component proper

@@ -13,7 +13,7 @@ public class DSChatServer {
 
 	private static Logger logger = Logger.getLogger( DSCatalog.class.getName() );
 	private Integer serverPort;
-	private int DEFAULT_SERVER_PORT = 5222;
+	public final static int DEFAULT_SERVER_PORT = 5222;
 	private static Map< String, DSClientBot > clients = new HashMap< String, DSClientBot >();
 	
 	///////////////////////////////
