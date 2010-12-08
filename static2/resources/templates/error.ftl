@@ -1,9 +1,6 @@
-<include "header.ftl">
-
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="static/ds.css" />
-<script type="text/javascript" src="http://code.jquery.com/jquery-latest.pack.js"></script>
+<link rel="stylesheet" type="text/css" href="/static/ds.css" />
 </head>
 
 <body>
@@ -32,3 +29,9 @@
 		</div>
 		
 		<div class="content">
+			An error has occurred. Please try again later.
+		</div>
+	</div>	
+
+</body>
+</html>

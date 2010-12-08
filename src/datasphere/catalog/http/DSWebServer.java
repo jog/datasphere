@@ -87,23 +87,16 @@ public class DSWebServer extends Component {
 		//-- using the default virtual host, create appropriate url routing
 		String ref = ( protocol == Protocol.CLAP )  
 					 ? "clap://system/resources/"
-					 : "file:///C:\\HyperPlace\\datasphere\\static\\resources\\" ;
+					 : "file:///C:\\HyperPlace\\datasphere\\resources\\" ;
 		getDefaultHost().attach( "/static/", new Directory( getContext().createChildContext(), ref ) );
 		getDefaultHost().attach( "/user_history", UserHistoryPage.class );
 		getDefaultHost().attach( "/source_history", SourceHistoryPage.class );
 		getDefaultHost().attach( "/subscription", SetSourceSubscription.class );
 		
-		//-- setup the freemarker configuration files
+		//-- setup the freemarker configuration files( n.b. classpath must have been set)
 		cfg = new Configuration();
 		cfg.setObjectWrapper( new DefaultObjectWrapper() );
-		
-		//-- depending on the protocol setup the relevent freemarker template loader
-		if ( protocol == Protocol.CLAP ) { 
-			cfg.setClassForTemplateLoading( getClass(), "/resources/templates" );	
-		} else {
-			cfg.setDirectoryForTemplateLoading(	
-				new File( "C:\\HyperPlace\\datasphere\\static\\resources\\templates" ) );
-		}
+		cfg.setClassForTemplateLoading( getClass(), "/resources/templates" );	
 		
 		//-- start the component proper
 		try {
