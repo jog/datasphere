@@ -90,6 +90,7 @@
 		<jar destfile="${dist.dir}/${target.jar.name}.jar">	
 			<zipgroupfileset dir="lib" includes="*.jar" /> 
 			<fileset dir="${build.dir}/classes" />
+			<fileset dir="${static.dir}" />
 			<fileset dir="${src.dir}">
 				<include name="**/*" />
 				<exclude name="**/*.java" />

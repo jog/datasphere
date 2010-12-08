@@ -1,0 +1,433 @@
+2010-11-24 18:56:08 [INFO]    Starting the internal HTTP server on port 80
+2010-11-24 18:56:14 [INFO]    2010-11-24	18:56:14	127.0.0.1	-	-	80	GET	/source_history	jid=james.goulding@gmail.com&ns=ds:facebook	200	9563	0	297	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=testsender
+2010-11-24 19:01:44 [INFO]    Starting the internal HTTP server on port 80
+2010-11-24 19:02:00 [INFO]    Starting the internal HTTP server on port 80
+2010-11-25 09:24:22 [INFO]    Starting the internal HTTP server on port 80
+2010-11-25 09:25:05 [INFO]    Starting the internal HTTP server on port 80
+2010-11-25 09:26:46 [INFO]    2010-11-25	09:26:46	127.0.0.1	-	-	80	GET	/favicon.ico	-	404	439	0	0	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	-
+2010-11-25 09:26:49 [INFO]    2010-11-25	09:26:49	127.0.0.1	-	-	80	GET	/source_history	jid=james.goulding@gmail.com&ns=ds:facebook	200	9573	0	453	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	-
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/ds.css
+2010-11-25 09:26:49 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/ds.css
+2010-11-25 09:26:49 [INFO]    2010-11-25	09:26:49	127.0.0.1	-	-	80	GET	/static/ds.css	-	404	439	0	0	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/mydslogo.jpg
+2010-11-25 09:26:49 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/mydslogo.jpg
+2010-11-25 09:26:49 [INFO]    2010-11-25	09:26:49	127.0.0.1	-	-	80	GET	/static/images/mydslogo.jpg	-	404	439	0	0	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/facebook.jpg
+2010-11-25 09:26:49 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/facebook.jpg
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/youtube.jpg
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [INFO]    2010-11-25	09:26:49	127.0.0.1	-	-	80	GET	/static/images/icons/facebook.jpg	-	404	439	0	0	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/youtube.jpg
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [INFO]    2010-11-25	09:26:49	127.0.0.1	-	-	80	GET	/static/images/icons/youtube.jpg	-	404	439	0	0	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/twitter.jpg
+2010-11-25 09:26:49 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/twitter.jpg
+2010-11-25 09:26:49 [INFO]    2010-11-25	09:26:49	127.0.0.1	-	-	80	GET	/static/images/icons/twitter.jpg	-	404	439	0	16	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/blogger.jpg
+2010-11-25 09:26:49 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/myspace.jpg
+2010-11-25 09:26:49 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/myspace.jpg
+2010-11-25 09:26:49 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/blank.jpg
+2010-11-25 09:26:49 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/blogger.jpg
+2010-11-25 09:26:49 [INFO]    2010-11-25	09:26:49	127.0.0.1	-	-	80	GET	/static/images/icons/myspace.jpg	-	404	439	0	16	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:26:49 [INFO]    2010-11-25	09:26:49	127.0.0.1	-	-	80	GET	/static/images/icons/blogger.jpg	-	404	439	0	16	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:26:49 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/blank.jpg
+2010-11-25 09:26:49 [INFO]    2010-11-25	09:26:49	127.0.0.1	-	-	80	GET	/static/images/icons/blank.jpg	-	404	439	0	16	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/wordpress.jpg
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/skype.jpg
+2010-11-25 09:26:49 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/wordpress.jpg
+2010-11-25 09:26:49 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/digg.jpg
+2010-11-25 09:26:49 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/digg.jpg
+2010-11-25 09:26:49 [INFO]    2010-11-25	09:26:49	127.0.0.1	-	-	80	GET	/static/images/icons/wordpress.jpg	-	404	439	0	0	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:26:49 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/reddit.jpg
+2010-11-25 09:26:49 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/reddit.jpg
+2010-11-25 09:26:49 [INFO]    2010-11-25	09:26:49	127.0.0.1	-	-	80	GET	/static/images/icons/digg.jpg	-	404	439	0	0	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:26:49 [INFO]    2010-11-25	09:26:49	127.0.0.1	-	-	80	GET	/static/images/icons/reddit.jpg	-	404	439	0	0	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/email.jpg
+2010-11-25 09:26:49 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/email.jpg
+2010-11-25 09:26:49 [INFO]    2010-11-25	09:26:49	127.0.0.1	-	-	80	GET	/static/images/icons/email.jpg	-	404	439	0	0	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/skype.jpg
+2010-11-25 09:26:49 [INFO]    2010-11-25	09:26:49	127.0.0.1	-	-	80	GET	/static/images/icons/skype.jpg	-	404	439	0	16	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:26:49 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/vimeo.jpg
+2010-11-25 09:26:49 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/vimeo.jpg
+2010-11-25 09:26:49 [INFO]    2010-11-25	09:26:49	127.0.0.1	-	-	80	GET	/static/images/icons/vimeo.jpg	-	404	439	0	16	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/github.jpg
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/brightkite.jpg
+2010-11-25 09:26:49 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/brightkite.jpg
+2010-11-25 09:26:49 [INFO]    2010-11-25	09:26:49	127.0.0.1	-	-	80	GET	/static/images/icons/brightkite.jpg	-	404	439	0	0	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:26:49 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/github.jpg
+2010-11-25 09:26:49 [INFO]    2010-11-25	09:26:49	127.0.0.1	-	-	80	GET	/static/images/icons/github.jpg	-	404	439	0	16	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/gtalk.jpg
+2010-11-25 09:26:49 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/gtalk.jpg
+2010-11-25 09:26:49 [INFO]    2010-11-25	09:26:49	127.0.0.1	-	-	80	GET	/static/images/icons/gtalk.jpg	-	404	439	0	16	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/spotify.jpg
+2010-11-25 09:26:49 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/spotify.jpg
+2010-11-25 09:26:49 [INFO]    2010-11-25	09:26:49	127.0.0.1	-	-	80	GET	/static/images/icons/spotify.jpg	-	404	439	0	16	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/newsvine.jpg
+2010-11-25 09:26:49 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/newsvine.jpg
+2010-11-25 09:26:49 [INFO]    2010-11-25	09:26:49	127.0.0.1	-	-	80	GET	/static/images/icons/newsvine.jpg	-	404	439	0	31	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/gmail.jpg
+2010-11-25 09:26:49 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/gmail.jpg
+2010-11-25 09:26:49 [INFO]    2010-11-25	09:26:49	127.0.0.1	-	-	80	GET	/static/images/icons/gmail.jpg	-	404	439	0	31	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/gowalla.jpg
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/gowalla.jpg
+2010-11-25 09:26:49 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/foursquare.jpg
+2010-11-25 09:26:49 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/foursquare.jpg
+2010-11-25 09:26:49 [INFO]    2010-11-25	09:26:49	127.0.0.1	-	-	80	GET	/static/images/icons/gowalla.jpg	-	404	439	0	0	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:26:49 [INFO]    2010-11-25	09:26:49	127.0.0.1	-	-	80	GET	/static/images/icons/foursquare.jpg	-	404	439	0	0	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/mydslogo.jpg
+2010-11-25 09:26:49 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/mydslogo.jpg
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [INFO]    2010-11-25	09:26:49	127.0.0.1	-	-	80	GET	/static/images/mydslogo.jpg	-	404	439	0	31	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/facebook.jpg
+2010-11-25 09:26:49 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/facebook.jpg
+2010-11-25 09:26:49 [INFO]    2010-11-25	09:26:49	127.0.0.1	-	-	80	GET	/static/images/icons/facebook.jpg	-	404	439	0	31	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/blank.jpg
+2010-11-25 09:26:49 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/blank.jpg
+2010-11-25 09:26:49 [INFO]    2010-11-25	09:26:49	127.0.0.1	-	-	80	GET	/static/images/icons/blank.jpg	-	404	439	0	47	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/twitter.jpg
+2010-11-25 09:26:49 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/twitter.jpg
+2010-11-25 09:26:49 [INFO]    2010-11-25	09:26:49	127.0.0.1	-	-	80	GET	/static/images/icons/twitter.jpg	-	404	439	0	47	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/myspace.jpg
+2010-11-25 09:26:49 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/myspace.jpg
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/reddit.jpg
+2010-11-25 09:26:49 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/reddit.jpg
+2010-11-25 09:26:49 [INFO]    2010-11-25	09:26:49	127.0.0.1	-	-	80	GET	/static/images/icons/myspace.jpg	-	404	439	0	16	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [INFO]    2010-11-25	09:26:49	127.0.0.1	-	-	80	GET	/static/images/icons/reddit.jpg	-	404	439	0	0	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/wordpress.jpg
+2010-11-25 09:26:49 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/youtube.jpg
+2010-11-25 09:26:49 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/youtube.jpg
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [INFO]    2010-11-25	09:26:49	127.0.0.1	-	-	80	GET	/static/images/icons/youtube.jpg	-	404	439	0	0	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/skype.jpg
+2010-11-25 09:26:49 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/skype.jpg
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:49 [INFO]    2010-11-25	09:26:49	127.0.0.1	-	-	80	GET	/static/images/icons/skype.jpg	-	404	439	0	0	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:26:49 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/blogger.jpg
+2010-11-25 09:26:49 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/wordpress.jpg
+2010-11-25 09:26:49 [INFO]    2010-11-25	09:26:49	127.0.0.1	-	-	80	GET	/static/images/icons/wordpress.jpg	-	404	439	0	32	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:26:49 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/blogger.jpg
+2010-11-25 09:26:49 [INFO]    2010-11-25	09:26:49	127.0.0.1	-	-	80	GET	/static/images/icons/blogger.jpg	-	404	439	0	16	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:26:50 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:50 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:50 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:50 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/digg.jpg
+2010-11-25 09:26:50 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/digg.jpg
+2010-11-25 09:26:50 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:50 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:50 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:50 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:50 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:50 [INFO]    2010-11-25	09:26:50	127.0.0.1	-	-	80	GET	/static/images/icons/digg.jpg	-	404	439	0	0	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:26:50 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:50 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:50 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:50 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:50 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:50 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:50 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:50 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:50 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/gmail.jpg
+2010-11-25 09:26:50 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/spotify.jpg
+2010-11-25 09:26:50 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/spotify.jpg
+2010-11-25 09:26:50 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/vimeo.jpg
+2010-11-25 09:26:50 [INFO]    2010-11-25	09:26:50	127.0.0.1	-	-	80	GET	/static/images/icons/spotify.jpg	-	404	439	0	0	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:26:50 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/github.jpg
+2010-11-25 09:26:50 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/vimeo.jpg
+2010-11-25 09:26:50 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:50 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:50 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/gmail.jpg
+2010-11-25 09:26:50 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/github.jpg
+2010-11-25 09:26:50 [INFO]    2010-11-25	09:26:50	127.0.0.1	-	-	80	GET	/static/images/icons/vimeo.jpg	-	404	439	0	0	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:26:50 [INFO]    2010-11-25	09:26:50	127.0.0.1	-	-	80	GET	/static/images/icons/github.jpg	-	404	439	0	15	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:26:50 [INFO]    2010-11-25	09:26:50	127.0.0.1	-	-	80	GET	/static/images/icons/gmail.jpg	-	404	439	0	15	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:26:50 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/email.jpg
+2010-11-25 09:26:50 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/email.jpg
+2010-11-25 09:26:50 [INFO]    2010-11-25	09:26:50	127.0.0.1	-	-	80	GET	/static/images/icons/email.jpg	-	404	439	0	15	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:26:50 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:50 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:50 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:50 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/newsvine.jpg
+2010-11-25 09:26:50 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/newsvine.jpg
+2010-11-25 09:26:50 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:50 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:50 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:50 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:50 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:50 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:50 [INFO]    2010-11-25	09:26:50	127.0.0.1	-	-	80	GET	/static/images/icons/newsvine.jpg	-	404	439	0	16	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:26:50 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/foursquare.jpg
+2010-11-25 09:26:50 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:50 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:50 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/gtalk.jpg
+2010-11-25 09:26:50 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/gtalk.jpg
+2010-11-25 09:26:50 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:50 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:50 [INFO]    2010-11-25	09:26:50	127.0.0.1	-	-	80	GET	/static/images/icons/gtalk.jpg	-	404	439	0	16	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:26:50 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/gowalla.jpg
+2010-11-25 09:26:50 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/gowalla.jpg
+2010-11-25 09:26:50 [INFO]    2010-11-25	09:26:50	127.0.0.1	-	-	80	GET	/static/images/icons/gowalla.jpg	-	404	439	0	16	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:26:50 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:50 [WARNING] The protocol used by this request is not declared in the list of client connectors. (FILE)
+2010-11-25 09:26:50 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/foursquare.jpg
+2010-11-25 09:26:50 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/brightkite.jpg
+2010-11-25 09:26:50 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/brightkite.jpg
+2010-11-25 09:26:50 [INFO]    2010-11-25	09:26:50	127.0.0.1	-	-	80	GET	/static/images/icons/foursquare.jpg	-	404	439	0	0	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:26:50 [INFO]    2010-11-25	09:26:50	127.0.0.1	-	-	80	GET	/static/images/icons/brightkite.jpg	-	404	439	0	16	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:27:56 [INFO]    Starting the internal HTTP server on port 80
+2010-11-25 09:28:04 [INFO]    2010-11-25	09:28:04	127.0.0.1	-	-	80	GET	/source_history	jid=james.goulding@gmail.com&ns=ds:facebook	200	9573	0	297	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	-
+2010-11-25 09:28:05 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/twitter.jpg
+2010-11-25 09:28:05 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/twitter.jpg
+2010-11-25 09:28:05 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/facebook.jpg
+2010-11-25 09:28:05 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/facebook.jpg
+2010-11-25 09:28:05 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/ds.css
+2010-11-25 09:28:05 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/ds.css
+2010-11-25 09:28:05 [INFO]    2010-11-25	09:28:05	127.0.0.1	-	-	80	GET	/static/images/icons/facebook.jpg	-	200	1474	0	31	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:28:05 [INFO]    2010-11-25	09:28:05	127.0.0.1	-	-	80	GET	/static/ds.css	-	200	5183	0	31	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:28:05 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/blank.jpg
+2010-11-25 09:28:05 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/blogger.jpg
+2010-11-25 09:28:05 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/mydslogo.jpg
+2010-11-25 09:28:05 [INFO]    2010-11-25	09:28:05	127.0.0.1	-	-	80	GET	/static/images/icons/twitter.jpg	-	200	1464	0	16	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:28:05 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/mydslogo.jpg
+2010-11-25 09:28:05 [INFO]    2010-11-25	09:28:05	127.0.0.1	-	-	80	GET	/static/images/mydslogo.jpg	-	200	12158	0	16	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:28:05 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/blogger.jpg
+2010-11-25 09:28:05 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/blank.jpg
+2010-11-25 09:28:05 [INFO]    2010-11-25	09:28:05	127.0.0.1	-	-	80	GET	/static/images/icons/blogger.jpg	-	200	1524	0	16	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:28:05 [INFO]    2010-11-25	09:28:05	127.0.0.1	-	-	80	GET	/static/images/icons/blank.jpg	-	200	1313	0	16	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:28:05 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/myspace.jpg
+2010-11-25 09:28:05 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/myspace.jpg
+2010-11-25 09:28:05 [INFO]    2010-11-25	09:28:05	127.0.0.1	-	-	80	GET	/static/images/icons/myspace.jpg	-	200	1498	0	0	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:28:05 [WARNING] Unable to run the following server-side task: Read connection messages: true
+2010-11-25 09:28:05 [INFO]    Worker service state: Full
+2010-11-25 09:28:05 [INFO]    Worker service tasks: 0 queued, 10 active, 2 completed, 12 scheduled.
+2010-11-25 09:28:05 [INFO]    Worker service thread pool: 1 core size, 10 largest size, 10 maximum size, 10 current size
+2010-11-25 09:28:05 [INFO]    Stop accepting new connections and transactions. Consider increasing the maximum number of threads.
+2010-11-25 09:28:05 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/reddit.jpg
+2010-11-25 09:28:05 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/youtube.jpg
+2010-11-25 09:28:05 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/reddit.jpg
+2010-11-25 09:28:05 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/youtube.jpg
+2010-11-25 09:28:05 [INFO]    2010-11-25	09:28:05	127.0.0.1	-	-	80	GET	/static/images/icons/reddit.jpg	-	200	1629	0	0	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:28:05 [INFO]    2010-11-25	09:28:05	127.0.0.1	-	-	80	GET	/static/images/icons/youtube.jpg	-	200	1654	0	0	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:28:05 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/skype.jpg
+2010-11-25 09:28:05 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/skype.jpg
+2010-11-25 09:28:05 [INFO]    2010-11-25	09:28:05	127.0.0.1	-	-	80	GET	/static/images/icons/skype.jpg	-	200	1495	0	0	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:28:05 [INFO]    Accepting new connections and transactions again.
+2010-11-25 09:28:05 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/digg.jpg
+2010-11-25 09:28:05 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/digg.jpg
+2010-11-25 09:28:05 [INFO]    2010-11-25	09:28:05	127.0.0.1	-	-	80	GET	/static/images/icons/digg.jpg	-	200	1540	0	0	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:28:05 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/email.jpg
+2010-11-25 09:28:05 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/spotify.jpg
+2010-11-25 09:28:05 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/email.jpg
+2010-11-25 09:28:05 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/spotify.jpg
+2010-11-25 09:28:05 [INFO]    2010-11-25	09:28:05	127.0.0.1	-	-	80	GET	/static/images/icons/email.jpg	-	200	585	0	0	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:28:05 [INFO]    2010-11-25	09:28:05	127.0.0.1	-	-	80	GET	/static/images/icons/spotify.jpg	-	200	1395	0	0	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:28:05 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/vimeo.jpg
+2010-11-25 09:28:05 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/vimeo.jpg
+2010-11-25 09:28:05 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/github.jpg
+2010-11-25 09:28:05 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/gmail.jpg
+2010-11-25 09:28:05 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/wordpress.jpg
+2010-11-25 09:28:05 [INFO]    2010-11-25	09:28:05	127.0.0.1	-	-	80	GET	/static/images/icons/vimeo.jpg	-	200	1440	0	0	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:28:05 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/wordpress.jpg
+2010-11-25 09:28:05 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/gmail.jpg
+2010-11-25 09:28:05 [INFO]    2010-11-25	09:28:05	127.0.0.1	-	-	80	GET	/static/images/icons/gmail.jpg	-	200	1543	0	0	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:28:05 [INFO]    2010-11-25	09:28:05	127.0.0.1	-	-	80	GET	/static/images/icons/wordpress.jpg	-	200	1345	0	0	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:28:05 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/github.jpg
+2010-11-25 09:28:05 [INFO]    2010-11-25	09:28:05	127.0.0.1	-	-	80	GET	/static/images/icons/github.jpg	-	200	1265	0	0	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:28:05 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/gtalk.jpg
+2010-11-25 09:28:05 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/gtalk.jpg
+2010-11-25 09:28:05 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/newsvine.jpg
+2010-11-25 09:28:05 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/newsvine.jpg
+2010-11-25 09:28:05 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/gowalla.jpg
+2010-11-25 09:28:05 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/brightkite.jpg
+2010-11-25 09:28:05 [INFO]    2010-11-25	09:28:05	127.0.0.1	-	-	80	GET	/static/images/icons/newsvine.jpg	-	200	1566	0	0	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:28:05 [INFO]    2010-11-25	09:28:05	127.0.0.1	-	-	80	GET	/static/images/icons/gtalk.jpg	-	200	1518	0	0	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:28:05 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/foursquare.jpg
+2010-11-25 09:28:05 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/gowalla.jpg
+2010-11-25 09:28:05 [INFO]    2010-11-25	09:28:05	127.0.0.1	-	-	80	GET	/static/images/icons/gowalla.jpg	-	200	1666	0	0	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:28:05 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/brightkite.jpg
+2010-11-25 09:28:05 [INFO]    2010-11-25	09:28:05	127.0.0.1	-	-	80	GET	/static/images/icons/brightkite.jpg	-	200	1479	0	16	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:28:05 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/foursquare.jpg
+2010-11-25 09:28:05 [INFO]    2010-11-25	09:28:05	127.0.0.1	-	-	80	GET	/static/images/icons/foursquare.jpg	-	200	1584	0	16	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:28:10 [INFO]    2010-11-25	09:28:10	127.0.0.1	-	-	80	GET	/user_history	jid=james.goulding@gmail.com	200	8171	0	109	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/source_history?jid=james.goulding@gmail.com&ns=ds:facebook
+2010-11-25 09:31:30 [INFO]    2010-11-25	09:31:30	127.0.0.1	-	-	80	GET	/source_history	jid=james.goulding@gmail.com&ns=ds:facebook	200	9573	0	141	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost/user_history?jid=james.goulding@gmail.com
+2010-11-25 09:38:32 [INFO]    Starting the internal HTTP server on port 80
+2010-11-25 09:38:45 [INFO]    2010-11-25	09:38:45	127.0.0.1	-	-	80	GET	/source_history	jid=james.goulding@gmail.com&ns=ds:facebook	204	0	0	188	http://localhost	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	-
+2010-11-25 09:46:32 [INFO]    Starting the internal HTTP server on port 80
+2010-11-30 10:30:13 [INFO]    Starting the internal HTTP server on port 5223
+2010-11-30 10:30:35 [INFO]    Starting the internal HTTP server on port 8081
+2010-11-30 10:45:40 [INFO]    Starting the internal HTTP server on port 8080
+2010-11-30 10:46:31 [INFO]    Starting the internal HTTP server on port 8080
+2010-11-30 10:47:03 [INFO]    Starting the internal HTTP server on port 8080
+2010-11-30 10:48:00 [INFO]    Starting the internal HTTP server on port 8080
+2010-11-30 10:48:10 [INFO]    Starting the internal HTTP server on port 8080
+2010-11-30 10:48:31 [INFO]    2010-11-30	10:48:31	127.0.0.1	-	-	8080	GET	/	-	404	439	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	-
+2010-11-30 10:48:31 [INFO]    2010-11-30	10:48:31	127.0.0.1	-	-	8080	GET	/favicon.ico	-	404	439	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	-
+2010-11-30 10:48:34 [INFO]    2010-11-30	10:48:34	127.0.0.1	-	-	8080	GET	/favicon.ico	-	404	439	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	-
+2010-11-30 10:48:37 [INFO]    2010-11-30	10:48:37	127.0.0.1	-	-	8080	GET	/user_history	-	204	0	0	94	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	-
+2010-11-30 10:54:16 [INFO]    Starting the internal HTTP server on port 8080
+2010-11-30 10:54:26 [INFO]    2010-11-30	10:54:26	127.0.0.1	-	-	8080	GET	/user_history	-	204	0	0	63	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	-
+2010-11-30 10:55:50 [INFO]    Starting the internal HTTP server on port 8080
+2010-11-30 10:55:57 [INFO]    2010-11-30	10:55:57	127.0.0.1	-	-	8080	GET	/	-	404	439	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	-
+2010-11-30 10:55:59 [INFO]    2010-11-30	10:55:59	127.0.0.1	-	-	8080	GET	/	-	404	439	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	-
+2010-11-30 10:56:05 [INFO]    2010-11-30	10:56:05	127.0.0.1	-	-	8080	GET	/user_history	-	204	0	0	62	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	-
+2010-11-30 10:56:31 [INFO]    Starting the internal HTTP server on port 8080
+2010-11-30 10:56:33 [INFO]    2010-11-30	10:56:33	127.0.0.1	-	-	8080	GET	/	-	404	439	0	16	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	-
+2010-11-30 10:56:40 [INFO]    2010-11-30	10:56:40	127.0.0.1	-	-	8080	GET	/user_history	-	200	943	0	125	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	-
+2010-11-30 10:56:40 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/ds.css
+2010-11-30 10:56:40 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/ds.css
+2010-11-30 10:56:40 [INFO]    2010-11-30	10:56:40	127.0.0.1	-	-	8080	GET	/static/ds.css	-	200	5183	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost:8080/user_history
+2010-11-30 10:56:40 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/mydslogo.jpg
+2010-11-30 10:56:40 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/mydslogo.jpg
+2010-11-30 10:56:40 [INFO]    2010-11-30	10:56:40	127.0.0.1	-	-	8080	GET	/static/images/mydslogo.jpg	-	200	12158	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost:8080/user_history
+2010-11-30 10:56:56 [INFO]    2010-11-30	10:56:56	127.0.0.1	-	-	8080	GET	/user_history	jid=mydatasphere@jabber.org	200	943	0	32	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	-
+2010-11-30 10:57:25 [INFO]    2010-11-30	10:57:25	127.0.0.1	-	-	8080	GET	/user_history	jid=testreceiver@jabber.org	200	5076	0	187	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	-
+2010-11-30 10:57:25 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/twitter.jpg
+2010-11-30 10:57:25 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/twitter.jpg
+2010-11-30 10:57:25 [INFO]    2010-11-30	10:57:25	127.0.0.1	-	-	8080	GET	/static/images/icons/twitter.jpg	-	200	1464	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost:8080/user_history?jid=testreceiver@jabber.org
+2010-11-30 10:57:25 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/facebook.jpg
+2010-11-30 10:57:25 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/facebook.jpg
+2010-11-30 10:57:25 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/blank.jpg
+2010-11-30 10:57:25 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/blank.jpg
+2010-11-30 10:57:25 [INFO]    2010-11-30	10:57:25	127.0.0.1	-	-	8080	GET	/static/images/icons/blank.jpg	-	200	1313	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost:8080/user_history?jid=testreceiver@jabber.org
+2010-11-30 10:57:25 [INFO]    2010-11-30	10:57:25	127.0.0.1	-	-	8080	GET	/static/images/icons/facebook.jpg	-	200	1474	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost:8080/user_history?jid=testreceiver@jabber.org
+2010-11-30 10:57:25 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/myspace.jpg
+2010-11-30 10:57:25 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/myspace.jpg
+2010-11-30 10:57:25 [INFO]    2010-11-30	10:57:25	127.0.0.1	-	-	8080	GET	/static/images/icons/myspace.jpg	-	200	1498	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost:8080/user_history?jid=testreceiver@jabber.org
+2010-11-30 10:57:25 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/blogger.jpg
+2010-11-30 10:57:25 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/blogger.jpg
+2010-11-30 10:57:25 [INFO]    2010-11-30	10:57:25	127.0.0.1	-	-	8080	GET	/static/images/icons/blogger.jpg	-	200	1524	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost:8080/user_history?jid=testreceiver@jabber.org
+2010-11-30 10:57:25 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/wordpress.jpg
+2010-11-30 10:57:25 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/youtube.jpg
+2010-11-30 10:57:25 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/wordpress.jpg
+2010-11-30 10:57:25 [INFO]    2010-11-30	10:57:25	127.0.0.1	-	-	8080	GET	/static/images/icons/wordpress.jpg	-	200	1345	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost:8080/user_history?jid=testreceiver@jabber.org
+2010-11-30 10:57:25 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/youtube.jpg
+2010-11-30 10:57:25 [INFO]    2010-11-30	10:57:25	127.0.0.1	-	-	8080	GET	/static/images/icons/youtube.jpg	-	200	1654	0	31	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost:8080/user_history?jid=testreceiver@jabber.org
+2010-11-30 10:57:25 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/skype.jpg
+2010-11-30 10:57:25 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/skype.jpg
+2010-11-30 10:57:25 [INFO]    2010-11-30	10:57:25	127.0.0.1	-	-	8080	GET	/static/images/icons/skype.jpg	-	200	1495	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost:8080/user_history?jid=testreceiver@jabber.org
+2010-11-30 10:57:25 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/email.jpg
+2010-11-30 10:57:25 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/email.jpg
+2010-11-30 10:57:25 [INFO]    2010-11-30	10:57:25	127.0.0.1	-	-	8080	GET	/static/images/icons/email.jpg	-	200	585	0	15	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost:8080/user_history?jid=testreceiver@jabber.org
+2010-11-30 10:57:25 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/vimeo.jpg
+2010-11-30 10:57:25 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/vimeo.jpg
+2010-11-30 10:57:25 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/digg.jpg
+2010-11-30 10:57:25 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/digg.jpg
+2010-11-30 10:57:25 [INFO]    2010-11-30	10:57:25	127.0.0.1	-	-	8080	GET	/static/images/icons/vimeo.jpg	-	200	1440	0	15	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost:8080/user_history?jid=testreceiver@jabber.org
+2010-11-30 10:57:25 [INFO]    2010-11-30	10:57:25	127.0.0.1	-	-	8080	GET	/static/images/icons/digg.jpg	-	200	1540	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost:8080/user_history?jid=testreceiver@jabber.org
+2010-11-30 10:57:25 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/gmail.jpg
+2010-11-30 10:57:25 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/gmail.jpg
+2010-11-30 10:57:25 [INFO]    2010-11-30	10:57:25	127.0.0.1	-	-	8080	GET	/static/images/icons/gmail.jpg	-	200	1543	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost:8080/user_history?jid=testreceiver@jabber.org
+2010-11-30 10:57:25 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/reddit.jpg
+2010-11-30 10:57:25 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/reddit.jpg
+2010-11-30 10:57:25 [INFO]    2010-11-30	10:57:25	127.0.0.1	-	-	8080	GET	/static/images/icons/reddit.jpg	-	200	1629	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost:8080/user_history?jid=testreceiver@jabber.org
+2010-11-30 10:57:25 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/gowalla.jpg
+2010-11-30 10:57:25 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/gowalla.jpg
+2010-11-30 10:57:25 [INFO]    2010-11-30	10:57:25	127.0.0.1	-	-	8080	GET	/static/images/icons/gowalla.jpg	-	200	1666	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost:8080/user_history?jid=testreceiver@jabber.org
+2010-11-30 10:57:25 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/gtalk.jpg
+2010-11-30 10:57:25 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/gtalk.jpg
+2010-11-30 10:57:25 [INFO]    2010-11-30	10:57:25	127.0.0.1	-	-	8080	GET	/static/images/icons/gtalk.jpg	-	200	1518	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost:8080/user_history?jid=testreceiver@jabber.org
+2010-11-30 10:57:25 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/github.jpg
+2010-11-30 10:57:25 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/github.jpg
+2010-11-30 10:57:25 [INFO]    2010-11-30	10:57:25	127.0.0.1	-	-	8080	GET	/static/images/icons/github.jpg	-	200	1265	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost:8080/user_history?jid=testreceiver@jabber.org
+2010-11-30 10:57:25 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/brightkite.jpg
+2010-11-30 10:57:25 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/brightkite.jpg
+2010-11-30 10:57:25 [INFO]    2010-11-30	10:57:25	127.0.0.1	-	-	8080	GET	/static/images/icons/brightkite.jpg	-	200	1479	0	16	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost:8080/user_history?jid=testreceiver@jabber.org
+2010-11-30 10:57:25 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/newsvine.jpg
+2010-11-30 10:57:25 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/newsvine.jpg
+2010-11-30 10:57:25 [INFO]    2010-11-30	10:57:25	127.0.0.1	-	-	8080	GET	/static/images/icons/newsvine.jpg	-	200	1566	0	16	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost:8080/user_history?jid=testreceiver@jabber.org
+2010-11-30 10:57:25 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/spotify.jpg
+2010-11-30 10:57:25 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/spotify.jpg
+2010-11-30 10:57:25 [INFO]    2010-11-30	10:57:25	127.0.0.1	-	-	8080	GET	/static/images/icons/spotify.jpg	-	200	1395	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost:8080/user_history?jid=testreceiver@jabber.org
+2010-11-30 10:57:25 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/foursquare.jpg
+2010-11-30 10:57:25 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cstatic%5Cresources%5C/images/icons/foursquare.jpg
+2010-11-30 10:57:25 [INFO]    2010-11-30	10:57:25	127.0.0.1	-	-	8080	GET	/static/images/icons/foursquare.jpg	-	200	1584	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12 ( .NET CLR 3.5.30729)	http://localhost:8080/user_history?jid=testreceiver@jabber.org
