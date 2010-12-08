@@ -13,8 +13,9 @@ import org.restlet.resource.Get;
 
 import datasphere.catalog.DSCatalog;
 import datasphere.catalog.DSClient;
-import datasphere.catalog.DSSource;
 import datasphere.catalog.DSSub;
+import datasphere.catalog.xmpp.DSVCard;
+import datasphere.dataware.DSFormatException;
 import datasphere.dataware.DSUpdate;
 import freemarker.template.TemplateException;
 
@@ -22,7 +23,7 @@ public class SourceHistoryPage
 extends DSServerResource { 
 	
 	private DSClient user;
-	private DSSource source;
+	private DSVCard source;
 	private DSSub subscription;  
 	private Map< String, Object > data;
 	
@@ -70,11 +71,27 @@ extends DSServerResource {
 				
 				return presentSource( form );
 			}
-		} 
-		catch ( SQLException e ) {} 
-		catch ( JSONException e ) {}
-		catch ( IOException e) {} 
-		catch ( TemplateException e ) {}
+			
+		} catch ( SQLException e ) {
+			e.printStackTrace();
+			return null;
+			
+		} catch ( JSONException e) {
+			e.printStackTrace();
+			return null;
+			
+		} catch ( IOException e) {
+			e.printStackTrace();
+			return null;
+			
+		} catch ( TemplateException e ) {
+			e.printStackTrace();
+			return null;
+		
+		} catch ( DSFormatException e ) {
+			e.printStackTrace();
+			return null;
+		}
 		
 		try {
 			return processHTML( "error.ftl", data );

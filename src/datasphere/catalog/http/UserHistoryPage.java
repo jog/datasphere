@@ -14,6 +14,7 @@ import org.restlet.resource.Get;
 import datasphere.catalog.DSCatalog;
 import datasphere.catalog.DSClient;
 import datasphere.catalog.DSSub;
+import datasphere.dataware.DSFormatException;
 import datasphere.dataware.DSUpdate;
 import freemarker.template.TemplateException;
 
@@ -104,6 +105,11 @@ extends DSServerResource {
 		} catch ( TemplateException e ) {
 			e.printStackTrace();
 			return null;
+		
+		} catch ( DSFormatException e ) {
+			e.printStackTrace();
+			return null;
 		}
+
 	}
 }

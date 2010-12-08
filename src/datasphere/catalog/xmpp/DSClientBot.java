@@ -17,8 +17,12 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+import java.io.File;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Logger;
+
+import javax.imageio.ImageIO;
 
 import org.jivesoftware.smack.ConnectionConfiguration;
 import org.jivesoftware.smack.Roster;
@@ -29,13 +33,16 @@ import org.jivesoftware.smack.packet.IQ;
 import org.jivesoftware.smack.packet.Message;
 import org.jivesoftware.smack.packet.Packet;
 import org.jivesoftware.smack.packet.Presence;
+import org.jivesoftware.smack.packet.RosterPacket;
 import org.jivesoftware.smack.provider.ProviderManager;
 import org.jivesoftware.smackx.ServiceDiscoveryManager;
 
 import datasphere.catalog.DSCatalog;
 import datasphere.catalog.DSClient;
+import datasphere.catalog.DSDataManager;
 import datasphere.catalog.DSSub;
 import datasphere.dataware.DSException;
+import datasphere.dataware.DSFormatException;
 
 public class DSClientBot {
 
@@ -128,6 +135,62 @@ public class DSClientBot {
 
 	///////////////////////////////
 	
+	public void createSubscription( String sid ) 
+	throws SQLException, DSFormatException {
+
+		//-- obtaining vCards seems flaky so we allow 3 attempts
+		for( int attempt = 1; attempt < 4; ) 
+		{
+			try {
+	    		//-- get the subscriptions vcard information
+	        	DSVCard vCard = new DSVCard( connection, sid );
+	
+	        	logger.fine( "--- DSClientBot: [" + getJid() + "] " +
+					"Fetching VCard for <" + sid + "> - attempt " + attempt + "... [SUCCESS] " );
+	        	
+				//-- and add the subscription into the database
+		        DSCatalog.db.insertSubscription( 
+		        	vCard,
+					getJid(),
+					DSSub.Status.RECEIVED,
+					sid
+				);
+		        
+		        //-- save the avatar if one exists
+		        try {
+					ImageIO.write( 
+						vCard.getAvatar(), 
+						"png", 
+						new File( "C://" + vCard.getNamespace() + ".png" ) 
+					);
+					
+		        	logger.finer( "--- DSClientBot: [" + getJid() + "] " +
+							"Attempting to cache avatar for <" + sid + ">... [SUCCESS]" );
+		        	
+				} catch (IOException e) {
+		        	logger.finer( "--- DSClientBot: [" + getJid() + "] " +
+						"Attempting to cache avatar for <" + sid + ">... [FAILED]" );
+				}
+		        
+		        return;
+
+			} catch ( XMPPException e ) {
+				logger.fine( "--- DSClientBot: [" + getJid() + "] " +
+					"Fetching VCard for <" + sid + "> - attempt " + attempt + "... [FAILED]" );
+				attempt++;
+
+			} catch ( DSFormatException e ) {
+				logger.fine( "--- DSClientBot: [" + getJid() + "] " +
+					"Fetching VCard for <" + sid + "> - attempt " + attempt + "... [SUCCESS] " );
+				throw e;
+			}
+		}
+		
+		throw new DSFormatException();
+	}
+	
+	///////////////////////////////
+	
 	public void acceptSubscription( String sid ) 
 	throws SQLException {
 
@@ -144,7 +207,7 @@ public class DSClientBot {
 		String ns = DSCatalog.db.fetchNamespace( sid );
 		DSCatalog.db.setSubStatus( ns, getJid(), DSSub.Status.RESPONDED );
 		
-		logger.finer( "--- DSPresenceListener: [" + getJid() + "] " +
+		logger.finer( "--- DSClientBot: [" + getJid() + "] " +
 			"accepted subscription request from (" + sid + ") ");
 	}
 
@@ -157,24 +220,54 @@ public class DSClientBot {
 		
 			String ns = DSCatalog.db.fetchNamespace( sid );
 			if ( ns != null )
-				DSCatalog.db.getSubscriptionStatus( getJid(), ns );
+				DSCatalog.db.getSubStatus( 
+					getJid(), 
+					DSDataManager.SourceField.NAMESPACE, 
+					ns 
+				);
 			else 
 				throw new DSException();
 			
 			DSCatalog.db.setSubStatus( ns, getJid(), DSSub.Status.COMPLETED );
 			
-			logger.finer( "--- DSPresenceListener: [" + getJid() + "] " +
+			logger.finer( "--- DSClientBot: [" + getJid() + "] " +
 				"completed subscription procedure for (" + sid+ ") ");
 			
 		} catch( SQLException e ) {
 			logger.finer( 
-				"--- DSPresenceListener: [" + getJid() + "] " +
+				"--- DSClientBot: [" + getJid() + "] " +
 				"subscription completion failed due to database errors (" + sid + ") ");
 			
 		} catch( DSException e ) {
 			logger.finer( 
-				"--- DSPresenceListener: [" + getJid() + "] " +
+				"--- DSClientBot: [" + getJid() + "] " +
 				"subscription completion failed due to lack of namespace for (" + sid + ") ");
 		}
 	}
+
+	///////////////////////////////
+	
+	public void rejectSubscription( String sid ) {
+		
+		//-- the following is required to accept the dataware's subscription request.
+		Presence response = new Presence( Presence.Type.unsubscribed );
+		response.setTo( sid );
+		sendPacket( response );
+		
+		DSCatalog.db.setSubscriptionStatusFromSid( getJid() , sid, DSSub.Status.REJECTED );
+		
+		logger.finer( "--- DSClientBot: [" + getJid() + "] " +
+				"rejected subscription request from (" + sid + ") ");
+		
+		RosterPacket rp = new RosterPacket();
+		rp.setType( IQ.Type.SET );
+		RosterPacket.Item item = new RosterPacket.Item( sid, null );
+		item.setItemType( RosterPacket.ItemType.remove );
+		rp.addRosterItem( item );
+		sendPacket( rp );
+		logger.finer( "--- DSClientBot: [" + getJid() + "] " +
+				"deleted (" + sid + ") from roster.");
+	}
+	
+	
 }

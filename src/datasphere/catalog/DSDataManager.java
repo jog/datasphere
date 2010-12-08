@@ -36,6 +36,7 @@ import org.json.JSONObject;
 
 import datasphere.catalog.DSSub.Status;
 import datasphere.catalog.xmpp.DSClientBot;
+import datasphere.catalog.xmpp.DSVCard;
 import datasphere.dataware.DSException;
 import datasphere.dataware.DSFormatException;
 import datasphere.dataware.DSUpdate;
@@ -61,11 +62,6 @@ public class DSDataManager {
 
 	private static Logger logger = Logger.getLogger( DSCatalog.class.getName() );
 	
-	private static final String DEFAULT_SOURCE_URL = 
-		"http://www.cs.nott.ac.uk/~jog/datasphere/namespaces.html";
-	
-	private static final String DEFAULT_SOURCE_ICON = "blank.jpg";
-	
 	public enum SourceField {
 	    SID, NAMESPACE 
 	}
@@ -86,7 +82,6 @@ public class DSDataManager {
 	private static final String DEFAULT_SYS_DB = "datasphere"; 
 	private static final String DEFAULT_PASSWORD = "YOUR_PASSWORD_HERE";
 
-	
 	//////////////////////////////////
 	
 	/**
@@ -158,7 +153,6 @@ public class DSDataManager {
 			logger.info( "--- DSDataManager: Connecting to database for persistence... [SUCCESS]" );
 		} catch ( SQLException e ) {
 			logger.info( "--- DSDataManager: Connecting to database for persistence... [FAILED]" );
-			e.printStackTrace();
 			throw new DSException( e );
 		}
 	}
@@ -295,15 +289,21 @@ public class DSDataManager {
 				"`sid` varchar(256) NOT NULL," +				
 				"`ctime` bigint(20) unsigned NOT NULL," +
 				"`mtime` bigint(20) unsigned NOT NULL," +
-				"PRIMARY KEY (`namespace`,`jid`)" +
+				"PRIMARY KEY (`namespace`,`jid`)," +
+				"CONSTRAINT `FK_Namespace` FOREIGN KEY (`namespace`) " +
+				"REFERENCES `ds_sys_sources` (`namespace`) " +
+				"ON DELETE CASCADE ON UPDATE CASCADE" +
 				")";
  
 			String sourcesTableQuery = 
 				"CREATE TABLE  `" + DEFAULT_SYS_DB + "`.`" + SOURCES_TABLE + "` (" +
 				"`namespace` varchar(256) NOT NULL," +
-				"`commonName` varchar(256) NOT NULL," +
-				"`url` varchar(512) NOT NULL, " +
-				"`icon` varchar(512) DEFAULT NULL," +
+				"`name` varchar(256) NOT NULL," +
+				"`url` varchar(512) DEFAULT NULL," +
+				"`avatar` tinyint(1) DEFAULT NULL," +
+				"`orgname` varchar(256) DEFAULT NULL," +
+				"`orgunit` varchar(256) DEFAULT NULL," +
+				"`description` text," +
 				"PRIMARY KEY (`namespace`)" +
 				")";
 			
@@ -644,14 +644,16 @@ public class DSDataManager {
 
 	//////////////////////////////////
 	
-	public String getSubscriptionStatus( String ns, String jid ) {
+	public String getSubStatus( String jid, DSDataManager.SourceField fieldName, String fieldValue ) {
 
 		String subscriptionStatus = null;
 		try {
 			Statement stmt = createStatement();
-			String query = "SELECT subscriptionStatus FROM " 
-				+ SUBSCRIPTIONS_TABLE + " WHERE namespace='" + ns + "' AND jid='" + jid + "'";
-
+			String query = "SELECT subscriptionStatus " +
+				"FROM " + SUBSCRIPTIONS_TABLE + " " + 
+				"WHERE " + fieldName + "='" + fieldValue + "' " +
+				"AND jid='" + jid + "'";
+			
 			ResultSet rs = stmt.executeQuery( query );
 			
 			if ( rs.next() ) 
@@ -711,46 +713,46 @@ public class DSDataManager {
 	//////////////////////////////////
 	
 	public void insertSubscription( 
-		String namespace, 
+		DSVCard vCard, 
 		String jid, 
 		Status status
 	) throws SQLException, DSFormatException {		
-		insertSubscription( namespace, jid, status, null );
+		insertSubscription( vCard, jid, status, null );
 	}
 
 	//////////////////////////////////
 	
 	public void insertSubscription( 
-		String namespace, 
+		DSVCard vCard, 
 		String jid, 
 		Status status,
 		String sid ) 
 	throws SQLException, DSFormatException {
 		
 		//-- we require that the namespace is non-null
-		if ( namespace == null )
+		if ( vCard == null )
 			throw new DSFormatException();
 
 		//-- if the source doesn't exist in our records fetch
 		//-- its information (capabilities, icons, etc)
-		DSSource s = DSCatalog.db.fetchSource( namespace );
+		DSVCard s = fetchSource( vCard.getNamespace() );
 		
 		if ( s == null ) {
-			logger.fine( "--- DSDataManager: new source identified - attempting to add \"" + namespace + "\" to registry.");
-			registerSource( namespace );
+			logger.fine( "--- DSDataManager: [" + jid + "] new source identified - attempting to add <" + vCard.getNamespace() + "> to registry.");
+			insertSource( vCard );
 		}
 		else 
-			logger.fine( "--- DSDataManager: source recognized.");
+			logger.fine( "--- DSDataManager: [" + jid + "] source recognized <" + vCard.getNamespace() + ">.");
 		
 		//-- that done insert the subscription proper
 		try {
 			Statement stmt = createStatement();
 			String query = 
 				"INSERT INTO " + DEFAULT_SYS_DB + "." + SUBSCRIPTIONS_TABLE + " VALUES (" + 
-				"'" + namespace + "'," + 
+				"'" + vCard.getNamespace() + "'," + 
 				"'" + jid + "'," + 
 				"'" + status + "',";
-		
+			
 			query += ( sid == null ) 
 					 ? "null," 
 					 : "'" + sid + "',"; 
@@ -758,60 +760,37 @@ public class DSDataManager {
 			query +=
 				System.currentTimeMillis() + "," +
 				System.currentTimeMillis() + ")";
+
+			stmt.executeUpdate( query );
 			
-			stmt.executeUpdate( query );
-
+			logger.fine( "--- DSDataManager: [" + jid + "] new subscription registered to <" + vCard.getNamespace() +">" );
+			
 		} catch ( SQLException e ) {
-			logger.log( Level.SEVERE, "+++ DSDataManager: SQL Meltdown in insertSubscription - ", e.getMessage() );
+			logger.log( Level.SEVERE, "+++ DSDataManager:  [" + jid + "] SQL Meltdown in insertSubscription - ", e.getMessage() );
 		} 
-		
-		logger.fine( "--- DSDataManager: [" + jid + "] new subscription added for " + namespace);
 	}
 	
 	//////////////////////////////////
 	
-	public void registerSource( String namespace ) 
-	throws DSFormatException {
-		
-		if ( namespace == null )
-			throw new DSFormatException();
-		
-		//-- TODO: fetch the source information 
-		//-- TODO: unpack it 
-		//-- TODO:  insert it into the namespaces
-		insertSource( namespace, null, null, null );
-	}
+	public void insertSource( DSVCard vCard ) 
+	throws DSFormatException, SQLException {
 
-	//////////////////////////////////
-	
-	public void insertSource( 
-		String namespace,
-		String commonName,
-		String url,
-		String icon ) 
-	throws DSFormatException {
+		Statement stmt = createStatement();
+		String query = 
+			"INSERT into datasphere.ds_sys_sources " +
+			"(namespace, name, url, avatar, orgname, orgunit, description ) " +
+			"VALUES ( " +
+			"'" + vCard.getNamespace() + "'," +
+			"'" + vCard.getNickName() + "',";
 		
-		if ( namespace == null )
-			throw new DSFormatException();
-		
-		commonName = ( commonName == null ) ? namespace : commonName;
-		url = ( url == null ) ? DEFAULT_SOURCE_URL : url;
-		icon = ( icon == null ) ? DEFAULT_SOURCE_ICON : icon;
-		
-		try {
-			Statement stmt = createStatement();
-			String query = 
-				"INSERT INTO " + DEFAULT_SYS_DB + "." + SOURCES_TABLE + " VALUES (" + 
-				"'" + namespace + "'," + 
-				"'" + commonName + "'," + 
-				"'" + url + "'," + 
-				"'" + icon + "')";
+		query += ( vCard.getUrl() == null ) ? "null," : "'" +  vCard.getUrl()  + "',";
+		query += ( vCard.hasAvatar() == null ) ? "false," : "true,";
+		query += ( vCard.getOrgName() == null ) ? "null," : "'" +  vCard.getOrgName()  + "',";
+		query += ( vCard.getOrgUnit() == null ) ? "null," : "'" +  vCard.getOrgUnit()  + "',";
+		query += ( vCard.getDesc() == null ) ? "null," : "'" +  vCard.getDesc()  + "'";
+		query += ")";
 
-			stmt.executeUpdate( query );
-
-		} catch ( SQLException e ) {
-			logger.log( Level.SEVERE, "+++ DSDataManager: SQL Meltdown in insertSource - ", e );
-		} 
+		stmt.executeUpdate( query );
 	}
 	
 	//////////////////////////////////
@@ -848,10 +827,10 @@ public class DSDataManager {
 	//////////////////////////////////
 	
 
-	public ArrayList< DSSource > fetchSources( 
+	public ArrayList< DSVCard > fetchSources( 
 			String jid, 
 			DSSub.Status ... statuses ) 
-	throws SQLException {
+	throws SQLException, DSFormatException {
 		
 		Statement stmt = createStatement();
 		String query = 
@@ -869,18 +848,23 @@ public class DSDataManager {
 			query += "AND b.subscriptionStatus IN (" + str + ")";
 		}
 		
-		ArrayList< DSSource > sources = new ArrayList< DSSource >();
+		ArrayList< DSVCard > sources = new ArrayList< DSVCard >();
 		ResultSet rs = stmt.executeQuery( query );
 		
 		while ( rs.next() ) {
-			sources.add( 
-				new DSSource( 
-					rs.getString( "namespace" ),
-					rs.getString( "commonName" ),
-					rs.getString( "url" ),
-					rs.getString( "icon" )
-				)
+			
+			DSVCard vCard = new DSVCard( 
+				rs.getString( "namespace" ),
+				rs.getString( "name" )
 			);
+			
+			vCard.setURL( rs.getString( "url") );
+			vCard.setAvatar( rs.getBoolean( "avatar") );
+			vCard.setOrgName( rs.getString( "orgname") );
+			vCard.setOrgUnit( rs.getString( "orgunit") );
+			vCard.setDesc( rs.getString( "description") );
+			
+			sources.add( vCard );
 		}
 		
 		return sources;
@@ -888,23 +872,30 @@ public class DSDataManager {
 	
 	//////////////////////////////////
 	
-	public DSSource fetchSource( String namespace )
-	throws SQLException {
+	public DSVCard fetchSource( String namespace )
+	throws SQLException, DSFormatException {
 
 		Statement stmt = createStatement();
 		String query = 
 			"SELECT * FROM " + DEFAULT_SYS_DB + "." + SOURCES_TABLE + " " +
 			"WHERE namespace='" + namespace + "'";
+		
 		ResultSet rs = stmt.executeQuery( query );
 
 		if ( rs.next() ) {
 			
-			return new DSSource( 
+			DSVCard vCard = new DSVCard( 
 				rs.getString( "namespace" ),
-				rs.getString( "commonName" ),
-				rs.getString( "url" ),
-				rs.getString( "icon" )
+				rs.getString( "name" )
 			);
+			
+			vCard.setURL( rs.getString( "url") );
+			vCard.setAvatar( rs.getBoolean( "avatar" ) );
+			vCard.setOrgName( rs.getString( "orgname") );
+			vCard.setOrgUnit( rs.getString( "orgunit") );
+			vCard.setDesc( rs.getString( "description") );
+
+			return vCard;
 		}
 
 		return null;
