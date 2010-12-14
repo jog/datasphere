@@ -10,7 +10,7 @@
 		
 		jQuery.ajax({ 
 			type : "GET", 
-			url : "subscription?action=" + action + "&jid=${user.getJid()}&ns=${source.getNamespace()}",
+			url : "subscription?action=" + action + "&jid=${user.getJid()}&sid=${source.getSid()}&ns=${source.getNamespace()}",
 			cache : false,
 			async : true,
 			dataType : "json",
@@ -20,7 +20,6 @@
 			success : function( data ) { 
 				
 				if ( data.success == true ) {
-					alert( action + " was successful" )
 					location.reload( true );
 				}
 				else 
@@ -34,6 +33,8 @@
 <!------------- PARAMETER SECTION --------------->
 <#if subscription??>
 	<#assign status = subscription.getSubscriptionStatus()>
+<#elseif policy??>
+	<#assign status = policy>
 <#else>
 	<#assign status = "NONE">
 </#if>
@@ -50,7 +51,7 @@
 					<img class="dwicon" src="/static/images/icons/${ source.getAvatarName() }"/>
 				</a>
 			</div>
-			<div style="margin-left:40px;">
+			<div style="margin-left:65px;">
 				common name:
 				<div class="purple">${ source.getNickName() } </div>
 				namespace:
@@ -58,36 +59,37 @@
 
 				subscription status:				
 
-				<#if status == "REJECTED" >
-					<div class="red">Dataware permanently rejected.</div>
-					<a href="javascript:changeSubscription('RESET')">reset subscription</a>
-				
-				<#elseif status == "EXPECTED" >						
-					<div class="purple">Ready to auto-accept dataware.</div>
-					<a href="javascript:changeSubscription('RESET')">reset subscription</a>
-					
-				<#elseif status == "RECEIVED" >
+				<#if status == "RECEIVED" >
 					<div class="purple">Request received. Awaiting your response. </div>
 					<a href="javascript:changeSubscription('ACCEPT')">accept subscription</a> |
 					<a href="javascript:changeSubscription('REJECT')">reject subscription</a>
 
 				<#elseif status == "ACCEPTED" >
 					<div class="purple">Request accepted. Trying to send response. </div>
-					<a href="javascript:changeSubscription('RESET')">cancel accept</a> |
+					<a href="javascript:changeSubscription('REJECT')">cancel accept</a> |
 					<a href="javascript:changeSubscription('RETRY')">retry</a>
 
 				<#elseif status == "RESPONDED" >
 					<div class="purple">Request accepted. Awaiting completion.</div>
-					<a href="javascript:changeSubscription('RESET')">cancel accept</a>
+					<a href="javascript:changeSubscription('REJECT')">cancel accept</a>
 
 				<#elseif status == "COMPLETED" >
 					<div class="green">ACTIVE </div>
-					<a href="javascript:changeSubscription('UNSUBSCRIBE')">unsubscribe</a>
+					<a href="javascript:changeSubscription('REJECT')">unsubscribe</a>
 									
+				<#elseif status == "REJECTED" >
+						<div class="red">Dataware permanently rejected.</div>
+						<a href="javascript:changeSubscription('RESET')">reset subscription</a>
+					
+				<#elseif status == "EXPECTED" >						
+					<div class="green">Ready to auto-accept dataware.</div>
+					<a href="javascript:changeSubscription('RESET')">reset subscription</a>
+					
 				<#else>
 					<div class="purple">none</div>
-					<a href="javascript:changeSubscription('RESET')">set to auto-accept</a>
-				</#if>
+					<a href="javascript:changeSubscription('EXPECT')">auto-accept</a> |
+					<a href="javascript:changeSubscription('REJECT')">auto-reject</a>
+				</#if>						
 			</div>
 		</div>			
 	</div>

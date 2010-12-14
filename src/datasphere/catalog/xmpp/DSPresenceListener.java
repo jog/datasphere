@@ -26,8 +26,7 @@ import org.jivesoftware.smack.packet.Packet;
 import org.jivesoftware.smack.packet.Presence;
 
 import datasphere.catalog.DSCatalog;
-import datasphere.catalog.DSDataManager;
-import datasphere.catalog.DSSub;
+import datasphere.catalog.DSSub.Status;
 import datasphere.dataware.DSFormatException;
 
 public class DSPresenceListener 
@@ -46,29 +45,36 @@ implements PacketListener {
 
 	public void processPacket( Packet packet ) {
 
-		Presence p = (Presence) packet;
-		String sid = p.getFrom();
-		
-		if ( p.getType() == Presence.Type.unavailable ) 
-			datawareUnavailable( sid );
-		
-		else if ( p.getType() == Presence.Type.available ) 
-			datawareAvailable( sid );
-		
-		else if ( p.getType() == Presence.Type.subscribe ) 
-			datawareSubscribe( p );
-		
-		else if ( p.getType() == Presence.Type.unsubscribe ) 
-			datawareUnsubscribe( sid );
-		
-		else if ( p.getType() == Presence.Type.error ) 
-			datawarePresenceError( sid );
-		
-		else if ( p.getType() == Presence.Type.subscribed ) 
-			parent.completeSubscription( p.getFrom() );
-		
-		else if ( p.getType() == Presence.Type.unsubscribed ) 
-			completeUnsubscription( p.getFrom() );
+		try {
+			Presence p = (Presence) packet;
+			String sid = p.getFrom();
+			
+			if ( p.getType() == Presence.Type.unavailable ) 
+				datawareUnavailable( sid );
+			
+			else if ( p.getType() == Presence.Type.available ) 
+				datawareAvailable( sid );
+			
+			else if ( p.getType() == Presence.Type.subscribe )
+				datawareSubscribe( p );
+	
+			else if ( p.getType() == Presence.Type.unsubscribe ) 
+				datawareUnsubscribe( sid );
+			
+			else if ( p.getType() == Presence.Type.error ) 
+				datawarePresenceError( sid );
+			
+			else if ( p.getType() == Presence.Type.subscribed ) 
+				parent.completeSubscription( p.getFrom() );
+			
+			else if ( p.getType() == Presence.Type.unsubscribed ) 
+				completeUnsubscription( p.getFrom() );
+			
+		} catch ( SQLException e ) {
+			//-- complete database meltdown. If we got here, then it 
+			//-- is likely that roster and db will now be inconsistent.
+			e.printStackTrace();
+		}			
 	}
 
 	///////////////////////////////
@@ -87,55 +93,56 @@ implements PacketListener {
 	
     ///////////////////////////////
 
-	public void datawareSubscribe( Presence p ) {
+	public void datawareSubscribe( Presence p ) 
+	throws SQLException {
 		
 		try {
 			//-- otherwise we are good to go...
 			logger.fine( "--- DSPresenceListener: [" + parent.getJid() + "] " +
-				"Dataware subscription request from " + p.getFrom() );
-			
-			//-- determine the current status, if any, of the subscription
-			String sub = DSCatalog.db.getSubStatus( 
+				"Dataware subscription request from <" + p.getFrom() + ">" );
+
+			//-- do we have a policy for the source requesting subscription?
+			Status policy = DSCatalog.db.fetchPolicy(
 					parent.getJid(), 
-					DSDataManager.SourceField.SID, 
-					p.getFrom()
-			);
-						
-			//-- if we aren't subscribed, steup the request and wait for user confirmation.
-			if ( sub == null ) {
-				parent.createSubscription( p.getFrom() );
-			}
-			//-- request is expected so accept it
-			else if ( sub.equals( DSSub.Status.EXPECTED ) ) {
-				parent.acceptSubscription( p.getFrom() );
-			}
-			//-- request is unwelcome so reject it.
-			else if ( sub.equals( DSSub.Status.REJECTED ) ) {
+					p.getFrom() 
+				);
+
+			//-- if we don't then let the user decide what to do manually
+			if ( policy == Status.REJECTED ) {
+				logger.fine( "--- DSPresenceListener: " +
+						"[" + parent.getJid() + "] " +
+						"Automatically rejecting dataware subscription due to policy " +
+						"<" + p.getFrom() + "> ");
 				parent.rejectSubscription( p.getFrom() );
 			}
-			//-- source is being beligerent - it will have to wait for the user.
-			else if ( sub.equals( DSSub.Status.RECEIVED ) ) {
-			}
-			//-- already dealt with - we should do some roster error checking.
-			else if ( 
-				sub.equals( DSSub.Status.ACCEPTED ) || 
-				sub.equals( DSSub.Status.RESPONDED ) ||
-				sub.equals( DSSub.Status.COMPLETED ) 
-			);
 			
+			//-- otherwise we can create the subscription
+			else { 
+				parent.createSubscription( p.getFrom() );
+				
+				//-- and if the source had been deemed as friendly we
+				//-- can immediately accept it.
+				if ( policy == Status.EXPECTED )  {
+					logger.fine( "--- DSPresenceListener: " +
+							"[" + parent.getJid() + "] " +
+							"Automatically accepting dataware subscription due to policy " +
+							"<" + p.getFrom() + "> ");
+					parent.acceptSubscription( p.getFrom() );
+				}
+			}
 		}
 		catch ( SQLException e ) {
 			logger.fine( "--- DSPresenceListener: " +
 					"[" + parent.getJid() + "] " +
 					"Rejecting dataware subscription due to database issues. " +
-					"(" + p.getFrom() + ") ");
+					"<" + p.getFrom() + "> ");
 			parent.rejectSubscription( p.getFrom() );
 			
 		} catch ( DSFormatException e ) {
 			logger.fine( "--- DSPresenceListener: " +
 				"[" + parent.getJid() + "] " +
 				"Rejecting dataware subscription due to missing namespace. " +
-				"(" + p.getFrom() + ") ");
+				"<" + p.getFrom() + "> ");
 			parent.rejectSubscription( p.getFrom() );
 		}
 	}
@@ -146,7 +153,7 @@ implements PacketListener {
 	public void datawareUnsubscribe( String sid ) {
 		// TODO 
 		logger.finer( "--- DSPresenceListener: [" + parent.getJid() + "] " +
-				"Dataware subscription removal initiated (" + sid + ") " );
+				"Dataware subscription removal initiated <" + sid + ">" );
 	}
 
 	///////////////////////////////
@@ -154,7 +161,7 @@ implements PacketListener {
     private void completeUnsubscription( String sid ) {
     	// TODO 
     	logger.finer( "--- DSPresenceListener: [" + parent.getJid() + "]" +
-				"Dataware subscription removal complete (" + sid + ") " );
+				"Dataware subscription removal complete <" + sid + ">" );
 	}
 
     ///////////////////////////////
@@ -162,7 +169,7 @@ implements PacketListener {
 	private void datawarePresenceError( String sid ) {
     	// TODO 
 		logger.finer( "--- DSPresenceListener: [" + parent.getJid() + "]" +
-			"Error in the server processing our presence requests" );
+			"Error in the server processing our presence requests <" + sid + ">" );
 	}
 	
 };

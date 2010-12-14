@@ -84,16 +84,16 @@ public class DSUpdate {
 	//-- other data associated with the update, specific to its type
 	private HashMap< String, String > meta;
 
-	public DSUpdate( String namespace, String primaryTag, String crud ) 
+	public DSUpdate( String sid, String primaryTag, String crud ) 
 	throws DSFormatException {
-		setNamespace( namespace );
+		setSid( sid );
 		setCrud( crud );
 		setType( primaryTag );
 	}
 	
-	public DSUpdate( String namespace, String primaryTag )
+	public DSUpdate( String sid, String primaryTag )
 	throws DSFormatException {
-		setNamespace( namespace );
+		setSid( sid );
 		setCrud( "create" );
 		setType( primaryTag );
 	}

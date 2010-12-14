@@ -2,9 +2,6 @@ package datasphere.catalog.xmpp;
 
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 
 import javax.imageio.ImageIO;
 
@@ -25,6 +22,7 @@ public class DSVCard {
 	throws XMPPException, DSFormatException {
 		vCard = new VCard();
 		vCard.load( connection, jid );
+		vCard.setJabberId( jid );
 		this.hasAvatar = ( vCard.getAvatar() != null );
 		assertInvariance();
 	}
@@ -32,11 +30,13 @@ public class DSVCard {
     ///////////////////////////////
 	
 	public DSVCard(	
+		String jid,
 		String namespace,
 		String name 
 	) 
 	throws DSFormatException {
 		this.vCard = new VCard();
+		this.vCard.setJabberId( jid );
 		this.vCard.setField( "FN", namespace );
 		this.vCard.setNickName( name );
 		assertInvariance();
@@ -62,6 +62,9 @@ public class DSVCard {
     	if ( vCard.getField( "FN" ) == null )
     		throw new DSFormatException();
     	
+    	if ( vCard.getJabberId() == null )
+    		throw new DSFormatException();
+    	
     	if ( vCard.getNickName() == null )
     		throw new DSFormatException();
     	
@@ -81,13 +84,13 @@ public class DSVCard {
 
 	///////////////////////////////
  	
-	public BufferedImage getAvatar() 
-	throws IOException {
-		return ImageIO.read( 
-			new ByteArrayInputStream( 
-				vCard.getAvatar() 
-			)
-		); 
+	public BufferedImage getAvatar() {
+		try {
+			ByteArrayInputStream is = new ByteArrayInputStream( vCard.getAvatar() );
+			return ImageIO.read( is );
+		} catch ( Exception e ) {
+			return null;
+		}
 	}
 
 	///////////////////////////////
@@ -164,12 +167,24 @@ public class DSVCard {
 
 	public String getAvatarName() {
 		
-		try {
-			if ( hasAvatar )
-				return URLEncoder.encode( getNamespace(), "UTF-8" ) + ".png";
-		} catch (UnsupportedEncodingException e) {}
-		
+		if ( hasAvatar )
+			return getNamespace()
+				.replace( "/", "_")
+				.replace( "\\", "_")
+				.replace( ":", "_")
+				.replace( "?", "_")
+				.replace( "*", "_")
+				.replace( ">", "_")
+				.replace( "<", "_")
+				.replace( "|", "_") + ".png";
+
 		return "blank.jpg";
+	}
+
+	///////////////////////////////
+	
+	public String getSid() {
+		return vCard.getJabberId();
 	}
 	
 }

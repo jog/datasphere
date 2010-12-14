@@ -85,10 +85,10 @@ public final class DSCatalog {
 	public void setupLogging() {
 
 	    handler.setFormatter( new DSLogFormatter() );
-	    handler.setLevel( Level.FINE );
+	    handler.setLevel( Level.FINEST );
 	    logger.addHandler( handler );
 	    logger.setUseParentHandlers( false );
-	    logger.setLevel( Level.FINE );
+	    logger.setLevel( Level.FINEST );
 	}
 	
 	///////////////////////////////

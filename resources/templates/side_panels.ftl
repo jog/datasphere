@@ -21,7 +21,7 @@
 		<div class="box">
 			<#list activeSubs as activeSub>
 				<a href="/source_history?jid=${ user.getJid() }&ns=${ activeSub.getNamespace() }">
-				<img class="dwicon" src="/static/images/icons/${ activeSub.getAvatarName() }"/></a>
+				<img class="dwicon-small" src="/static/images/icons/${ activeSub.getAvatarName() }"/></a>
 			</#list>
 		</div>
 	</div>
@@ -34,7 +34,7 @@
 		<div class="box">
 			<#list pendingSubs as activeSub>
 				<a href="/source_history?jid=${ user.getJid() }&ns=${ activeSub.getNamespace() }">
-				<img class="dwicon" src="/static/images/icons/${ activeSub.getAvatarName() }"/></a>
+				<img class="dwicon-small" src="/static/images/icons/${ activeSub.getAvatarName() }"/></a>
 			</#list>
 		</div>
 	</div>
@@ -45,26 +45,27 @@
 			Available dataware:
 		</div>
 		<div class="box" >
-			<img class="dwicon" src="/static/images/icons/blogger.jpg"/>
-			<img class="dwicon" src="/static/images/icons/myspace.jpg"/>
-			<img class="dwicon" src="/static/images/icons/youtube.jpg"/>
-			<img class="dwicon" src="/static/images/icons/wordpress.jpg"/>
-			<img class="dwicon" src="/static/images/icons/reddit.jpg"/>
-			<img class="dwicon" src="/static/images/icons/skype.jpg"/>
-			<img class="dwicon" src="/static/images/icons/vimeo.jpg"/>
-			<img class="dwicon" src="/static/images/icons/digg.jpg"/>
-			<img class="dwicon" src="/static/images/icons/email.jpg"/>
-			<img class="dwicon" src="/static/images/icons/gmail.jpg"/>
-			<img class="dwicon" src="/static/images/icons/spotify.jpg"/>
-			<img class="dwicon" src="/static/images/icons/github.jpg"/>
-			<img class="dwicon" src="/static/images/icons/twitter.jpg"/>
-			<img class="dwicon" src="/static/images/icons/brightkite.jpg"/>
-			<img class="dwicon" src="/static/images/icons/newsvine.jpg"/>
-			<img class="dwicon" src="/static/images/icons/gtalk.jpg"/>
-			<img class="dwicon" src="/static/images/icons/gowalla.jpg"/>
-			<img class="dwicon" src="/static/images/icons/foursquare.jpg"/>
+			<img class="dwicon-small" src="/static/images/icons/blogger.jpg"/>
+			<img class="dwicon-small" src="/static/images/icons/myspace.jpg"/>
+			<img class="dwicon-small" src="/static/images/icons/youtube.jpg"/>
+			<img class="dwicon-small" src="/static/images/icons/wordpress.jpg"/>
+			<img class="dwicon-small" src="/static/images/icons/reddit.jpg"/>
+			<img class="dwicon-small" src="/static/images/icons/skype.jpg"/>
+			<img class="dwicon-small" src="/static/images/icons/vimeo.jpg"/>
+			<img class="dwicon-small" src="/static/images/icons/digg.jpg"/>
+			<img class="dwicon-small" src="/static/images/icons/email.jpg"/>
+			<img class="dwicon-small" src="/static/images/icons/gmail.jpg"/>
+			<img class="dwicon-small" src="/static/images/icons/spotify.jpg"/>
+			<img class="dwicon-small" src="/static/images/icons/github.jpg"/>
+			<img class="dwicon-small" src="/static/images/icons/twitter.jpg"/>
+			<img class="dwicon-small" src="/static/images/icons/brightkite.jpg"/>
+			<img class="dwicon-small" src="/static/images/icons/newsvine.jpg"/>
+			<img class="dwicon-small" src="/static/images/icons/gtalk.jpg"/>
+			<img class="dwicon-small" src="/static/images/icons/gowalla.jpg"/>
+			<img class="dwicon-small" src="/static/images/icons/foursquare.jpg"/>
+			<img class="dwicon-small" src="/static/images/icons/picasa.jpg"/>
 			<a href="http://data-chant.appspot.com/main">
-				<img class="dwicon" src="/static/images/icons/facebook.jpg"/>
+				<img class="dwicon-small" src="/static/images/icons/facebook.jpg"/>
 			</a>
 		</div>
 		<div class="more">
