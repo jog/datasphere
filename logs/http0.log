@@ -8762,3 +8762,4 @@
 2010-12-13 18:33:37 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/facebook.jpg
 2010-12-13 18:33:37 [INFO]    2010-12-13	18:33:37	127.0.0.1	-	-	8080	GET	/static/images/icons/facebook.jpg	-	200	1474	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
 2010-12-13 18:33:42 [INFO]    2010-12-13	18:33:42	127.0.0.1	-	-	8080	GET	/user_history	jid=james.goulding@gmail.com	200	5781	0	125	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-21 14:01:38 [INFO]    Starting the internal HTTP server on port 8080
