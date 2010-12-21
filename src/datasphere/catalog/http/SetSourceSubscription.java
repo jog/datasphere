@@ -12,9 +12,9 @@ import org.restlet.resource.Get;
 
 import datasphere.catalog.DSCatalog;
 import datasphere.catalog.DSClient;
-import datasphere.catalog.DSSub;
 import datasphere.catalog.xmpp.DSChatServer;
 import datasphere.catalog.xmpp.DSClientBot;
+import datasphere.dataware.DSException;
 import datasphere.dataware.DSFormatException;
 
 public class SetSourceSubscription 
@@ -23,7 +23,7 @@ extends DSServerResource {
 	private static Logger logger = Logger.getLogger( DSCatalog.class.getName() );
 	
 	private enum Action {
-		RESET, ACCEPT, REJECT, RETRY, UNSUBSCRIBE;
+		RESET, ACCEPT, REJECT, RETRY, EXPECT;
 		
 		public static Action match( String action ) {
 			for( Action a : EnumSet.allOf( Action.class ) ) 
@@ -35,15 +35,78 @@ extends DSServerResource {
 
 	private DSClient user;  
 	private String ns;
+	private String sid;
 	private Action action;
-	private DSSub sub;
 	
+	///////////////////////////////////
+	
+	@Get()
+	public JsonRepresentation doGet() {
+		
+		try {
+			//-- fetch client information
+			Form form = getRequest().getResourceRef().getQueryAsForm();
+			this.user = DSCatalog.db.fetchClient( form.getFirstValue( "jid" ) );
+			this.ns = form.getFirstValue( "ns" );
+			this.sid = form.getFirstValue( "sid" );
+			this.action = Action.match( form.getFirstValue( "action" ) );
+			
+			
+			//-- check we have everything we need
+			assertInvariance();
+
+			//-- if we have no xmmp connection we have to fail
+			DSClientBot client = DSChatServer.getClient( user.getJid() );
+			if ( client == null ) 
+				return setResult( false, "lack of xmmp connection prevented completion." );
+
+			//-- accept the specified subscription
+			if ( action == Action.ACCEPT ) {
+				client.acceptSubscription( sid );
+				return setResult( true, "subscription has been accepted." );
+			}
+			
+			//-- reset (remove) the specified subscription
+			else if ( action == Action.RESET ) {
+				client.resetSubscription( sid );
+				return setResult( true, "subscription has been reset." );
+			}
+			
+			//-- reset (remove) the specified subscription
+			else if ( action == Action.REJECT ) {
+				client.rejectSubscription( sid );
+				return setResult( true, "subscription has been rejected." );
+			}
+			
+			//-- set the specified subscription to be auto accepted
+			else if ( action == Action.EXPECT ) {
+				client.expectSubscription( sid );
+				return setResult( true, "subscription has been set as expected." );
+			}
+			
+			//-- reset (remove) the specified subscription
+			else if ( action == Action.RETRY ) {
+				client.acceptSubscription( sid );
+				return setResult( true, "subscription acceptance has been resent" );
+			}
+		} 
+		catch ( SQLException e ) {
+			return setResult( false, "database error prevented completion." );
+		}
+		catch ( DSException e ) {
+			return setResult( false, "incorrect parameters or null subscription." );
+		} 
+		
+		return setResult( false, "unknown cause of failure." );
+	}
+
+
 	///////////////////////////////////
 	
 	public JsonRepresentation setResult( boolean result, String message ) {
 		
 		logger.fine( "--- SetSourceSubscription: [" +user.getJid() + "] " +
-				"Manual subscription acceptance for \"" + ns + "\" " + 
+				"subscription " + action + " for \"" + ns + "\" " + 
 				( result ? "successful" : "failed" ) + 
 				" (" + message + ")" );
 		try {
@@ -59,56 +122,12 @@ extends DSServerResource {
 		}
 	}
 	
-	///////////////////////////////////
-	
-	@Get()
-	public JsonRepresentation doGet() {
-		
-		try {
-			//-- fetch client information
-			Form form = getRequest().getResourceRef().getQueryAsForm();
-			this.user = DSCatalog.db.fetchClient( form.getFirstValue( "jid" ) );
-			this.ns = form.getFirstValue( "ns" );
-			this.action = Action.match( form.getFirstValue( "action" ) );
-			this.sub = DSCatalog.db.fetchSub( user.getJid(), ns );
-			
-			//-- check we have everything we need
-			assertInvariance();
-			
-			if ( action == Action.ACCEPT ) {
-				
-				//-- if we have no xmmp connection we have to fail
-				DSClientBot client = DSChatServer.getClient( user.getJid() );
-				
-				if ( client == null ) 
-					return setResult( false, "lack of xmmp connection prevented completion" );
-			
-				//-- log the subscription as accepted in the database
-				DSCatalog.db.setSubStatus( ns, user.getJid(), DSSub.Status.ACCEPTED );
-
-				//-- notify the xmmp server so it can update its roster
-				client.acceptSubscription( sub.getSid() );
-				
-				//-- return a sucessful response
-				return setResult( true, "subscription has been accepted!" );
-			}
-
-		} 
-		catch ( SQLException e ) {
-			return setResult( false, "database error prevent completion." );
-		}
-		catch ( DSFormatException e ) {
-			return setResult( false, "incorrect parameters or null subscription." );
-		} 
-		
-		return setResult( false, "unknown cause of failure." );
-	}
-
 	//////////////////////////////////
 
 	private void assertInvariance()
 	throws DSFormatException {
-		if ( user == null || ns == null || action == null || sub == null )
+
+		if ( user == null || sid == null || ns == null || action == null )
 			throw new DSFormatException();
 	}
 }

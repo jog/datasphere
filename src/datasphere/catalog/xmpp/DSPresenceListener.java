@@ -22,13 +22,11 @@ import java.sql.SQLException;
 import java.util.logging.Logger;
 
 import org.jivesoftware.smack.PacketListener;
-import org.jivesoftware.smack.packet.IQ;
 import org.jivesoftware.smack.packet.Packet;
 import org.jivesoftware.smack.packet.Presence;
-import org.jivesoftware.smack.packet.RosterPacket;
 
 import datasphere.catalog.DSCatalog;
-import datasphere.catalog.DSSub;
+import datasphere.catalog.DSSub.Status;
 import datasphere.dataware.DSFormatException;
 
 public class DSPresenceListener 
@@ -47,33 +45,39 @@ implements PacketListener {
 
 	public void processPacket( Packet packet ) {
 
-		Presence p = (Presence) packet;
-		String sid = p.getFrom();
-		
-		if ( p.getType() == Presence.Type.unavailable ) 
-			datawareUnavailable( sid );
-		
-		else if ( p.getType() == Presence.Type.available ) 
-			datawareAvailable( sid );
-		
-		else if ( p.getType() == Presence.Type.subscribe ) 
-			datawareSubscribe( p );
-		
-		else if ( p.getType() == Presence.Type.unsubscribe ) 
-			datawareUnsubscribe( sid );
-		
-		else if ( p.getType() == Presence.Type.error ) 
-			datawarePresenceError( sid );
-		
-		else if ( p.getType() == Presence.Type.subscribed ) 
-			parent.completeSubscription( p.getFrom() );
-		
-		else if ( p.getType() == Presence.Type.unsubscribed ) 
-			completeUnsubscription( p.getFrom() );
+		try {
+			Presence p = (Presence) packet;
+			String sid = p.getFrom();
+			
+			if ( p.getType() == Presence.Type.unavailable ) 
+				datawareUnavailable( sid );
+			
+			else if ( p.getType() == Presence.Type.available ) 
+				datawareAvailable( sid );
+			
+			else if ( p.getType() == Presence.Type.subscribe )
+				datawareSubscribe( p );
+	
+			else if ( p.getType() == Presence.Type.unsubscribe ) 
+				datawareUnsubscribe( sid );
+			
+			else if ( p.getType() == Presence.Type.error ) 
+				datawarePresenceError( sid );
+			
+			else if ( p.getType() == Presence.Type.subscribed ) 
+				parent.completeSubscription( p.getFrom() );
+			
+			else if ( p.getType() == Presence.Type.unsubscribed ) 
+				completeUnsubscription( p.getFrom() );
+			
+		} catch ( SQLException e ) {
+			//-- complete database meltdown. If we got here, then it 
+			//-- is likely that roster and db will now be inconsistent.
+			e.printStackTrace();
+		}			
 	}
 
 	///////////////////////////////
-
 
 	public void datawareAvailable( String sid ) {
 		logger.finer( "--- DSPresenceListener: [" + parent.getJid() + "] " +
@@ -87,123 +91,85 @@ implements PacketListener {
 			"Dataware unavailable for (" + sid + ")" );
 	}
 	
-	
     ///////////////////////////////
 
-	public void datawareSubscribe( Presence p ) {
+	public void datawareSubscribe( Presence p ) 
+	throws SQLException {
 		
 		try {
-			//-- obtain the namespace of the source from the presence "nickname"
-			DSNickname ex = (DSNickname) p.getExtension( "http://jabber.org/protocol/nick" );
-			String nick = ( ex != null ) ? ex.getNick() : "ds:facebook";
-			
-			//-- if none has been supplied we reject the request.
-			if ( nick == null ) 
-				throw new DSFormatException();
-		
 			//-- otherwise we are good to go...
-			logger.fine( "--- DSPresenceListener: " +
-				"[" + parent.getJid() + "] " +
-				"Dataware subscription request from \"" + nick + "\" " +
-				"(" + p.getFrom() + ") ");
+			logger.fine( "--- DSPresenceListener: [" + parent.getJid() + "] " +
+				"Dataware subscription request from <" + p.getFrom() + ">" );
 
-			//-- obtain the subscription proper
-			String sub = DSCatalog.db.getSubscriptionStatus( nick, parent.getJid() );
+			//-- do we have a policy for the source requesting subscription?
+			Status policy = DSCatalog.db.fetchPolicy(
+					parent.getJid(), 
+					p.getFrom() 
+				);
+
+			//-- if we don't then let the user decide what to do manually
+			if ( policy == Status.REJECTED ) {
+				logger.fine( "--- DSPresenceListener: " +
+						"[" + parent.getJid() + "] " +
+						"Automatically rejecting dataware subscription due to policy " +
+						"<" + p.getFrom() + "> ");
+				parent.rejectSubscription( p.getFrom() );
+			}
 			
-			//-- if we aren't subscribed, steup the request and wait for user confirmation.
-			if ( sub == null )
-				createSubscription( nick, p.getFrom() );
-			
-			//-- request is expected so accept it
-			else if ( sub.equals( DSSub.Status.EXPECTED ) )
-				parent.acceptSubscription( p.getFrom() );
-			
-			//-- request is unwelcome so reject it.
-			else if ( sub.equals( DSSub.Status.REJECTED ) )
-				rejectSubscription( p.getFrom() );
-			
-			//-- source is being beligerent - it will have to wait for the user.
-			else if ( sub.equals( DSSub.Status.RECEIVED ) );
-	
-			//-- already dealt with - we should do some roster error checking.
-			else if ( 
-				sub.equals( DSSub.Status.ACCEPTED ) || 
-				sub.equals( DSSub.Status.RESPONDED ) ||
-				sub.equals( DSSub.Status.COMPLETED ) );
-			
+			//-- otherwise we can create the subscription
+			else { 
+				parent.createSubscription( p.getFrom() );
+				
+				//-- and if the source had been deemed as friendly we
+				//-- can immediately accept it.
+				if ( policy == Status.EXPECTED )  {
+					logger.fine( "--- DSPresenceListener: " +
+							"[" + parent.getJid() + "] " +
+							"Automatically accepting dataware subscription due to policy " +
+							"<" + p.getFrom() + "> ");
+					parent.acceptSubscription( p.getFrom() );
+				}
+			}
 		}
 		catch ( SQLException e ) {
 			logger.fine( "--- DSPresenceListener: " +
 					"[" + parent.getJid() + "] " +
 					"Rejecting dataware subscription due to database issues. " +
-					"(" + p.getFrom() + ") ");
-			rejectSubscription( p.getFrom() );
+					"<" + p.getFrom() + "> ");
+			parent.rejectSubscription( p.getFrom() );
 			
 		} catch ( DSFormatException e ) {
 			logger.fine( "--- DSPresenceListener: " +
 				"[" + parent.getJid() + "] " +
 				"Rejecting dataware subscription due to missing namespace. " +
-				"(" + p.getFrom() + ") ");
-			rejectSubscription( p.getFrom() );
+				"<" + p.getFrom() + "> ");
+			parent.rejectSubscription( p.getFrom() );
 		}
-	}
-	
-	///////////////////////////////
-	
-	private void createSubscription( String namespace, String sid ) 
-	throws SQLException, DSFormatException {
-		
-		DSCatalog.db.insertSubscription( 
-			namespace,
-			parent.getJid(),
-			DSSub.Status.RECEIVED,
-			sid
-		);
-	}
-	
-	///////////////////////////////
-	
-	private void rejectSubscription( String sid ) {
-		
-		//-- the following is required to accept the dataware's subscription request.
-		Presence response = new Presence( Presence.Type.unsubscribed );
-		response.setTo( sid );
-		parent.sendPacket( response );
-		DSCatalog.db.setSubscriptionStatusFromSid( parent.getJid() , sid, DSSub.Status.REJECTED );
-		
-		logger.finer( "--- DSPresenceListener: [" + parent.getJid() + "] " +
-				"rejected subscription request from (" + sid + ") ");
-		
-		RosterPacket rp = new RosterPacket();
-		rp.setType( IQ.Type.SET );
-		RosterPacket.Item item = new RosterPacket.Item( sid, null );
-		item.setItemType( RosterPacket.ItemType.remove );
-		rp.addRosterItem( item );
-		parent.sendPacket( rp );
-		logger.finer( "--- DSPresenceListener: [" + parent.getJid() + "] " +
-				"deleted (" + sid + ") from roster.");
 	}
 	
 	
     ///////////////////////////////
 
 	public void datawareUnsubscribe( String sid ) {
-		// TODO Auto-generated method stub
+		// TODO 
 		logger.finer( "--- DSPresenceListener: [" + parent.getJid() + "] " +
-				"Dataware subscription removal (" + sid + ") " );
+				"Dataware subscription removal initiated <" + sid + ">" );
 	}
 
 	///////////////////////////////
 		
     private void completeUnsubscription( String sid ) {
-		// TODO Auto-generated method stub
+    	// TODO 
+    	logger.finer( "--- DSPresenceListener: [" + parent.getJid() + "]" +
+				"Dataware subscription removal complete <" + sid + ">" );
 	}
 
     ///////////////////////////////
 	
 	private void datawarePresenceError( String sid ) {
+    	// TODO 
 		logger.finer( "--- DSPresenceListener: [" + parent.getJid() + "]" +
-			"Error in the server processing our presence requests" );
+			"Error in the server processing our presence requests <" + sid + ">" );
 	}
 	
 };

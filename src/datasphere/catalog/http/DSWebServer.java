@@ -1,6 +1,5 @@
 package datasphere.catalog.http;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.BindException;
 import java.util.logging.ConsoleHandler;
@@ -15,7 +14,6 @@ import org.restlet.resource.Directory;
 
 import datasphere.catalog.DSCatalog;
 import datasphere.dataware.DSLogFormatter;
-import freemarker.cache.ClassTemplateLoader;
 import freemarker.template.Configuration;
 import freemarker.template.DefaultObjectWrapper;
 import freemarker.template.Template;
@@ -37,13 +35,13 @@ public class DSWebServer extends Component {
 		
 		//-- start logging service for this component
 	    FileHandler fileHandler;
-	    fileHandler = new FileHandler( "dshttp%g.log", true );     
+	    fileHandler = new FileHandler( "logs/http%g.log", true );     
 	    fileHandler.setFormatter( new DSLogFormatter() );
 	    
 	    Handler webHandler = new ConsoleHandler();
 	    webHandler.setFormatter( new DSWebLogFormatter() );
-	    webHandler.setLevel( Level.FINER );
-	    //DEBUG: weblogger.addHandler( handler );
+	    webHandler.setLevel( Level.FINEST );
+	    //--weblogger.addHandler( webHandler );
 	    
 	    weblogger.addHandler( fileHandler );
 	    weblogger.setUseParentHandlers( false );
@@ -83,29 +81,21 @@ public class DSWebServer extends Component {
 		
 		//-- add a new server connector to the component
 		getServers().add( Protocol.HTTP, serverPort );
-		System.out.println( "adding " + protocol);
 		getClients().add( protocol );
 		
 		//-- using the default virtual host, create appropriate url routing
 		String ref = ( protocol == Protocol.CLAP )  
 					 ? "clap://system/resources/"
-					 : "file:///C:\\HyperPlace\\datasphere\\static\\resources\\" ;
+					 : "file:///C:\\HyperPlace\\datasphere\\resources\\" ;
 		getDefaultHost().attach( "/static/", new Directory( getContext().createChildContext(), ref ) );
 		getDefaultHost().attach( "/user_history", UserHistoryPage.class );
 		getDefaultHost().attach( "/source_history", SourceHistoryPage.class );
 		getDefaultHost().attach( "/subscription", SetSourceSubscription.class );
 		
-		//-- setup the freemarker configuration files
+		//-- setup the freemarker configuration files( n.b. classpath must have been set)
 		cfg = new Configuration();
 		cfg.setObjectWrapper( new DefaultObjectWrapper() );
-		
-		//-- depending on the protocol setup the relevent freemarker template loader
-		if ( protocol == Protocol.CLAP ) { 
-			cfg.setClassForTemplateLoading( getClass(), "/resources/templates" );	
-		} else {
-			cfg.setDirectoryForTemplateLoading(	
-				new File( "C:\\HyperPlace\\datasphere\\static\\resources\\templates" ) );
-		}
+		cfg.setClassForTemplateLoading( getClass(), "/resources/templates" );	
 		
 		//-- start the component proper
 		try {

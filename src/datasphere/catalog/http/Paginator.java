@@ -18,7 +18,7 @@ public class Paginator {
 	 */
 	public Paginator( 
 		int currentPage, 
-		int totalUpdates, 
+		int totalUpdates,  
 		int limit,
 		String jid 
 		) {

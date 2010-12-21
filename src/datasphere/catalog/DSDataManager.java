@@ -36,6 +36,7 @@ import org.json.JSONObject;
 
 import datasphere.catalog.DSSub.Status;
 import datasphere.catalog.xmpp.DSClientBot;
+import datasphere.catalog.xmpp.DSVCard;
 import datasphere.dataware.DSException;
 import datasphere.dataware.DSFormatException;
 import datasphere.dataware.DSUpdate;
@@ -61,15 +62,6 @@ public class DSDataManager {
 
 	private static Logger logger = Logger.getLogger( DSCatalog.class.getName() );
 	
-	private static final String DEFAULT_SOURCE_URL = 
-		"http://www.cs.nott.ac.uk/~jog/datasphere/namespaces.html";
-	
-	private static final String DEFAULT_SOURCE_ICON = "blank.jpg";
-	
-	public enum SourceField {
-	    SID, NAMESPACE 
-	}
-	
 	private Connection conn = null;
 	private String address;
 	private String login;
@@ -80,13 +72,13 @@ public class DSDataManager {
 	private static final String USERS_TABLE	= "ds_sys_users";
 	private static final String UPDATES_TABLE = "ds_sys_updates";
 	private static final String SUBSCRIPTIONS_TABLE	= "ds_sys_subscriptions";
+	private static final String POLICIES_TABLE	= "ds_sys_policies";
 	private static final String SOURCES_TABLE = "ds_sys_sources";
 	
 	private static final String DEFAULT_LOGIN = "dsadmin";
 	private static final String DEFAULT_SYS_DB = "datasphere"; 
 	private static final String DEFAULT_PASSWORD = "YOUR_PASSWORD_HERE";
 
-	
 	//////////////////////////////////
 	
 	/**
@@ -158,7 +150,6 @@ public class DSDataManager {
 			logger.info( "--- DSDataManager: Connecting to database for persistence... [SUCCESS]" );
 		} catch ( SQLException e ) {
 			logger.info( "--- DSDataManager: Connecting to database for persistence... [FAILED]" );
-			e.printStackTrace();
 			throw new DSException( e );
 		}
 	}
@@ -246,72 +237,85 @@ public class DSDataManager {
 			Statement stmt = createStatement();
 			
 			String connectionsTableQuery = 
-				"CREATE TABLE  `" + DEFAULT_SYS_DB + "`.`" + CONNECTIONS_TABLE + "` (" +
-				"`jid` varchar(256) NOT NULL," +
-				"`ctime` bigint(20) unsigned NOT NULL," +
-				"`atime` bigint(20) unsigned NOT NULL," +
-				" PRIMARY KEY (`jid`) " +
-				")";
+					"CREATE TABLE  `" + DEFAULT_SYS_DB + "`.`" + CONNECTIONS_TABLE + "` (" +
+					"`jid` varchar(256) NOT NULL," +
+					"`ctime` bigint(20) unsigned NOT NULL," +
+					"`atime` bigint(20) unsigned NOT NULL," +
+					" PRIMARY KEY (`jid`) " +
+					")";
+			
+			String policiesTableQuery = 
+					"CREATE TABLE  `" + DEFAULT_SYS_DB + "`.`" + POLICIES_TABLE + "` (" +
+					"`sid` varchar(256) NOT NULL," +
+					"`jid` varchar(256) NOT NULL," +
+					"`status` varchar(45) NOT NULL," +
+					"PRIMARY KEY (`sid`) ) ";
 			
 			String updatesTableQuery = 
-				"CREATE TABLE  `" + DEFAULT_SYS_DB + "`.`" + UPDATES_TABLE + "` (" +
-				" `jid` varchar(256) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL," +
-				"`namespace` varchar(256) NOT NULL," +
-				"`loc` varchar(45) NOT NULL," +
-				"`description` varchar(1024) NOT NULL," +
-				"`crud` varchar(8) NOT NULL," +
-				"`total` bigint(20) unsigned NOT NULL," +
-				"`meta` text NOT NULL," +
-				"`tags` text NOT NULL," +
-				"`ctime` bigint(20) unsigned NOT NULL," +
-				"`rtime` bigint(20) unsigned NOT NULL," +
-				"`sid` varchar(256) NOT NULL," + 
-				"`primaryTag` varchar(256) NOT NULL DEFAULT 'ds:update'," +
-				"`ftime` bigint(20) unsigned NOT NULL," +
-				"PRIMARY KEY (`jid`,`namespace`,`rtime`)" +
-				")";
-
+					"CREATE TABLE  `" + DEFAULT_SYS_DB + "`.`" + UPDATES_TABLE + "` (" +
+					"`jid` varchar(256) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL," +
+					"`sid` varchar(256) NOT NULL," +
+					"`loc` varchar(45) NOT NULL," +
+					"`description` varchar(1024) NOT NULL," +
+					"`crud` varchar(8) NOT NULL," +
+					"`total` bigint(20) unsigned NOT NULL," +
+					"`meta` text NOT NULL," +
+					"`tags` text NOT NULL," +
+					"`ctime` bigint(20) unsigned NOT NULL," +
+					"`rtime` bigint(20) unsigned NOT NULL," +
+					"`primaryTag` varchar(256) NOT NULL DEFAULT 'ds:update'," +
+					"`ftime` bigint(20) unsigned NOT NULL," +
+					"PRIMARY KEY (`jid`,`sid`,`rtime`)" +
+					")";
 			
 			String usersTableQuery = 
-				"CREATE TABLE  `" + DEFAULT_SYS_DB + "`.`" + USERS_TABLE + "` (" +
-				"`jid` varchar(256) NOT NULL," +
-				"`firstname` varchar(256) NOT NULL," +
-				"`lastname` varchar(256) NOT NULL," +
-				"`email` varchar(256) NOT NULL," +
-				"`ctime` bigint(20) unsigned NOT NULL," +
-				"`atime` bigint(20) unsigned NOT NULL," +
-				"`host` varchar(256) NOT NULL," +
-				"`service` varchar(256) NOT NULL," +
-				"`user` varchar(256) NOT NULL," +
-				"`pass` varchar(256) NOT NULL," +
-				"PRIMARY KEY (`jid`)" +
-				")";
+					"CREATE TABLE  `" + DEFAULT_SYS_DB + "`.`" + USERS_TABLE + "` (" +
+					"`jid` varchar(256) NOT NULL," +
+					"`firstname` varchar(256) NOT NULL," +
+					"`lastname` varchar(256) NOT NULL," +
+					"`email` varchar(256) NOT NULL," +
+					"`ctime` bigint(20) unsigned NOT NULL," +
+					"`atime` bigint(20) unsigned NOT NULL," +
+					"`host` varchar(256) NOT NULL," +
+					"`service` varchar(256) NOT NULL," +
+					"`user` varchar(256) NOT NULL," +
+					"`pass` varchar(256) NOT NULL," +
+					"PRIMARY KEY (`jid`)" +
+					")";
 			
 			String subscriptionsTableQuery = 
-				"CREATE TABLE `" + DEFAULT_SYS_DB + "`.`" + SUBSCRIPTIONS_TABLE + "` (" +
-				"`namespace` varchar(256) NOT NULL DEFAULT 'ds:unknown'," +
-				"`jid` varchar(256) NOT NULL," +
-				"`subscriptionStatus` varchar(16) NOT NULL," +
-				"`sid` varchar(256) NOT NULL," +				
-				"`ctime` bigint(20) unsigned NOT NULL," +
-				"`mtime` bigint(20) unsigned NOT NULL," +
-				"PRIMARY KEY (`namespace`,`jid`)" +
-				")";
+					"CREATE TABLE `" + DEFAULT_SYS_DB + "`.`" + SUBSCRIPTIONS_TABLE + "` (" +
+					"`sid` varchar(256) NOT NULL," +
+					"`jid` varchar(256) NOT NULL," +
+					"`subscriptionStatus` varchar(16) NOT NULL," +
+					"`ctime` bigint(20) unsigned NOT NULL," +
+					"`mtime` bigint(20) unsigned NOT NULL," +
+					"PRIMARY KEY (`sid`,`jid`)," +
+					"CONSTRAINT `FK_SID` FOREIGN KEY (`sid`) " +
+					"REFERENCES `ds_sys_sources` (`sid`) " +
+					"ON DELETE CASCADE ON UPDATE CASCADE" +
+					")";
  
 			String sourcesTableQuery = 
-				"CREATE TABLE  `" + DEFAULT_SYS_DB + "`.`" + SOURCES_TABLE + "` (" +
-				"`namespace` varchar(256) NOT NULL," +
-				"`commonName` varchar(256) NOT NULL," +
-				"`url` varchar(512) NOT NULL, " +
-				"`icon` varchar(512) DEFAULT NULL," +
-				"PRIMARY KEY (`namespace`)" +
-				")";
+					"CREATE TABLE  `" + DEFAULT_SYS_DB + "`.`" + SOURCES_TABLE + "` (" +
+					"`sid` varchar(256) NOT NULL," +
+					"`namespace` varchar(256) NOT NULL," +
+					"`name` varchar(256) NOT NULL," +
+					"`url` varchar(512) DEFAULT NULL," +
+					"`avatar` tinyint(1) DEFAULT NULL," +
+					"`orgname` varchar(256) DEFAULT NULL," +
+					"`orgunit` varchar(256) DEFAULT NULL," +
+					"`description` text," +
+					"PRIMARY KEY (`sid`)" +
+					")";
 			
+			
+			stmt.addBatch( usersTableQuery );
+			stmt.addBatch( sourcesTableQuery );
+			stmt.addBatch( subscriptionsTableQuery );
+			stmt.addBatch( policiesTableQuery );
 			stmt.addBatch( connectionsTableQuery );
 			stmt.addBatch( updatesTableQuery );
-			stmt.addBatch( subscriptionsTableQuery );
-			stmt.addBatch( sourcesTableQuery );
-			stmt.addBatch( usersTableQuery );
 			stmt.executeBatch();
 			
 			String testAccountQuery = 
@@ -335,6 +339,7 @@ public class DSDataManager {
 			logger.info( "--- DSDataManager: Creating System Tables... [SUCCESS]" );
 			
 		} catch ( SQLException e ) {
+			e.printStackTrace();
 			logger.severe( "--- DSDataManager: Creating System Tables... [FAILED]" );
 			throw new DSException( e );
 		}
@@ -473,13 +478,13 @@ public class DSDataManager {
 	
 	//////////////////////////////////
 
-	public int fetchUpdateTotal( String jid, String namespace )
+	public int fetchUpdateTotal( String jid, String sid )
 	throws SQLException {		
 		Statement stmt = createStatement();
 		String query = "SELECT COUNT(1) total FROM " + DEFAULT_SYS_DB + "." + 
 			UPDATES_TABLE + " WHERE jid='" + jid + "' ";
-		if ( namespace != null )
-			query += "AND namespace = '" + namespace + "'"; 
+		if ( sid != null )
+			query += "AND sid = '" + sid + "'"; 
 		ResultSet rs = stmt.executeQuery( query );
 		
 		if ( rs.next() ) {
@@ -505,9 +510,9 @@ public class DSDataManager {
 	 * @throws SQLException 
 	 * @throws JSONException 
 	 */
-	public ArrayList< DSUpdate > fetchUpdates( String jid, String namespace ) 
+	public ArrayList< DSUpdate > fetchUpdates( String jid, String sid ) 
 	throws SQLException, JSONException {
-		return fetchUpdates( jid, namespace, null, null );
+		return fetchUpdates( jid, sid, null, null );
 	}
 	
 	//////////////////////////////////
@@ -518,7 +523,7 @@ public class DSDataManager {
 	 * @throws SQLException 
 	 * @throws JSONException 
 	 */
-	public ArrayList< DSUpdate > fetchUpdates( String jid, String namespace, Integer limit, Integer offset  ) 
+	public ArrayList< DSUpdate > fetchUpdates( String jid, String sid, Integer limit, Integer offset  ) 
 	throws SQLException, JSONException {
 		
 		ArrayList< DSUpdate > updates = new ArrayList< DSUpdate >();
@@ -527,8 +532,8 @@ public class DSDataManager {
 		String query = "";
 		query += "SELECT * FROM " + DEFAULT_SYS_DB + "." + UPDATES_TABLE + " "; 
 		query += "WHERE jid='" + jid + "' ";
-		if ( namespace != null ) 
-			query += " AND namespace='" + namespace + "' ";
+		if ( sid != null ) 
+			query += " AND sid='" + sid + "' ";
 		query += "ORDER BY ctime DESC ";
 
 		if ( limit != null ) query += " LIMIT " + limit;
@@ -541,7 +546,7 @@ public class DSDataManager {
 			DSUpdate u;
 			try {
 				u = new DSUpdate( 
-					rs.getString( "namespace" ),
+					rs.getString( "sid" ),
 					rs.getString( "primaryTag" ),
 					rs.getString( "crud" )
 				)
@@ -611,10 +616,10 @@ public class DSDataManager {
 			Statement stmt = createStatement();
 			
 			String insert = "insert into " + DEFAULT_SYS_DB + "." + UPDATES_TABLE + " " +
-				"( jid, namespace, primaryTag, description, crud, total, ctime, ftime, rtime, meta, tags, loc, sid ) " +
+				"( jid, sid, primaryTag, description, crud, total, ctime, ftime, rtime, meta, tags, loc ) " +
 				"values ( " +
 				"'" + jid + "'," +
-				"'" + d.getNamespace() + "'," +
+				"'" + from + "'," +
 				"'" + d.getPrimaryTag() + "'," +
 				"'" + d.getDescription().replace( "\'", "\\\'" ) + "'," +
 				"'" + d.getCrud() + "'," +
@@ -629,10 +634,10 @@ public class DSDataManager {
 			if ( d.getTagsJSON() == null ) insert += "null,";
 			else insert += "'"  + d.getTagsJSON() + "',";
 		
-			if ( d.getLocationJSON() == null ) insert += "null,";
-			else insert += "'" + d.getLocationJSON() + "',";	
+			if ( d.getLocationJSON() == null ) insert += "null";
+			else insert += "'" + d.getLocationJSON() + "'";	
 			
-			insert += "'" + from + "')";
+			insert += ")";
  
 			stmt.addBatch( insert );
 			stmt.executeBatch();
@@ -644,14 +649,16 @@ public class DSDataManager {
 
 	//////////////////////////////////
 	
-	public String getSubscriptionStatus( String ns, String jid ) {
+	public String getSubStatus( String jid, String sid ) {
 
 		String subscriptionStatus = null;
 		try {
 			Statement stmt = createStatement();
-			String query = "SELECT subscriptionStatus FROM " 
-				+ SUBSCRIPTIONS_TABLE + " WHERE namespace='" + ns + "' AND jid='" + jid + "'";
-
+			String query = "SELECT subscriptionStatus " +
+				"FROM " + SUBSCRIPTIONS_TABLE + " " + 
+				"WHERE sid='" + sid + "' " +
+				"AND jid='" + jid + "'";
+			
 			ResultSet rs = stmt.executeQuery( query );
 			
 			if ( rs.next() ) 
@@ -668,19 +675,21 @@ public class DSDataManager {
 	//////////////////////////////////
 	
 	public void setSubStatus( 
-		String ns,
-		String jid, 
+		String jid,
+		String sid,
 		Status status ) 
 	{
+
 		try {
 			Statement stmt = createStatement();
-			String query = 
+			String query =
 				"UPDATE " + SUBSCRIPTIONS_TABLE + " " + 
 				"SET subscriptionStatus='" + status + "' " +
-				"WHERE namespace='" + ns + "' AND jid='" + jid + "'";
+				"WHERE sid='" + sid + "' " +
+				"AND jid='" + jid + "'";
 			
 			stmt.executeUpdate( query );
-			logger.finer( "--- DSDataManager: [" + jid + "] Changed Subscription \"" + ns + "\" to " + status );
+			logger.finer( "--- DSDataManager: [" + jid + "] Changed Subscription <" + sid + "> to " + status );
 			
 		} catch ( SQLException e ) {
 			logger.log( Level.SEVERE, "+++ DSDataManager: SQL Meltdown in setSubStatus - ", e.getMessage() );
@@ -689,145 +698,96 @@ public class DSDataManager {
 	
 	//////////////////////////////////
 	
-	public void setSubscriptionStatusFromSid( 
-		String jid, 
-		String sid, 
-		Status status ) 
-	{
-		try {
-			Statement stmt = createStatement();
-			String query = 
-				"UPDATE " + SUBSCRIPTIONS_TABLE + " " + 
-				"SET subscriptionStatus='" + status + "' " +
-				"WHERE sid='" + sid + "' AND jid='" + jid + "'";
-			
-			stmt.executeUpdate( query );
-
-		} catch ( SQLException e ) {
-			logger.log( Level.SEVERE, "+++ DSDataManager: SQL Meltdown in setSubscriptionStatus- ", e.getMessage() );
-		} 
-	}
-	
-	//////////////////////////////////
-	
-	public void insertSubscription( 
-		String namespace, 
+	public void insertSub( 
+		DSVCard vCard, 
 		String jid, 
 		Status status
 	) throws SQLException, DSFormatException {		
-		insertSubscription( namespace, jid, status, null );
+		insertSub( vCard, jid, status, null );
 	}
 
 	//////////////////////////////////
 	
-	public void insertSubscription( 
-		String namespace, 
+	public void insertSub( 
+		DSVCard vCard, 
 		String jid, 
 		Status status,
 		String sid ) 
 	throws SQLException, DSFormatException {
 		
 		//-- we require that the namespace is non-null
-		if ( namespace == null )
+		if ( vCard == null )
 			throw new DSFormatException();
 
 		//-- if the source doesn't exist in our records fetch
 		//-- its information (capabilities, icons, etc)
-		DSSource s = DSCatalog.db.fetchSource( namespace );
+		DSVCard s = fetchSource( vCard.getSid() );
 		
 		if ( s == null ) {
-			logger.fine( "--- DSDataManager: new source identified - attempting to add \"" + namespace + "\" to registry.");
-			registerSource( namespace );
+			logger.fine( "--- DSDataManager: [" + jid + "] new source identified - attempting to add <" + vCard.getNamespace() + "> to registry.");
+			insertSource( vCard );
 		}
 		else 
-			logger.fine( "--- DSDataManager: source recognized.");
+			logger.fine( "--- DSDataManager: [" + jid + "] source recognized <" + vCard.getNamespace() + ">.");
 		
 		//-- that done insert the subscription proper
 		try {
 			Statement stmt = createStatement();
 			String query = 
 				"INSERT INTO " + DEFAULT_SYS_DB + "." + SUBSCRIPTIONS_TABLE + " VALUES (" + 
-				"'" + namespace + "'," + 
+				"'" + sid + "'," + 
 				"'" + jid + "'," + 
-				"'" + status + "',";
-		
-			query += ( sid == null ) 
-					 ? "null," 
-					 : "'" + sid + "',"; 
-			
-			query +=
-				System.currentTimeMillis() + "," +
-				System.currentTimeMillis() + ")";
-			
-			stmt.executeUpdate( query );
+				"'" + status + "'," +
+				+ System.currentTimeMillis() + "," +
+				+ System.currentTimeMillis() + ")";
 
+			stmt.executeUpdate( query );
+			
+			logger.fine( "--- DSDataManager: [" + jid + "] new subscription registered to <" + vCard.getNamespace() +">" );
+			
 		} catch ( SQLException e ) {
-			logger.log( Level.SEVERE, "+++ DSDataManager: SQL Meltdown in insertSubscription - ", e.getMessage() );
+			logger.log( Level.SEVERE, "+++ DSDataManager:  [" + jid + "] SQL Meltdown in insertSub - ", e.getMessage() );
 		} 
-		
-		logger.fine( "--- DSDataManager: [" + jid + "] new subscription added for " + namespace);
 	}
 	
 	//////////////////////////////////
 	
-	public void registerSource( String namespace ) 
-	throws DSFormatException {
-		
-		if ( namespace == null )
-			throw new DSFormatException();
-		
-		//-- TODO: fetch the source information 
-		//-- TODO: unpack it 
-		//-- TODO:  insert it into the namespaces
-		insertSource( namespace, null, null, null );
-	}
+	public void insertSource( DSVCard vCard ) 
+	throws DSFormatException, SQLException {
 
-	//////////////////////////////////
-	
-	public void insertSource( 
-		String namespace,
-		String commonName,
-		String url,
-		String icon ) 
-	throws DSFormatException {
+		Statement stmt = createStatement();
+		String query = 
+			"INSERT into datasphere.ds_sys_sources " +
+			"( sid, namespace, name, url, avatar, orgname, orgunit, description ) " +
+			"VALUES ( " +
+			"'" + vCard.getSid() + "'," +
+			"'" + vCard.getNamespace() + "'," +
+			"'" + vCard.getNickName() + "',";
 		
-		if ( namespace == null )
-			throw new DSFormatException();
-		
-		commonName = ( commonName == null ) ? namespace : commonName;
-		url = ( url == null ) ? DEFAULT_SOURCE_URL : url;
-		icon = ( icon == null ) ? DEFAULT_SOURCE_ICON : icon;
-		
-		try {
-			Statement stmt = createStatement();
-			String query = 
-				"INSERT INTO " + DEFAULT_SYS_DB + "." + SOURCES_TABLE + " VALUES (" + 
-				"'" + namespace + "'," + 
-				"'" + commonName + "'," + 
-				"'" + url + "'," + 
-				"'" + icon + "')";
+		query += ( vCard.getUrl() == null ) ? "null," : "'" +  vCard.getUrl()  + "',";
+		query += ( vCard.hasAvatar() == null ) ? "false," : "true,";
+		query += ( vCard.getOrgName() == null ) ? "null," : "'" +  vCard.getOrgName()  + "',";
+		query += ( vCard.getOrgUnit() == null ) ? "null," : "'" +  vCard.getOrgUnit()  + "',";
+		query += ( vCard.getDesc() == null ) ? "null," : "'" +  vCard.getDesc()  + "'";
+		query += ")";
 
-			stmt.executeUpdate( query );
-
-		} catch ( SQLException e ) {
-			logger.log( Level.SEVERE, "+++ DSDataManager: SQL Meltdown in insertSource - ", e );
-		} 
+		stmt.executeUpdate( query );
 	}
 	
 	//////////////////////////////////
 	
 	public DSSub fetchSub( 
 		String jid, 
-		String ns
+		String sid
 		)
 	throws SQLException {
 		
 		Statement stmt = createStatement();
 		String query = 
-			"SELECT * FROM " + DEFAULT_SYS_DB + "." + SUBSCRIPTIONS_TABLE + " " +
-			"WHERE jid='" + jid + "' " +
-			"AND namespace='" + ns + "'";
-		
+			"SELECT * FROM " + DEFAULT_SYS_DB + "." + SUBSCRIPTIONS_TABLE + " b " +
+			"INNER JOIN " + DEFAULT_SYS_DB + "." + SOURCES_TABLE + " s ON s.sid = b.sid " +
+			"WHERE b.jid='" + jid + "' AND b.sid='" + sid + "'";
+
 		ResultSet rs = stmt.executeQuery( query );
 				
 		if ( rs.next() ) {
@@ -847,11 +807,28 @@ public class DSDataManager {
 
 	//////////////////////////////////
 	
+	public void deleteSub( 
+		String jid, 
+		String sid
+		)
+	throws SQLException {
+		
+		Statement stmt = createStatement();
+		String query = 
+			"DELETE FROM " + DEFAULT_SYS_DB + "." + SUBSCRIPTIONS_TABLE + " " +
+			"WHERE jid='" + jid + "' " +
+			"AND sid='" + sid + "'";
 
-	public ArrayList< DSSource > fetchSources( 
+		stmt.executeUpdate( query );
+	}
+	
+	//////////////////////////////////
+	
+
+	public ArrayList< DSVCard > fetchSources( 
 			String jid, 
 			DSSub.Status ... statuses ) 
-	throws SQLException {
+	throws SQLException, DSFormatException {
 		
 		Statement stmt = createStatement();
 		String query = 
@@ -859,7 +836,7 @@ public class DSDataManager {
 			DEFAULT_SYS_DB + "." + SUBSCRIPTIONS_TABLE + " b, " +
 			DEFAULT_SYS_DB + "." + SOURCES_TABLE + " s " +
 			"WHERE b.jid='" + jid + "' " +
-			"AND b.namespace=s.namespace ";
+			"AND b.sid=s.sid ";
 
 		if ( statuses.length > 0 ) {
 			String str = "";
@@ -869,18 +846,24 @@ public class DSDataManager {
 			query += "AND b.subscriptionStatus IN (" + str + ")";
 		}
 		
-		ArrayList< DSSource > sources = new ArrayList< DSSource >();
+		ArrayList< DSVCard > sources = new ArrayList< DSVCard >();
 		ResultSet rs = stmt.executeQuery( query );
 		
 		while ( rs.next() ) {
-			sources.add( 
-				new DSSource( 
-					rs.getString( "namespace" ),
-					rs.getString( "commonName" ),
-					rs.getString( "url" ),
-					rs.getString( "icon" )
-				)
+			
+			DSVCard vCard = new DSVCard(
+				rs.getString( "sid" ),
+				rs.getString( "namespace" ),
+				rs.getString( "name" )
 			);
+			
+			vCard.setURL( rs.getString( "url") );
+			vCard.setAvatar( rs.getBoolean( "avatar") );
+			vCard.setOrgName( rs.getString( "orgname") );
+			vCard.setOrgUnit( rs.getString( "orgunit") );
+			vCard.setDesc( rs.getString( "description" ) );
+			
+			sources.add( vCard );
 		}
 		
 		return sources;
@@ -888,23 +871,30 @@ public class DSDataManager {
 	
 	//////////////////////////////////
 	
-	public DSSource fetchSource( String namespace )
-	throws SQLException {
+	public DSVCard fetchSource( String sid )
+	throws SQLException, DSFormatException {
 
 		Statement stmt = createStatement();
 		String query = 
 			"SELECT * FROM " + DEFAULT_SYS_DB + "." + SOURCES_TABLE + " " +
-			"WHERE namespace='" + namespace + "'";
+			"WHERE sid='" + sid + "'";
 		ResultSet rs = stmt.executeQuery( query );
 
 		if ( rs.next() ) {
 			
-			return new DSSource( 
+			DSVCard vCard = new DSVCard(
+				rs.getString( "sid" ),
 				rs.getString( "namespace" ),
-				rs.getString( "commonName" ),
-				rs.getString( "url" ),
-				rs.getString( "icon" )
+				rs.getString( "name" )
 			);
+			
+			vCard.setURL( rs.getString( "url") );
+			vCard.setAvatar( rs.getBoolean( "avatar" ) );
+			vCard.setOrgName( rs.getString( "orgname") );
+			vCard.setOrgUnit( rs.getString( "orgunit") );
+			vCard.setDesc( rs.getString( "description" ) );
+
+			return vCard;
 		}
 
 		return null;
@@ -923,6 +913,58 @@ public class DSDataManager {
 		return 	( rs.next() ) ? rs.getString( "namespace" ) :  null;
 	}
 
+	//////////////////////////////////
+	
+	public void updatePolicy( String jid, String sid, Status status ) 
+	throws SQLException {
+	
+		Statement stmt = createStatement(); 
+		String delete = 	
+			"DELETE FROM " + POLICIES_TABLE + " " + 
+			"WHERE sid='" + sid + "' " +
+			"AND jid='" + jid + "'";
+	 	stmt.addBatch( delete );
+		
+	 	String insert = 	
+			"INSERT INTO " + POLICIES_TABLE + " " + 
+			"VALUES(" +
+			"'" + sid + "'," +
+			"'" + jid + "'," +
+			"'" + status + "')";
+	 	stmt.addBatch( insert );
+	 	
+		stmt.executeBatch();
+	}
 
+	//////////////////////////////////
+	
+	public void resetPolicy( String jid, String sid ) 
+	throws SQLException {
+		
+		Statement stmt = createStatement(); 
+		String delete = 	
+			"DELETE FROM " + POLICIES_TABLE + " " + 
+			"WHERE sid='" + sid + "' " +
+			"AND jid='" + jid + "'";
+	 	stmt.executeUpdate( delete );
+	}
 
+	//////////////////////////////////
+	
+	public Status fetchPolicy( String jid, String sid ) 
+	throws SQLException {
+		
+		Statement stmt = createStatement();
+		String query = 
+			"SELECT * FROM " + DEFAULT_SYS_DB + "." + POLICIES_TABLE + " " +
+			"WHERE sid='" + sid + "'";
+		
+		ResultSet rs = stmt.executeQuery( query );
+
+		if ( rs.next() ) {	
+			return Status.get( rs.getString( "status" ) );
+		}
+
+		return null;
+	}
 }

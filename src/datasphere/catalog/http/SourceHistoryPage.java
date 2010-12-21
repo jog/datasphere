@@ -13,8 +13,10 @@ import org.restlet.resource.Get;
 
 import datasphere.catalog.DSCatalog;
 import datasphere.catalog.DSClient;
-import datasphere.catalog.DSSource;
 import datasphere.catalog.DSSub;
+import datasphere.catalog.DSSub.Status;
+import datasphere.catalog.xmpp.DSVCard;
+import datasphere.dataware.DSFormatException;
 import datasphere.dataware.DSUpdate;
 import freemarker.template.TemplateException;
 
@@ -22,8 +24,9 @@ public class SourceHistoryPage
 extends DSServerResource { 
 	
 	private DSClient user;
-	private DSSource source;
-	private DSSub subscription;  
+	private DSVCard source;
+	private DSSub sub;  
+	private Status policy;
 	private Map< String, Object > data;
 	
 	///////////////////////////////////
@@ -37,12 +40,16 @@ extends DSServerResource {
 			
 			//-- fetch client information
 			Form form = getRequest().getResourceRef().getQueryAsForm();
+
 			this.user = DSCatalog.db.fetchClient( form.getFirstValue( "jid" ) );
-			this.source = DSCatalog.db.fetchSource( form.getFirstValue( "ns" ) );
-			
+			this.source = DSCatalog.db.fetchSource( form.getFirstValue( "sid" ) );
+			this.policy = DSCatalog.db.fetchPolicy( 
+					form.getFirstValue( "jid" ),
+					form.getFirstValue( "sid" ) 
+			);
+
 			//-- if we have found the source examine the user's subscription status with it?
 			if ( user != null && source != null ) { 
-
 				
 				//-- fetch information about active subscriptions for the side panel
 				data.put( "activeSubs",  
@@ -63,18 +70,34 @@ extends DSServerResource {
 				);
 				
 				//-- fetch the subscription info for the namespace currently being considered
-				this.subscription = DSCatalog.db.fetchSub( 
+				this.sub = DSCatalog.db.fetchSub( 
 					user.getJid(), 
-					source.getNamespace() 
+					source.getSid() 
 				);
 				
 				return presentSource( form );
 			}
-		} 
-		catch ( SQLException e ) {} 
-		catch ( JSONException e ) {}
-		catch ( IOException e) {} 
-		catch ( TemplateException e ) {}
+			
+		} catch ( SQLException e ) {
+			e.printStackTrace();
+			return null;
+			
+		} catch ( JSONException e) {
+			e.printStackTrace();
+			return null;
+			
+		} catch ( IOException e) {
+			e.printStackTrace();
+			return null;
+			
+		} catch ( TemplateException e ) {
+			e.printStackTrace();
+			return null;
+		
+		} catch ( DSFormatException e ) {
+			e.printStackTrace();
+			return null;
+		}
 		
 		try {
 			return processHTML( "error.ftl", data );
@@ -92,12 +115,13 @@ extends DSServerResource {
 		//-- pack all the data together ready for html parsing
 		data.put( "user", user );
 		data.put( "source", source );
-		data.put( "subscription", subscription );
+		data.put( "subscription", sub );
+		data.put( "policy", policy );
 		
 		if ( 
-			subscription != null && 
-			( subscription.hasStatus( DSSub.Status.COMPLETED ) ||
-			  subscription.hasStatus( DSSub.Status.RESPONDED ) ) 
+			sub != null && 
+			( sub.hasStatus( DSSub.Status.COMPLETED ) ||
+			  sub.hasStatus( DSSub.Status.RESPONDED ) ) 
 			) 
 		{
 			int page = 0;
@@ -107,14 +131,14 @@ extends DSServerResource {
 			//-- calculate pagination stats
 			Paginator p = new Paginator( 
 				page, 
-				DSCatalog.db.fetchUpdateTotal( user.getJid(), subscription.getNamespace() ),
+				DSCatalog.db.fetchUpdateTotal( user.getJid(), sub.getSid() ),
 				10,
-				"jid=" + user.getJid() + "&namespace=" + subscription.getNamespace()
+				"jid=" + user.getJid() + "&sid=" + sub.getSid()
 			);
 			//-- fetch the appropriate updates to display
 			ArrayList< DSUpdate > updates = DSCatalog.db.fetchUpdates(
 				user.getJid(),
-				subscription.getNamespace(),
+				sub.getSid(),
 				p.limit, 
 				p.offset 
 			);

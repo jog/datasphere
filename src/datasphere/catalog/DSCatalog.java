@@ -85,10 +85,10 @@ public final class DSCatalog {
 	public void setupLogging() {
 
 	    handler.setFormatter( new DSLogFormatter() );
-	    handler.setLevel( Level.FINER );
+	    handler.setLevel( Level.FINEST );
 	    logger.addHandler( handler );
 	    logger.setUseParentHandlers( false );
-	    logger.setLevel( Level.FINER );
+	    logger.setLevel( Level.FINEST );
 	}
 	
 	///////////////////////////////
@@ -101,8 +101,9 @@ public final class DSCatalog {
 		config = new Properties();
 		InputStream configStream = getClass()
 			.getClassLoader()
-			.getResourceAsStream( "datasphere/catalog/ds.cfg" );
+			.getResourceAsStream( "conf/ds.cfg" );
 			
+		
 	    //-- if it exists extract the properties contained within		
 		if ( configStream != null ) {
 			
@@ -337,6 +338,9 @@ public final class DSCatalog {
 			CommandLineParser parser = new PosixParser();
 			CommandLine cmd = parser.parse( options, args );
 			
+			for ( String s : cmd.getArgs() )
+				System.out.println( "("+ s +")");
+			
 			//-- automatically generate the help statement
 			if ( cmd.hasOption( "help" ) ) {
 				HelpFormatter formatter = new HelpFormatter();
@@ -443,7 +447,7 @@ public final class DSCatalog {
 			
 			throw new DSException( 
 				e.getMessage() + "\n" +
-				"Try '--help' for more information" );
+				"Please try '--help' for more information" );
 		}
 	}
 }
