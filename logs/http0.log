@@ -8762,3 +8762,387 @@
 2010-12-13 18:33:37 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/facebook.jpg
 2010-12-13 18:33:37 [INFO]    2010-12-13	18:33:37	127.0.0.1	-	-	8080	GET	/static/images/icons/facebook.jpg	-	200	1474	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
 2010-12-13 18:33:42 [INFO]    2010-12-13	18:33:42	127.0.0.1	-	-	8080	GET	/user_history	jid=james.goulding@gmail.com	200	5781	0	125	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 11:12:33 [INFO]    Starting the internal HTTP server on port 8080
+2010-12-22 11:17:10 [INFO]    Starting the internal HTTP server on port 8080
+2010-12-22 11:17:37 [INFO]    Starting the internal HTTP server on port 8080
+2010-12-22 11:51:31 [INFO]    Starting the internal HTTP server on port 8080
+2010-12-22 11:51:36 [INFO]    2010-12-22	11:51:36	127.0.0.1	-	-	8080	GET	/source_history	jid=james.goulding@gmail.com&ns=ds:receiver	200	943	0	235	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	-
+2010-12-22 11:51:37 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/mydslogo.jpg
+2010-12-22 11:51:37 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/mydslogo.jpg
+2010-12-22 11:51:37 [INFO]    2010-12-22	11:51:37	127.0.0.1	-	-	8080	GET	/static/images/mydslogo.jpg	-	200	12158	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&ns=ds:receiver
+2010-12-22 11:51:37 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/ds.css
+2010-12-22 11:51:37 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/ds.css
+2010-12-22 11:51:37 [INFO]    2010-12-22	11:51:37	127.0.0.1	-	-	8080	GET	/static/ds.css	-	200	5305	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&ns=ds:receiver
+2010-12-22 11:51:37 [INFO]    2010-12-22	11:51:37	127.0.0.1	-	-	8080	GET	/favicon.ico	-	404	439	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	-
+2010-12-22 11:51:40 [INFO]    2010-12-22	11:51:40	127.0.0.1	-	-	8080	GET	/favicon.ico	-	404	439	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	-
+2010-12-22 11:51:49 [INFO]    2010-12-22	11:51:49	127.0.0.1	-	-	8080	GET	/user_history	jid=james.goulding@gmail.com	200	6302	0	203	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	-
+2010-12-22 11:51:49 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/blogger.jpg
+2010-12-22 11:51:49 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/blogger.jpg
+2010-12-22 11:51:49 [INFO]    2010-12-22	11:51:49	127.0.0.1	-	-	8080	GET	/static/images/icons/blogger.jpg	-	200	1524	0	16	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/user_history?jid=james.goulding@gmail.com
+2010-12-22 11:51:49 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/myspace.jpg
+2010-12-22 11:51:49 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/myspace.jpg
+2010-12-22 11:51:49 [INFO]    2010-12-22	11:51:49	127.0.0.1	-	-	8080	GET	/static/images/icons/myspace.jpg	-	200	1498	0	16	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/user_history?jid=james.goulding@gmail.com
+2010-12-22 11:51:49 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/wordpress.jpg
+2010-12-22 11:51:49 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/wordpress.jpg
+2010-12-22 11:51:49 [INFO]    2010-12-22	11:51:49	127.0.0.1	-	-	8080	GET	/static/images/icons/wordpress.jpg	-	200	1345	0	16	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/user_history?jid=james.goulding@gmail.com
+2010-12-22 11:51:49 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/youtube.jpg
+2010-12-22 11:51:49 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/youtube.jpg
+2010-12-22 11:51:49 [INFO]    2010-12-22	11:51:49	127.0.0.1	-	-	8080	GET	/static/images/icons/youtube.jpg	-	200	1654	0	47	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/user_history?jid=james.goulding@gmail.com
+2010-12-22 11:51:49 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/vimeo.jpg
+2010-12-22 11:51:49 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/vimeo.jpg
+2010-12-22 11:51:49 [INFO]    2010-12-22	11:51:49	127.0.0.1	-	-	8080	GET	/static/images/icons/vimeo.jpg	-	200	1440	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/user_history?jid=james.goulding@gmail.com
+2010-12-22 11:51:49 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/reddit.jpg
+2010-12-22 11:51:49 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/reddit.jpg
+2010-12-22 11:51:49 [INFO]    2010-12-22	11:51:49	127.0.0.1	-	-	8080	GET	/static/images/icons/reddit.jpg	-	200	1629	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/user_history?jid=james.goulding@gmail.com
+2010-12-22 11:51:49 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/skype.jpg
+2010-12-22 11:51:49 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/skype.jpg
+2010-12-22 11:51:49 [INFO]    2010-12-22	11:51:49	127.0.0.1	-	-	8080	GET	/static/images/icons/skype.jpg	-	200	1495	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/user_history?jid=james.goulding@gmail.com
+2010-12-22 11:51:49 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/email.jpg
+2010-12-22 11:51:49 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/email.jpg
+2010-12-22 11:51:49 [INFO]    2010-12-22	11:51:49	127.0.0.1	-	-	8080	GET	/static/images/icons/email.jpg	-	200	585	0	16	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/user_history?jid=james.goulding@gmail.com
+2010-12-22 11:51:49 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/gmail.jpg
+2010-12-22 11:51:49 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/gmail.jpg
+2010-12-22 11:51:49 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/spotify.jpg
+2010-12-22 11:51:49 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/spotify.jpg
+2010-12-22 11:51:49 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/digg.jpg
+2010-12-22 11:51:49 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/digg.jpg
+2010-12-22 11:51:49 [INFO]    2010-12-22	11:51:49	127.0.0.1	-	-	8080	GET	/static/images/icons/digg.jpg	-	200	1540	0	47	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/user_history?jid=james.goulding@gmail.com
+2010-12-22 11:51:49 [INFO]    2010-12-22	11:51:49	127.0.0.1	-	-	8080	GET	/static/images/icons/spotify.jpg	-	200	1395	0	31	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/user_history?jid=james.goulding@gmail.com
+2010-12-22 11:51:49 [INFO]    2010-12-22	11:51:49	127.0.0.1	-	-	8080	GET	/static/images/icons/gmail.jpg	-	200	1543	0	32	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/user_history?jid=james.goulding@gmail.com
+2010-12-22 11:51:49 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/gowalla.jpg
+2010-12-22 11:51:49 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/gowalla.jpg
+2010-12-22 11:51:49 [INFO]    2010-12-22	11:51:49	127.0.0.1	-	-	8080	GET	/static/images/icons/gowalla.jpg	-	200	1666	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/user_history?jid=james.goulding@gmail.com
+2010-12-22 11:51:49 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/newsvine.jpg
+2010-12-22 11:51:49 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/newsvine.jpg
+2010-12-22 11:51:49 [INFO]    2010-12-22	11:51:49	127.0.0.1	-	-	8080	GET	/static/images/icons/newsvine.jpg	-	200	1566	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/user_history?jid=james.goulding@gmail.com
+2010-12-22 11:51:49 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/brightkite.jpg
+2010-12-22 11:51:49 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/brightkite.jpg
+2010-12-22 11:51:49 [INFO]    2010-12-22	11:51:49	127.0.0.1	-	-	8080	GET	/static/images/icons/brightkite.jpg	-	200	1479	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/user_history?jid=james.goulding@gmail.com
+2010-12-22 11:51:49 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/github.jpg
+2010-12-22 11:51:49 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/github.jpg
+2010-12-22 11:51:49 [INFO]    2010-12-22	11:51:49	127.0.0.1	-	-	8080	GET	/static/images/icons/github.jpg	-	200	1265	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/user_history?jid=james.goulding@gmail.com
+2010-12-22 11:51:49 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/twitter.jpg
+2010-12-22 11:51:49 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/twitter.jpg
+2010-12-22 11:51:49 [INFO]    2010-12-22	11:51:49	127.0.0.1	-	-	8080	GET	/static/images/icons/twitter.jpg	-	200	1464	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/user_history?jid=james.goulding@gmail.com
+2010-12-22 11:51:49 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/gtalk.jpg
+2010-12-22 11:51:49 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/gtalk.jpg
+2010-12-22 11:51:49 [INFO]    2010-12-22	11:51:49	127.0.0.1	-	-	8080	GET	/static/images/icons/gtalk.jpg	-	200	1518	0	47	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/user_history?jid=james.goulding@gmail.com
+2010-12-22 11:51:49 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/picasa.jpg
+2010-12-22 11:51:49 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/picasa.jpg
+2010-12-22 11:51:49 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/facebook.jpg
+2010-12-22 11:51:49 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/facebook.jpg
+2010-12-22 11:51:49 [INFO]    2010-12-22	11:51:49	127.0.0.1	-	-	8080	GET	/static/images/icons/facebook.jpg	-	200	1474	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/user_history?jid=james.goulding@gmail.com
+2010-12-22 11:51:49 [INFO]    2010-12-22	11:51:49	127.0.0.1	-	-	8080	GET	/static/images/icons/picasa.jpg	-	200	1569	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/user_history?jid=james.goulding@gmail.com
+2010-12-22 11:51:49 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/foursquare.jpg
+2010-12-22 11:51:49 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/foursquare.jpg
+2010-12-22 11:51:49 [INFO]    2010-12-22	11:51:49	127.0.0.1	-	-	8080	GET	/static/images/icons/foursquare.jpg	-	200	1584	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/user_history?jid=james.goulding@gmail.com
+2010-12-22 11:52:09 [INFO]    2010-12-22	11:52:09	127.0.0.1	-	-	8080	GET	/source_history	jid=james.goulding@gmail.com&sid=testsender@jabber.org	200	6209	0	172	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	-
+2010-12-22 11:52:09 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/http___mydatasphere.org_dataware_test.png
+2010-12-22 11:52:09 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/http___mydatasphere.org_dataware_test.png
+2010-12-22 11:52:09 [INFO]    2010-12-22	11:52:09	127.0.0.1	-	-	8080	GET	/static/images/icons/http___mydatasphere.org_dataware_test.png	-	200	12687	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 12:18:04 [INFO]    2010-12-22	12:18:04	127.0.0.1	-	-	8080	GET	/source_history	jid=james.goulding@gmail.com&sid=testsender@jabber.org	200	6209	0	125	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	-
+2010-12-22 12:18:05 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/ds.css
+2010-12-22 12:18:05 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/ds.css
+2010-12-22 12:18:05 [INFO]    2010-12-22	12:18:05	127.0.0.1	-	-	8080	GET	/static/ds.css	-	304	0	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 12:18:05 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/mydslogo.jpg
+2010-12-22 12:18:05 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/mydslogo.jpg
+2010-12-22 12:18:05 [INFO]    2010-12-22	12:18:05	127.0.0.1	-	-	8080	GET	/static/images/mydslogo.jpg	-	304	0	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 12:18:05 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/reddit.jpg
+2010-12-22 12:18:05 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/reddit.jpg
+2010-12-22 12:18:05 [INFO]    2010-12-22	12:18:05	127.0.0.1	-	-	8080	GET	/static/images/icons/reddit.jpg	-	304	0	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 12:18:05 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/myspace.jpg
+2010-12-22 12:18:05 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/youtube.jpg
+2010-12-22 12:18:05 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/youtube.jpg
+2010-12-22 12:18:05 [INFO]    2010-12-22	12:18:05	127.0.0.1	-	-	8080	GET	/static/images/icons/youtube.jpg	-	304	0	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 12:18:05 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/myspace.jpg
+2010-12-22 12:18:05 [INFO]    2010-12-22	12:18:05	127.0.0.1	-	-	8080	GET	/static/images/icons/myspace.jpg	-	304	0	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 12:18:05 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/wordpress.jpg
+2010-12-22 12:18:05 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/wordpress.jpg
+2010-12-22 12:18:05 [INFO]    2010-12-22	12:18:05	127.0.0.1	-	-	8080	GET	/static/images/icons/wordpress.jpg	-	304	0	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 12:18:05 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/blogger.jpg
+2010-12-22 12:18:05 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/blogger.jpg
+2010-12-22 12:18:05 [INFO]    2010-12-22	12:18:05	127.0.0.1	-	-	8080	GET	/static/images/icons/blogger.jpg	-	304	0	0	16	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 12:18:05 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/digg.jpg
+2010-12-22 12:18:05 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/digg.jpg
+2010-12-22 12:18:05 [INFO]    2010-12-22	12:18:05	127.0.0.1	-	-	8080	GET	/static/images/icons/digg.jpg	-	304	0	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 12:18:05 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/spotify.jpg
+2010-12-22 12:18:05 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/gmail.jpg
+2010-12-22 12:18:05 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/skype.jpg
+2010-12-22 12:18:05 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/gmail.jpg
+2010-12-22 12:18:05 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/skype.jpg
+2010-12-22 12:18:05 [INFO]    2010-12-22	12:18:05	127.0.0.1	-	-	8080	GET	/static/images/icons/gmail.jpg	-	304	0	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 12:18:05 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/vimeo.jpg
+2010-12-22 12:18:05 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/vimeo.jpg
+2010-12-22 12:18:05 [INFO]    2010-12-22	12:18:05	127.0.0.1	-	-	8080	GET	/static/images/icons/vimeo.jpg	-	304	0	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 12:18:05 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/email.jpg
+2010-12-22 12:18:05 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/email.jpg
+2010-12-22 12:18:05 [INFO]    2010-12-22	12:18:05	127.0.0.1	-	-	8080	GET	/static/images/icons/email.jpg	-	304	0	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 12:18:05 [INFO]    2010-12-22	12:18:05	127.0.0.1	-	-	8080	GET	/static/images/icons/skype.jpg	-	304	0	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 12:18:05 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/spotify.jpg
+2010-12-22 12:18:05 [INFO]    2010-12-22	12:18:05	127.0.0.1	-	-	8080	GET	/static/images/icons/spotify.jpg	-	304	0	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 12:18:05 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/gowalla.jpg
+2010-12-22 12:18:05 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/gowalla.jpg
+2010-12-22 12:18:05 [INFO]    2010-12-22	12:18:05	127.0.0.1	-	-	8080	GET	/static/images/icons/gowalla.jpg	-	304	0	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 12:18:05 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/twitter.jpg
+2010-12-22 12:18:05 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/twitter.jpg
+2010-12-22 12:18:05 [INFO]    2010-12-22	12:18:05	127.0.0.1	-	-	8080	GET	/static/images/icons/twitter.jpg	-	304	0	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 12:18:05 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/newsvine.jpg
+2010-12-22 12:18:05 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/newsvine.jpg
+2010-12-22 12:18:05 [INFO]    2010-12-22	12:18:05	127.0.0.1	-	-	8080	GET	/static/images/icons/newsvine.jpg	-	304	0	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 12:18:05 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/gtalk.jpg
+2010-12-22 12:18:05 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/gtalk.jpg
+2010-12-22 12:18:05 [INFO]    2010-12-22	12:18:05	127.0.0.1	-	-	8080	GET	/static/images/icons/gtalk.jpg	-	304	0	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 12:18:05 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/github.jpg
+2010-12-22 12:18:05 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/github.jpg
+2010-12-22 12:18:05 [INFO]    2010-12-22	12:18:05	127.0.0.1	-	-	8080	GET	/static/images/icons/github.jpg	-	304	0	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 12:18:05 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/brightkite.jpg
+2010-12-22 12:18:05 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/brightkite.jpg
+2010-12-22 12:18:05 [INFO]    2010-12-22	12:18:05	127.0.0.1	-	-	8080	GET	/static/images/icons/brightkite.jpg	-	304	0	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 12:18:05 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/picasa.jpg
+2010-12-22 12:18:05 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/foursquare.jpg
+2010-12-22 12:18:05 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/picasa.jpg
+2010-12-22 12:18:05 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/facebook.jpg
+2010-12-22 12:18:05 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/facebook.jpg
+2010-12-22 12:18:05 [INFO]    2010-12-22	12:18:05	127.0.0.1	-	-	8080	GET	/static/images/icons/facebook.jpg	-	304	0	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 12:18:05 [INFO]    2010-12-22	12:18:05	127.0.0.1	-	-	8080	GET	/static/images/icons/picasa.jpg	-	304	0	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 12:18:05 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/foursquare.jpg
+2010-12-22 12:18:05 [INFO]    2010-12-22	12:18:05	127.0.0.1	-	-	8080	GET	/static/images/icons/foursquare.jpg	-	304	0	0	15	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 12:18:05 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/http___mydatasphere.org_dataware_test.png
+2010-12-22 12:18:05 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/http___mydatasphere.org_dataware_test.png
+2010-12-22 12:18:05 [INFO]    2010-12-22	12:18:05	127.0.0.1	-	-	8080	GET	/static/images/icons/http___mydatasphere.org_dataware_test.png	-	304	0	0	15	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 12:18:29 [INFO]    2010-12-22	12:18:29	127.0.0.1	-	-	8080	GET	/subscription	action=REJECT&jid=james.goulding@gmail.com&sid=testsender@jabber.org&ns=http://mydatasphere.org/dataware/test&_=1293020309475	200	-	0	78	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 12:18:29 [INFO]    2010-12-22	12:18:29	127.0.0.1	-	-	8080	GET	/source_history	jid=james.goulding@gmail.com&sid=testsender@jabber.org	200	6173	0	125	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	-
+2010-12-22 12:18:29 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/ds.css
+2010-12-22 12:18:29 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/ds.css
+2010-12-22 12:18:29 [INFO]    2010-12-22	12:18:29	127.0.0.1	-	-	8080	GET	/static/ds.css	-	200	5305	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 12:18:29 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/myspace.jpg
+2010-12-22 12:18:29 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/blogger.jpg
+2010-12-22 12:18:29 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/blogger.jpg
+2010-12-22 12:18:29 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/youtube.jpg
+2010-12-22 12:18:29 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/youtube.jpg
+2010-12-22 12:18:29 [INFO]    2010-12-22	12:18:29	127.0.0.1	-	-	8080	GET	/static/images/icons/blogger.jpg	-	200	1524	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 12:18:29 [INFO]    2010-12-22	12:18:29	127.0.0.1	-	-	8080	GET	/static/images/icons/youtube.jpg	-	200	1654	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 12:18:29 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/myspace.jpg
+2010-12-22 12:18:29 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/mydslogo.jpg
+2010-12-22 12:18:29 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/mydslogo.jpg
+2010-12-22 12:18:29 [INFO]    2010-12-22	12:18:29	127.0.0.1	-	-	8080	GET	/static/images/icons/myspace.jpg	-	200	1498	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 12:18:29 [INFO]    2010-12-22	12:18:29	127.0.0.1	-	-	8080	GET	/static/images/mydslogo.jpg	-	200	12158	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 12:18:29 [WARNING] Unable to run the following server-side task: Read connection messages: true
+2010-12-22 12:18:29 [INFO]    Worker service state: Normal
+2010-12-22 12:18:29 [INFO]    Worker service tasks: 0 queued, 7 active, 61 completed, 68 scheduled.
+2010-12-22 12:18:29 [INFO]    Worker service thread pool: 1 core size, 10 largest size, 10 maximum size, 10 current size
+2010-12-22 12:18:29 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/reddit.jpg
+2010-12-22 12:18:29 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/reddit.jpg
+2010-12-22 12:18:29 [INFO]    2010-12-22	12:18:29	127.0.0.1	-	-	8080	GET	/static/images/icons/reddit.jpg	-	200	1629	0	15	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 12:18:29 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/skype.jpg
+2010-12-22 12:18:29 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/skype.jpg
+2010-12-22 12:18:29 [INFO]    2010-12-22	12:18:29	127.0.0.1	-	-	8080	GET	/static/images/icons/skype.jpg	-	200	1495	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 12:18:29 [WARNING] Unable to run the following server-side task: Read connection messages: true
+2010-12-22 12:18:29 [INFO]    Worker service state: Full
+2010-12-22 12:18:29 [INFO]    Worker service tasks: 0 queued, 10 active, 62 completed, 72 scheduled.
+2010-12-22 12:18:29 [INFO]    Worker service thread pool: 1 core size, 10 largest size, 10 maximum size, 10 current size
+2010-12-22 12:18:29 [WARNING] Unable to run the following server-side task: Read connection messages: true
+2010-12-22 12:18:29 [INFO]    Worker service state: Full
+2010-12-22 12:18:29 [INFO]    Worker service tasks: 0 queued, 10 active, 62 completed, 72 scheduled.
+2010-12-22 12:18:29 [INFO]    Worker service thread pool: 1 core size, 10 largest size, 10 maximum size, 10 current size
+2010-12-22 12:18:30 [INFO]    Stop accepting new connections and transactions. Consider increasing the maximum number of threads.
+2010-12-22 12:18:30 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/digg.jpg
+2010-12-22 12:18:30 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/digg.jpg
+2010-12-22 12:18:30 [INFO]    2010-12-22	12:18:30	127.0.0.1	-	-	8080	GET	/static/images/icons/digg.jpg	-	200	1540	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 12:18:30 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/vimeo.jpg
+2010-12-22 12:18:30 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/vimeo.jpg
+2010-12-22 12:18:30 [INFO]    2010-12-22	12:18:30	127.0.0.1	-	-	8080	GET	/static/images/icons/vimeo.jpg	-	200	1440	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 12:18:30 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/gmail.jpg
+2010-12-22 12:18:30 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/gmail.jpg
+2010-12-22 12:18:30 [INFO]    2010-12-22	12:18:30	127.0.0.1	-	-	8080	GET	/static/images/icons/gmail.jpg	-	200	1543	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 12:18:30 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/spotify.jpg
+2010-12-22 12:18:30 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/spotify.jpg
+2010-12-22 12:18:30 [INFO]    2010-12-22	12:18:30	127.0.0.1	-	-	8080	GET	/static/images/icons/spotify.jpg	-	200	1395	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 12:18:30 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/twitter.jpg
+2010-12-22 12:18:30 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/twitter.jpg
+2010-12-22 12:18:30 [INFO]    2010-12-22	12:18:30	127.0.0.1	-	-	8080	GET	/static/images/icons/twitter.jpg	-	200	1464	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 12:18:30 [INFO]    Accepting new connections and transactions again.
+2010-12-22 12:18:30 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/brightkite.jpg
+2010-12-22 12:18:30 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/brightkite.jpg
+2010-12-22 12:18:30 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/github.jpg
+2010-12-22 12:18:30 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/github.jpg
+2010-12-22 12:18:30 [INFO]    2010-12-22	12:18:30	127.0.0.1	-	-	8080	GET	/static/images/icons/github.jpg	-	200	1265	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 12:18:30 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/gtalk.jpg
+2010-12-22 12:18:30 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/gtalk.jpg
+2010-12-22 12:18:30 [INFO]    2010-12-22	12:18:30	127.0.0.1	-	-	8080	GET	/static/images/icons/brightkite.jpg	-	200	1479	0	15	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 12:18:30 [INFO]    2010-12-22	12:18:30	127.0.0.1	-	-	8080	GET	/static/images/icons/gtalk.jpg	-	200	1518	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 12:18:30 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/email.jpg
+2010-12-22 12:18:30 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/email.jpg
+2010-12-22 12:18:30 [INFO]    2010-12-22	12:18:30	127.0.0.1	-	-	8080	GET	/static/images/icons/email.jpg	-	200	585	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 12:18:30 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/newsvine.jpg
+2010-12-22 12:18:30 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/newsvine.jpg
+2010-12-22 12:18:30 [INFO]    2010-12-22	12:18:30	127.0.0.1	-	-	8080	GET	/static/images/icons/newsvine.jpg	-	200	1566	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 12:18:30 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/wordpress.jpg
+2010-12-22 12:18:30 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/wordpress.jpg
+2010-12-22 12:18:30 [INFO]    2010-12-22	12:18:30	127.0.0.1	-	-	8080	GET	/static/images/icons/wordpress.jpg	-	200	1345	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 12:18:30 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/gowalla.jpg
+2010-12-22 12:18:30 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/gowalla.jpg
+2010-12-22 12:18:30 [INFO]    2010-12-22	12:18:30	127.0.0.1	-	-	8080	GET	/static/images/icons/gowalla.jpg	-	200	1666	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 12:18:30 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/foursquare.jpg
+2010-12-22 12:18:30 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/foursquare.jpg
+2010-12-22 12:18:30 [INFO]    2010-12-22	12:18:30	127.0.0.1	-	-	8080	GET	/static/images/icons/foursquare.jpg	-	200	1584	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 12:18:30 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/facebook.jpg
+2010-12-22 12:18:30 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/facebook.jpg
+2010-12-22 12:18:30 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/http___mydatasphere.org_dataware_test.png
+2010-12-22 12:18:30 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/http___mydatasphere.org_dataware_test.png
+2010-12-22 12:18:30 [INFO]    2010-12-22	12:18:30	127.0.0.1	-	-	8080	GET	/static/images/icons/http___mydatasphere.org_dataware_test.png	-	200	12687	0	16	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 12:18:30 [INFO]    2010-12-22	12:18:30	127.0.0.1	-	-	8080	GET	/static/images/icons/facebook.jpg	-	200	1474	0	16	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 12:18:30 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/picasa.jpg
+2010-12-22 12:18:30 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/picasa.jpg
+2010-12-22 12:18:30 [INFO]    2010-12-22	12:18:30	127.0.0.1	-	-	8080	GET	/static/images/icons/picasa.jpg	-	200	1569	0	16	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 12:19:18 [INFO]    2010-12-22	12:19:18	127.0.0.1	-	-	8080	GET	/source_history	jid=james.goulding@gmail.com&sid=testsender@jabber.org	200	943	0	63	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	-
+2010-12-22 12:21:04 [INFO]    Starting the internal HTTP server on port 8080
+2010-12-22 12:33:03 [INFO]    Starting the internal HTTP server on port 8080
+2010-12-22 12:56:50 [INFO]    Starting the internal HTTP server on port 8080
+2010-12-22 13:00:08 [INFO]    2010-12-22	13:00:08	127.0.0.1	-	-	8080	GET	/source_history	jid=james.goulding@gmail.com&sid=testsender@jabber.org	200	6473	0	907	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	-
+2010-12-22 13:00:08 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/ds.css
+2010-12-22 13:00:08 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/ds.css
+2010-12-22 13:00:08 [INFO]    2010-12-22	13:00:08	127.0.0.1	-	-	8080	GET	/static/ds.css	-	304	0	0	16	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 13:00:08 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/http___mydatasphere.org_dataware_test.png
+2010-12-22 13:00:08 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/http___mydatasphere.org_dataware_test.png
+2010-12-22 13:00:08 [INFO]    2010-12-22	13:00:08	127.0.0.1	-	-	8080	GET	/static/images/icons/http___mydatasphere.org_dataware_test.png	-	200	12687	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 13:00:08 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/wordpress.jpg
+2010-12-22 13:00:08 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/wordpress.jpg
+2010-12-22 13:00:08 [INFO]    2010-12-22	13:00:08	127.0.0.1	-	-	8080	GET	/static/images/icons/wordpress.jpg	-	304	0	0	47	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 13:00:08 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/blogger.jpg
+2010-12-22 13:00:08 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/blogger.jpg
+2010-12-22 13:00:08 [INFO]    2010-12-22	13:00:08	127.0.0.1	-	-	8080	GET	/static/images/icons/blogger.jpg	-	304	0	0	47	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 13:00:08 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/myspace.jpg
+2010-12-22 13:00:08 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/myspace.jpg
+2010-12-22 13:00:08 [INFO]    2010-12-22	13:00:08	127.0.0.1	-	-	8080	GET	/static/images/icons/myspace.jpg	-	304	0	0	78	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 13:00:08 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/youtube.jpg
+2010-12-22 13:00:08 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/skype.jpg
+2010-12-22 13:00:08 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/reddit.jpg
+2010-12-22 13:00:08 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/skype.jpg
+2010-12-22 13:00:08 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/reddit.jpg
+2010-12-22 13:00:08 [INFO]    2010-12-22	13:00:08	127.0.0.1	-	-	8080	GET	/static/images/icons/skype.jpg	-	304	0	0	94	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 13:00:08 [INFO]    2010-12-22	13:00:08	127.0.0.1	-	-	8080	GET	/static/images/icons/reddit.jpg	-	304	0	0	94	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 13:00:08 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/youtube.jpg
+2010-12-22 13:00:08 [INFO]    2010-12-22	13:00:08	127.0.0.1	-	-	8080	GET	/static/images/icons/youtube.jpg	-	304	0	0	94	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 13:00:08 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/vimeo.jpg
+2010-12-22 13:00:08 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/vimeo.jpg
+2010-12-22 13:00:08 [INFO]    2010-12-22	13:00:08	127.0.0.1	-	-	8080	GET	/static/images/icons/vimeo.jpg	-	304	0	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 13:00:08 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/digg.jpg
+2010-12-22 13:00:08 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/digg.jpg
+2010-12-22 13:00:08 [INFO]    2010-12-22	13:00:08	127.0.0.1	-	-	8080	GET	/static/images/icons/digg.jpg	-	304	0	0	47	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 13:00:08 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/gmail.jpg
+2010-12-22 13:00:08 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/gmail.jpg
+2010-12-22 13:00:08 [INFO]    2010-12-22	13:00:08	127.0.0.1	-	-	8080	GET	/static/images/icons/gmail.jpg	-	304	0	0	47	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 13:00:08 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/email.jpg
+2010-12-22 13:00:08 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/email.jpg
+2010-12-22 13:00:08 [INFO]    2010-12-22	13:00:08	127.0.0.1	-	-	8080	GET	/static/images/icons/email.jpg	-	304	0	0	78	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 13:00:08 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/github.jpg
+2010-12-22 13:00:08 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/github.jpg
+2010-12-22 13:00:08 [INFO]    2010-12-22	13:00:08	127.0.0.1	-	-	8080	GET	/static/images/icons/github.jpg	-	304	0	0	93	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 13:00:08 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/spotify.jpg
+2010-12-22 13:00:08 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/spotify.jpg
+2010-12-22 13:00:08 [INFO]    2010-12-22	13:00:08	127.0.0.1	-	-	8080	GET	/static/images/icons/spotify.jpg	-	304	0	0	109	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 13:00:08 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/newsvine.jpg
+2010-12-22 13:00:08 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/newsvine.jpg
+2010-12-22 13:00:08 [INFO]    2010-12-22	13:00:08	127.0.0.1	-	-	8080	GET	/static/images/icons/newsvine.jpg	-	304	0	0	16	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 13:00:08 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/brightkite.jpg
+2010-12-22 13:00:08 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/brightkite.jpg
+2010-12-22 13:00:08 [INFO]    2010-12-22	13:00:08	127.0.0.1	-	-	8080	GET	/static/images/icons/brightkite.jpg	-	304	0	0	16	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 13:00:08 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/twitter.jpg
+2010-12-22 13:00:08 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/twitter.jpg
+2010-12-22 13:00:08 [INFO]    2010-12-22	13:00:08	127.0.0.1	-	-	8080	GET	/static/images/icons/twitter.jpg	-	304	0	0	16	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 13:00:08 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/gtalk.jpg
+2010-12-22 13:00:08 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/gtalk.jpg
+2010-12-22 13:00:08 [INFO]    2010-12-22	13:00:08	127.0.0.1	-	-	8080	GET	/static/images/icons/gtalk.jpg	-	304	0	0	16	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 13:00:08 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/facebook.jpg
+2010-12-22 13:00:08 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/facebook.jpg
+2010-12-22 13:00:08 [INFO]    2010-12-22	13:00:08	127.0.0.1	-	-	8080	GET	/static/images/icons/facebook.jpg	-	304	0	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 13:00:08 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/mydslogo.jpg
+2010-12-22 13:00:08 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/mydslogo.jpg
+2010-12-22 13:00:08 [INFO]    2010-12-22	13:00:08	127.0.0.1	-	-	8080	GET	/static/images/mydslogo.jpg	-	304	0	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 13:00:08 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/foursquare.jpg
+2010-12-22 13:00:08 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/foursquare.jpg
+2010-12-22 13:00:08 [INFO]    2010-12-22	13:00:08	127.0.0.1	-	-	8080	GET	/static/images/icons/foursquare.jpg	-	304	0	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 13:00:08 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/gowalla.jpg
+2010-12-22 13:00:08 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/gowalla.jpg
+2010-12-22 13:00:08 [INFO]    2010-12-22	13:00:08	127.0.0.1	-	-	8080	GET	/static/images/icons/gowalla.jpg	-	304	0	0	16	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 13:00:08 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/picasa.jpg
+2010-12-22 13:00:08 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/picasa.jpg
+2010-12-22 13:00:08 [INFO]    2010-12-22	13:00:08	127.0.0.1	-	-	8080	GET	/static/images/icons/picasa.jpg	-	304	0	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 13:00:11 [INFO]    2010-12-22	13:00:11	127.0.0.1	-	-	8080	GET	/subscription	action=ACCEPT&jid=james.goulding@gmail.com&sid=testsender@jabber.org&ns=http://mydatasphere.org/dataware/test&_=1293022811794	200	-	0	63	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 13:00:12 [INFO]    2010-12-22	13:00:12	127.0.0.1	-	-	8080	GET	/source_history	jid=james.goulding@gmail.com&sid=testsender@jabber.org	200	6501	0	172	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	-
+2010-12-22 13:00:12 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/ds.css
+2010-12-22 13:00:12 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/ds.css
+2010-12-22 13:00:12 [INFO]    2010-12-22	13:00:12	127.0.0.1	-	-	8080	GET	/static/ds.css	-	200	5305	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 13:00:12 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/mydslogo.jpg
+2010-12-22 13:00:12 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/mydslogo.jpg
+2010-12-22 13:00:12 [INFO]    2010-12-22	13:00:12	127.0.0.1	-	-	8080	GET	/static/images/mydslogo.jpg	-	200	12158	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 13:00:12 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/wordpress.jpg
+2010-12-22 13:00:12 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/wordpress.jpg
+2010-12-22 13:00:12 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/myspace.jpg
+2010-12-22 13:00:12 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/myspace.jpg
+2010-12-22 13:00:12 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/youtube.jpg
+2010-12-22 13:00:12 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/youtube.jpg
+2010-12-22 13:00:12 [INFO]    2010-12-22	13:00:12	127.0.0.1	-	-	8080	GET	/static/images/icons/myspace.jpg	-	200	1498	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 13:00:12 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/http___mydatasphere.org_dataware_test.png
+2010-12-22 13:00:12 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/http___mydatasphere.org_dataware_test.png
+2010-12-22 13:00:12 [INFO]    2010-12-22	13:00:12	127.0.0.1	-	-	8080	GET	/static/images/icons/http___mydatasphere.org_dataware_test.png	-	200	12687	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 13:00:12 [INFO]    2010-12-22	13:00:12	127.0.0.1	-	-	8080	GET	/static/images/icons/youtube.jpg	-	200	1654	0	15	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 13:00:12 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/blogger.jpg
+2010-12-22 13:00:12 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/blogger.jpg
+2010-12-22 13:00:12 [INFO]    2010-12-22	13:00:12	127.0.0.1	-	-	8080	GET	/static/images/icons/blogger.jpg	-	200	1524	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 13:00:12 [INFO]    2010-12-22	13:00:12	127.0.0.1	-	-	8080	GET	/static/images/icons/wordpress.jpg	-	200	1345	0	15	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 13:00:12 [WARNING] Unable to run the following server-side task: Read connection messages: true
+2010-12-22 13:00:12 [INFO]    Worker service state: Normal
+2010-12-22 13:00:12 [INFO]    Worker service tasks: 0 queued, 6 active, 28 completed, 34 scheduled.
+2010-12-22 13:00:12 [INFO]    Worker service thread pool: 1 core size, 10 largest size, 10 maximum size, 10 current size
+2010-12-22 13:00:12 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/reddit.jpg
+2010-12-22 13:00:12 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/reddit.jpg
+2010-12-22 13:00:12 [INFO]    2010-12-22	13:00:12	127.0.0.1	-	-	8080	GET	/static/images/icons/reddit.jpg	-	200	1629	0	16	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 13:00:12 [INFO]    Stop accepting new connections and transactions. Consider increasing the maximum number of threads.
+2010-12-22 13:00:13 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/skype.jpg
+2010-12-22 13:00:13 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/vimeo.jpg
+2010-12-22 13:00:13 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/vimeo.jpg
+2010-12-22 13:00:13 [INFO]    2010-12-22	13:00:13	127.0.0.1	-	-	8080	GET	/static/images/icons/vimeo.jpg	-	200	1440	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 13:00:13 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/skype.jpg
+2010-12-22 13:00:13 [INFO]    2010-12-22	13:00:13	127.0.0.1	-	-	8080	GET	/static/images/icons/skype.jpg	-	200	1495	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 13:00:13 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/digg.jpg
+2010-12-22 13:00:13 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/digg.jpg
+2010-12-22 13:00:13 [INFO]    2010-12-22	13:00:13	127.0.0.1	-	-	8080	GET	/static/images/icons/digg.jpg	-	200	1540	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 13:00:13 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/gmail.jpg
+2010-12-22 13:00:13 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/gmail.jpg
+2010-12-22 13:00:13 [INFO]    2010-12-22	13:00:13	127.0.0.1	-	-	8080	GET	/static/images/icons/gmail.jpg	-	200	1543	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 13:00:13 [INFO]    Accepting new connections and transactions again.
+2010-12-22 13:00:13 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/brightkite.jpg
+2010-12-22 13:00:13 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/brightkite.jpg
+2010-12-22 13:00:13 [INFO]    2010-12-22	13:00:13	127.0.0.1	-	-	8080	GET	/static/images/icons/brightkite.jpg	-	200	1479	0	16	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 13:00:13 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/spotify.jpg
+2010-12-22 13:00:13 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/spotify.jpg
+2010-12-22 13:00:13 [INFO]    2010-12-22	13:00:13	127.0.0.1	-	-	8080	GET	/static/images/icons/spotify.jpg	-	200	1395	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 13:00:13 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/twitter.jpg
+2010-12-22 13:00:13 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/twitter.jpg
+2010-12-22 13:00:13 [INFO]    2010-12-22	13:00:13	127.0.0.1	-	-	8080	GET	/static/images/icons/twitter.jpg	-	200	1464	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 13:00:13 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/newsvine.jpg
+2010-12-22 13:00:13 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/newsvine.jpg
+2010-12-22 13:00:13 [INFO]    2010-12-22	13:00:13	127.0.0.1	-	-	8080	GET	/static/images/icons/newsvine.jpg	-	200	1566	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 13:00:13 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/github.jpg
+2010-12-22 13:00:13 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/github.jpg
+2010-12-22 13:00:13 [INFO]    2010-12-22	13:00:13	127.0.0.1	-	-	8080	GET	/static/images/icons/github.jpg	-	200	1265	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 13:00:13 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/email.jpg
+2010-12-22 13:00:13 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/email.jpg
+2010-12-22 13:00:13 [INFO]    2010-12-22	13:00:13	127.0.0.1	-	-	8080	GET	/static/images/icons/email.jpg	-	200	585	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 13:00:13 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/gtalk.jpg
+2010-12-22 13:00:13 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/gtalk.jpg
+2010-12-22 13:00:13 [INFO]    2010-12-22	13:00:13	127.0.0.1	-	-	8080	GET	/static/images/icons/gtalk.jpg	-	200	1518	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 13:00:13 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/facebook.jpg
+2010-12-22 13:00:13 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/facebook.jpg
+2010-12-22 13:00:13 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/foursquare.jpg
+2010-12-22 13:00:13 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/foursquare.jpg
+2010-12-22 13:00:13 [INFO]    2010-12-22	13:00:13	127.0.0.1	-	-	8080	GET	/static/images/icons/foursquare.jpg	-	200	1584	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 13:00:13 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/gowalla.jpg
+2010-12-22 13:00:13 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/gowalla.jpg
+2010-12-22 13:00:13 [INFO]    2010-12-22	13:00:13	127.0.0.1	-	-	8080	GET	/static/images/icons/gowalla.jpg	-	200	1666	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 13:00:13 [INFO]    Converted target URI: file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/picasa.jpg
+2010-12-22 13:00:13 [INFO]    Getting variants for : file:///C:%5CHyperPlace%5Cdatasphere%5Cresources%5C/images/icons/picasa.jpg
+2010-12-22 13:00:13 [INFO]    2010-12-22	13:00:13	127.0.0.1	-	-	8080	GET	/static/images/icons/picasa.jpg	-	200	1569	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org
+2010-12-22 13:00:13 [INFO]    2010-12-22	13:00:13	127.0.0.1	-	-	8080	GET	/static/images/icons/facebook.jpg	-	200	1474	0	0	http://localhost:8080	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 ( .NET CLR 3.5.30729)	http://localhost:8080/source_history?jid=james.goulding@gmail.com&sid=testsender@jabber.org

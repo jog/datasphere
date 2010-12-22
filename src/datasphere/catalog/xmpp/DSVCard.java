@@ -101,7 +101,7 @@ public class DSVCard {
 
 	///////////////////////////////
 	
-	public Object getUrl() {
+	public String getUrl() {
 		return vCard.getField( "URL" );
 	}
 
@@ -114,7 +114,7 @@ public class DSVCard {
 	
 	///////////////////////////////
 	
-	public Object getDesc() {
+	public String getDesc() {
 		return vCard.getField( "DESC" );
 	}
 	
@@ -127,7 +127,7 @@ public class DSVCard {
 	
 	///////////////////////////////
 	
-	public Object getOrgName() {
+	public String getOrgName() {
 		return vCard.getOrganization();
 	}
 	
@@ -140,8 +140,8 @@ public class DSVCard {
 	
 	///////////////////////////////
 	
-	public Object getOrgUnit() {
-		return vCard.getOrganization();
+	public String getOrgUnit() {
+		return vCard.getOrganizationUnit();
 	}
 	
 	///////////////////////////////
