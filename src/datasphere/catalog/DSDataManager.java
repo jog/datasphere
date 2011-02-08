@@ -21,6 +21,7 @@ import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.Driver;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -613,36 +614,30 @@ public class DSDataManager {
 	public void insertUpdate( String jid, String from, DSUpdate d ) {
 
 		try {
-			Statement stmt = createStatement();
-			
-			String insert = "insert into " + DEFAULT_SYS_DB + "." + UPDATES_TABLE + " " +
-				"( jid, sid, primaryTag, description, crud, total, ctime, ftime, rtime, meta, tags, loc ) " +
-				"values ( " +
-				"'" + jid + "'," +
-				"'" + from + "'," +
-				"'" + d.getPrimaryTag() + "'," +
-				"'" + d.getDescription().replace( "\'", "\\\'" ) + "'," +
-				"'" + d.getCrud() + "'," +
-				""  + d.getTotal() + "," +
-				""  + d.getCtime() + "," +
-				""  + d.getFtime() + "," +
-				""  + System.currentTimeMillis() + ","; 
-		
-			if ( d.getMetaJSON() == null ) insert += "null,";
-			else insert += "'"  + d.getMetaJSON() + "',";
-						
-			if ( d.getTagsJSON() == null ) insert += "null,";
-			else insert += "'"  + d.getTagsJSON() + "',";
-		
-			if ( d.getLocationJSON() == null ) insert += "null";
-			else insert += "'" + d.getLocationJSON() + "'";	
-			
-			insert += ")";
- 
-			stmt.addBatch( insert );
-			stmt.executeBatch();
+		   PreparedStatement stmt = conn.prepareStatement(
+				  "INSERT INTO " + DEFAULT_SYS_DB + "." + UPDATES_TABLE + " " +
+				  "( jid, sid, loc, description, crud, total, meta, tags, ctime, rtime, primaryTag, ftime  ) " +
+				  "VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? ) "
+		   );
+		   
+		   stmt.setString( 1, jid );
+		   stmt.setString( 2, from );
+		   stmt.setString( 3, d.getLocationJSON() );
+		   stmt.setString( 4, d.getDescription() );
+		   stmt.setString( 5, d.getCrud() );
+		   stmt.setLong( 6, d.getTotal() );
+		   stmt.setString( 7, d.getMetaJSON() );
+		   stmt.setString( 8, d.getTagsJSON() );
+		   stmt.setLong( 9, d.getCtime() );
+		   stmt.setLong( 10, System.currentTimeMillis() );
+		   stmt.setString( 11, d.getPrimaryTag() );
+		   stmt.setLong( 12, d.getFtime() );
+		   
+		   stmt.executeUpdate();
+
 			
 		} catch ( SQLException e ) {
+			e.printStackTrace();
 			logger.severe( "--- DSDataManager: [" + jid + "] UPDATE FAILURE: " + e.getMessage() );
 		}
 	}
@@ -732,17 +727,20 @@ public class DSDataManager {
 		
 		//-- that done insert the subscription proper
 		try {
-			Statement stmt = createStatement();
-			String query = 
-				"INSERT INTO " + DEFAULT_SYS_DB + "." + SUBSCRIPTIONS_TABLE + " VALUES (" + 
-				"'" + sid + "'," + 
-				"'" + jid + "'," + 
-				"'" + status + "'," +
-				+ System.currentTimeMillis() + "," +
-				+ System.currentTimeMillis() + ")";
-
-			stmt.executeUpdate( query );
 			
+		   PreparedStatement stmt = conn.prepareStatement(
+				"INSERT INTO " + DEFAULT_SYS_DB + "." + SUBSCRIPTIONS_TABLE + " " +
+				"(sid, jid, subscriptionStatus, ctime, mtime ) VALUES (?, ?, ?, ?, ?)"
+		   );
+
+		   stmt.setString( 1, sid );
+		   stmt.setString( 2, jid );
+		   stmt.setString( 3, status.toString() );
+		   stmt.setLong( 4, System.currentTimeMillis() );
+		   stmt.setLong( 5, System.currentTimeMillis() );
+		   
+		   stmt.executeUpdate();
+
 			logger.fine( "--- DSDataManager: [" + jid + "] new subscription registered to <" + vCard.getNamespace() +">" );
 			
 		} catch ( SQLException e ) {
@@ -755,25 +753,24 @@ public class DSDataManager {
 	public void insertSource( DSVCard vCard ) 
 	throws DSFormatException, SQLException {
 
-		Statement stmt = createStatement();
-		String query = 
+		PreparedStatement stmt = conn.prepareStatement(
 			"INSERT into datasphere.ds_sys_sources " +
 			"( sid, namespace, name, url, avatar, orgname, orgunit, description ) " +
-			"VALUES ( " +
-			"'" + vCard.getSid() + "'," +
-			"'" + vCard.getNamespace() + "'," +
-			"'" + vCard.getNickName() + "',";
-		
-		query += ( vCard.getUrl() == null ) ? "null," : "'" +  vCard.getUrl()  + "',";
-		query += ( vCard.hasAvatar() == null ) ? "false," : "true,";
-		query += ( vCard.getOrgName() == null ) ? "null," : "'" +  vCard.getOrgName()  + "',";
-		query += ( vCard.getOrgUnit() == null ) ? "null," : "'" +  vCard.getOrgUnit()  + "',";
-		query += ( vCard.getDesc() == null ) ? "null," : "'" +  vCard.getDesc()  + "'";
-		query += ")";
-
-		stmt.executeUpdate( query );
+			"VALUES ( ?, ?, ?, ?, ?, ?, ?, ? ) "
+		);
+	   
+	   stmt.setString( 1, vCard.getSid() );
+	   stmt.setString( 2, vCard.getNamespace() );
+	   stmt.setString( 3, vCard.getNickName() );
+	   stmt.setString( 4, vCard.getUrl() );
+	   stmt.setBoolean( 5, vCard.hasAvatar() );
+	   stmt.setString( 6, vCard.getOrgName() );
+	   stmt.setString( 7,  vCard.getOrgUnit() );
+	   stmt.setString( 8, vCard.getDesc() );
+			   
+	   stmt.executeUpdate();
 	}
-	
+
 	//////////////////////////////////
 	
 	public DSSub fetchSub( 
