@@ -1,2 +1,3 @@
 #! /bin/bash
-java -classpath bin/classes:lib/*:. datasphere.catalog.DSMain $@
+java -classpath ./bin:bin/classes:lib/*:. datasphere.catalog.DSMain $@
+

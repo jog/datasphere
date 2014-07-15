@@ -1,0 +1,7 @@
+dshttp0.*
+logs/*
+dist/*
+build/*
+bin/datasphere/catalog/ds.cfg
+build.number
+conf/ds.cfg
